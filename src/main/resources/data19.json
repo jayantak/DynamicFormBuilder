@@ -3,7 +3,7 @@
   "Colour": "color",
   "Parent": "text",
   "Date": "date",
-  "Time": "time"
+  "Time": "time",
   "Password": "password",
   "File": "file"
 }
