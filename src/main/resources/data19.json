@@ -1,5 +1,8 @@
 {
-  "one": "Value1",
-  "two": "Value2",
-  "three": "Value3"
+  "Name": "text",
+  "Colour": "color",
+  "Parent": "text",
+  "Date": "date",
+  "Password": "password",
+  "File": "file"
 }

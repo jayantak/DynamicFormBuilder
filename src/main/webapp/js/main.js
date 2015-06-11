@@ -1,28 +1,19 @@
 $(document).ready(function() {$(function() {
 
-    $('#clickme').click(function() {
-
-
         $.getJSON('data', function(data) {
 
             var items = [];
             var fields = [];
 
             $.each(data, function(key, val) {
-
-                items.push('<li id="' + key + '">' + val + '</li>');
                 fields.push([key, val]);
-                console.log(fields);
+                items.push('<p id="' + key + 'p">'+ key + ':    ' + '<input type="'+ val + '"></input></p>');
             });
 
-            $('<ul/>', {
-                'class': 'interest-list',
+            $('<form/>', {
                 html: items.join('')
             }).appendTo('body');
 
         });
     });
-
 });
-});
-
