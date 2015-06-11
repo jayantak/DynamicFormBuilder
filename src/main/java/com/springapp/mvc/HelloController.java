@@ -1,6 +1,8 @@
 package com.springapp.mvc;
 
 import org.json.simple.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,5 +18,10 @@ public class HelloController {
 	public String printWelcome(ModelMap model) throws IOException {
 
         return "hello";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/data")
+	public ResponseEntity fetchData(){
+		return new ResponseEntity("blah", HttpStatus.OK);
 	}
 }
