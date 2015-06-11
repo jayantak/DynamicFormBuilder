@@ -10,9 +10,11 @@ import org.json.simple.parser.JSONParser;
 
 public class JOps {
 
-    public static void JSONWrite(JSONObject obj, File fileName) throws IOException
+    public void JSONWrite(JSONObject obj, String fileName) throws IOException
     {
-        FileWriter file = new FileWriter(fileName);
+        ClassLoader classLoader = getClass().getClassLoader();
+        File tfile1 = new File(classLoader.getResource(fileName).getFile());
+        FileWriter file = new FileWriter(tfile1);
         try {
             file.write(obj.toJSONString());
 
@@ -25,13 +27,15 @@ public class JOps {
         }
     }
 
-    public static JSONObject JSONRead(String fileName) throws IOException
+    public JSONObject JSONRead(String fileName) throws IOException
     {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File tfile1 = new File(classLoader.getResource(fileName).getFile());
         JSONParser parser = new JSONParser();
         JSONObject obj = new JSONObject();
         Object obj1 = new Object();
         try {
-            obj1 = parser.parse(new FileReader(fileName));
+            obj1 = parser.parse(new FileReader(tfile1));
             obj = (JSONObject) obj1;
         }
         catch(Exception e)

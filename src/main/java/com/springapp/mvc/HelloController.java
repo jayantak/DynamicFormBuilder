@@ -21,7 +21,11 @@ public class HelloController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/data")
-	public ResponseEntity fetchData(){
-		return new ResponseEntity("blah", HttpStatus.OK);
+	public ResponseEntity fetchData() throws IOException{
+
+		JOps jops1 = new JOps();
+		JSONObject input = jops1.JSONRead("data19.json");
+
+		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 }
