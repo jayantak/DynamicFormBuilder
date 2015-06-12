@@ -1,9 +1,4 @@
-addElement = function(items, element)
+addElement = function(items, key, val)
 {
-
-    //switch(element[0])
-    //{
-    //    case 'text':
-    //
-    //}
+    items.push('<p>'+ key + ':    ' + '<input id="' + key + '"type="'+ val + '"></input></p>');
 }

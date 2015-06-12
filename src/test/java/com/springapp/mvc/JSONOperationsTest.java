@@ -11,12 +11,12 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-public class JOpsTest {
+public class JSONOperationsTest {
 
     @Test
     public void testJSONWrite() throws Exception {
 
-        JOps jops1 = new JOps();
+        JSONOperations jops1 = new JSONOperations();
 
         JSONParser parser = new JSONParser();
 
@@ -31,25 +31,20 @@ public class JOpsTest {
 
         JSONObject obj = new JSONObject();
         Object obj1;
-        System.out.println(json1.toString());
         try {
             obj1 = parser.parse(new FileReader(tfile1));
             obj = (JSONObject) obj1;
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        System.out.println(obj.toString());
-
+        
         assertEquals(json1, obj);
-
-
     }
 
     @Test
     public void testJSONRead() throws Exception {
 
-        JOps jops1 = new JOps();
+        JSONOperations jops1 = new JSONOperations();
 
         JSONParser parser = new JSONParser();
 

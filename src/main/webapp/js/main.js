@@ -7,8 +7,12 @@ $(document).ready(function() {$(function() {
 
             $.each(data, function(key, val) {
                 fields.push([key, val]);
-                items.push('<p id="' + key + 'p">'+ key + ':    ' + '<input type="'+ val + '"></input></p>');
             });
+
+            for(i = 0; i<fields.length; i++)
+            {
+                addElement(items, fields[i][0], fields[i][1]);
+            }
 
             $('<form/>', {
                 html: items.join('')

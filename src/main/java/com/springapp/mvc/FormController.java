@@ -8,14 +8,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.File;
 import java.io.IOException;
 
 @Controller
 @RequestMapping("/")
-public class HelloController {
+public class FormController {
 	@RequestMapping(method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) throws IOException {
+	public String frontPage(ModelMap model) throws IOException {
 
         return "hello";
 	}
@@ -23,9 +22,18 @@ public class HelloController {
 	@RequestMapping(method = RequestMethod.GET, value = "/data")
 	public ResponseEntity fetchData() throws IOException{
 
-		JOps jops1 = new JOps();
+		JSONOperations jops1 = new JSONOperations();
 		JSONObject input = jops1.JSONRead("data19.json");
 
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
+
+	@RequestMapping("/handle")
+	public ResponseEntity<String> giveData() {
+
+		return new ResponseEntity<String>("Hello World", HttpStatus.CREATED);
+	}
+
+
+
 }
