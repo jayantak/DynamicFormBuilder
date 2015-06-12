@@ -11,7 +11,7 @@ $(document).ready(function() {$(function() {
 
             for(i = 0; i<fields.length; i++)
             {
-                addElement(items, fields[i][0], fields[i][1]);
+                form.addElement(items, fields[i][0], fields[i][1]);
             }
 
             $('<form/>', {
