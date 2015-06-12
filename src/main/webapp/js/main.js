@@ -1,5 +1,6 @@
 var items = [];
 var fields = [];
+var output=[];
 
 $(document).ready(function() {$(function() {
 
@@ -17,15 +18,27 @@ $(document).ready(function() {$(function() {
 
         $('<form/>', {
             html: items.join('')
-        }).appendTo('body');
+        }).appendTo(div1);
 
     });
 
 
+$(Submit).click(function(){
 
-    $.post('sendForm', {"param1": "hi hello"}, function(response) {
+    var res = '{ ';
+
+    $("input").each(function(){
+        output.push([$(this).attr('name'), $(this).val()]);
+        res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
+    });
+
+    var res = res + '}';
+    console.log(output);
+    console.log(res);
+
+
+    $.post('sendForm', {"param1": res}, function(response) {
         console.log(response);
-        $(error).html(response);
     }).done(function() {
         console.log("done");
     }).fail(function(e) {
@@ -33,5 +46,6 @@ $(document).ready(function() {$(function() {
         $(error).html(e.responseText);
     });
 
+})
 });
 });

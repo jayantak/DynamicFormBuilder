@@ -1,6 +1,7 @@
 package com.springapp.mvc;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,21 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm")
 	public ResponseEntity giveData(@RequestParam String param1) throws IOException {
+
+        JSONOperations jops1 = new JSONOperations();
+        JSONParser parser = new JSONParser();
+
+        JSONObject output = new JSONObject();
+
+        try {
+            output = (JSONObject) parser.parse(param1);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        jops1.JSONWrite(output, "dataOut.json");
 
 
         return new ResponseEntity(param1, HttpStatus.OK);
