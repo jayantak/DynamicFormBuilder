@@ -37,7 +37,7 @@ public class JSONOperationsTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         assertEquals(json1, obj);
     }
 
