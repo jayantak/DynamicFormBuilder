@@ -10,15 +10,16 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration("file:src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml")
-public class testPage {
+public class FormControllerTest {
+
     private MockMvc mockMvc;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
@@ -31,9 +32,20 @@ public class testPage {
     }
 
     @Test
-    public void simple() throws Exception {
+    public void testFrontPage() throws Exception {
         mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("hello"));
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFetchData() throws Exception {
+        mockMvc.perform(get("/data"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGiveData() throws Exception {
+        mockMvc.perform(get("/return"))
+                .andExpect(status().isCreated());
     }
 }

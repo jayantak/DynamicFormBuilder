@@ -28,12 +28,9 @@ public class FormController {
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
-	@RequestMapping("/handle")
+	@RequestMapping("/return")
 	public ResponseEntity<String> giveData() {
 
 		return new ResponseEntity<String>("Hello World", HttpStatus.CREATED);
 	}
-
-
-
 }
