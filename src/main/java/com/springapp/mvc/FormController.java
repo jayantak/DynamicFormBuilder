@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
@@ -28,9 +29,10 @@ public class FormController {
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
-	@RequestMapping("/return")
-	public ResponseEntity<String> giveData() {
+	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/return")
+	public ResponseEntity giveData(HttpServletRequest request) {
+		String value = request.getParameter("Name");
 
-		return new ResponseEntity<String>("Hello World", HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.OK);
 	}
 }
