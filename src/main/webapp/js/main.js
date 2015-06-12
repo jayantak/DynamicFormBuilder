@@ -21,10 +21,17 @@ $(document).ready(function() {$(function() {
 
     });
 
-    $.post(
-        'return',
-        { Name: "Zara" });
+
+
+    $.post('sendForm', {"param1": "hi hello"}, function(response) {
+        console.log(response);
+        $(error).html(response);
+    }).done(function() {
+        console.log("done");
+    }).fail(function(e) {
+        console.log(e.responseText);
+        $(error).html(e.responseText);
     });
 
-    $.ajax('return', '{ Name : "Jayanta"')
+});
 });

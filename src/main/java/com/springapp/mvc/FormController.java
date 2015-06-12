@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Controller
@@ -29,10 +29,10 @@ public class FormController {
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
-	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/return")
-	public ResponseEntity giveData(HttpServletRequest request) {
-		String value = request.getParameter("Name");
+	@RequestMapping(method = RequestMethod.POST, value = "/sendForm")
+	public ResponseEntity giveData(@RequestParam String param1) throws IOException {
 
-        return new ResponseEntity(HttpStatus.OK);
+
+        return new ResponseEntity(param1, HttpStatus.OK);
 	}
 }

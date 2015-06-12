@@ -13,6 +13,7 @@
 <script type="text/javascript" src="../../js/main.js"></script>
 <script>
 </script>
+<p id="error"></p>
 <button></button>
 </body>
 </html>
