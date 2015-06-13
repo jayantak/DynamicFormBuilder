@@ -11,14 +11,16 @@ $(document).ready(function() {$(function() {
             fields.push([key, val]);
         });
 
+
+
         for(i = 0; i<fields.length; i++)
         {
             form.addElement(items, fields[i][0], fields[i][1]);
         }
 
-        $('<form/>', {
-            html: items.join('')
-        }).appendTo(div1);
+        items.push("<button id =\"Submit\" type=\"submit\" class=\"pure-button\">Submit</button>");
+
+        $(form1).html(items.join(' '));
 
     });
 
