@@ -1,9 +1,9 @@
 {
-  "Name": "text",
-  "Colour": "color",
-  "Parent": "text",
-  "Date": "date",
-  "Time": "time",
-  "Password": "password",
-  "File": "file",
+"Name": "text",
+"Colour": "color",
+"Parent": "text",
+"Date": "date",
+"Time": "time",
+"Password": "password",
+"File": "file",
 }
