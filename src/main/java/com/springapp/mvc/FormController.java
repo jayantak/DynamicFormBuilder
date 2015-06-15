@@ -31,6 +31,15 @@ public class FormController {
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
+    @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
+    public ResponseEntity fetchFormOutput() throws IOException{
+
+        JSONOperations jops1 = new JSONOperations();
+        JSONObject input = jops1.JSONRead("dataOut.json");
+
+        return new ResponseEntity(input.toString(), HttpStatus.OK);
+    }
+
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm")
 	public ResponseEntity giveData(@RequestParam String param1) throws IOException {
 
@@ -53,4 +62,12 @@ public class FormController {
 
         return new ResponseEntity(param1, HttpStatus.OK);
 	}
+
+    @RequestMapping(method = RequestMethod.GET, value="/formsubmitted")
+    public String formSubmitted(ModelMap model) throws IOException {
+
+        return "formsubmitted";
+    }
+
+
 }

@@ -39,13 +39,10 @@ $(Submit).click(function(){
 
     $.post('sendForm', {"param1": res}, function(response) {
         console.log(response);
-        alert(response);
-
-
     }).done(function() {
         console.log("done");
-$("form")[0].reset();
-
+        $("form")[0].reset();
+        window.location.href="formsubmitted";
     }).fail(function(e) {
         console.log(e.responseText);
         $(error).html(e.responseText);
