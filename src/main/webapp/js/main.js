@@ -20,7 +20,7 @@ $(document).ready(function() {$(function() {
 
         //items.push('<button id ="Submit" type="submit" class="pure-button">Submit</button>');
 
-        $(form1).html(items.join(' '));
+        $("form").html(items.join(' '));
 
     });
 
@@ -39,8 +39,13 @@ $(Submit).click(function(){
 
     $.post('sendForm', {"param1": res}, function(response) {
         console.log(response);
+        alert(response);
+
+
     }).done(function() {
         console.log("done");
+$("form")[0].reset();
+
     }).fail(function(e) {
         console.log(e.responseText);
         $(error).html(e.responseText);
