@@ -17,8 +17,6 @@ $(document).ready(function() {$(function() {
         }
 
         $("tbody").html(items.join(' '));
-
-
 });
 });
 });

@@ -4,7 +4,9 @@ var output=[];
 
 $(document).ready(function() {$(function() {
 
-    $.getJSON('data', function(data) {
+    $("image").attr('src', '/image.jpg');
+
+    $.getJSON('formData', function(data) {
 
 
         $.each(data, function(key, val) {

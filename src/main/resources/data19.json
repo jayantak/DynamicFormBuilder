@@ -1,9 +1,11 @@
 {
-  "Name": "text",
-  "Colour": "color",
-  "Parent": "text",
-  "Date": "date",
-  "Time": "time",
-  "Password": "password",
-  "File": "file",
+"image": "img.jpg",
+"form" : {
+"Name": "text",
+"Parent": "text",
+"Date": "date",
+"Time": "time",
+"Password": "password",
+"File": "file",
+}
 }

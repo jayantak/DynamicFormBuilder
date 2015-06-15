@@ -9,8 +9,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 
 @Controller
@@ -22,11 +27,40 @@ public class FormController {
         return "hello";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/data")
-	public ResponseEntity fetchData() throws IOException{
+    @RequestMapping(method = RequestMethod.GET, value = "/pageData")
+    public ResponseEntity fetchPageData() throws IOException{
+
+        JSONOperations jops1 = new JSONOperations();
+        JSONObject input = jops1.JSONRead("data19.json");
+
+        return new ResponseEntity(input.toString(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/image.jpg", headers = "Accept=image/jpeg, image/jpg, image/png, image/gif", method = RequestMethod.GET)
+    public ResponseEntity
+    getImage() {
+        try {
+            InputStream inputStream = this.getClass().getResourceAsStream("img.jpg");
+            BufferedImage bufferedImage = ImageIO.read(inputStream);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "jpg", byteArrayOutputStream);
+
+            return new ResponseEntity(byteArrayOutputStream.toByteArray(), HttpStatus.OK);
+
+        } catch (IOException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+	@RequestMapping(method = RequestMethod.GET, value = "/formData")
+	public ResponseEntity fetchFormData() throws IOException{
 
 		JSONOperations jops1 = new JSONOperations();
-		JSONObject input = jops1.JSONRead("data19.json");
+		JSONObject input1 = jops1.JSONRead("data19.json");
+
+        Object input2 = input1.get("form");
+        JSONObject input = (JSONObject) input2;
 
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
