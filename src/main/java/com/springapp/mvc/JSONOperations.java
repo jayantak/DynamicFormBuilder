@@ -21,9 +21,10 @@ public class JSONOperations {
         } catch (IOException e) {
             e.printStackTrace();
 
-        } finally {
+        }
+    finally {
             JSONFileWriter.flush();
-            JSONFileWriter.close();
+           JSONFileWriter.close();
         }
     }
 

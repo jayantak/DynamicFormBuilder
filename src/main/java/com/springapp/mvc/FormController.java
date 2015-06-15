@@ -37,19 +37,23 @@ public class FormController {
         JSONOperations jops1 = new JSONOperations();
         JSONParser parser = new JSONParser();
 
-        JSONObject output = new JSONObject();
+        JSONObject JSONoutput = new JSONObject();
+        Object output;
 
         try {
-            output = (JSONObject) parser.parse(param1);
+            output =  parser.parse(param1);
+            JSONoutput=(JSONObject) output;
+                System.out.println(JSONoutput);
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
 
-        jops1.JSONWrite(output, "dataOut.json");
+        jops1.JSONWrite(JSONoutput, "dataOut.json");
 
-
+        System.out.println(JSONoutput);
+        System.out.println("Hello World");
         return new ResponseEntity(param1, HttpStatus.OK);
 	}
 }

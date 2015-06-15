@@ -27,7 +27,7 @@ public class JSONOperationsTest {
         ClassLoader classLoader = getClass().getClassLoader();
         File tfile1 = new File(classLoader.getResource("tfile1.txt").getFile());
 
-        jops1.JSONWrite(json1, "tfile1.txt");
+        jops1.JSONWrite(json1,"tfile1.txt");
 
         JSONObject obj = new JSONObject();
         Object obj1;
