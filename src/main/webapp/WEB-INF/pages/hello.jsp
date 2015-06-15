@@ -25,7 +25,7 @@
             </form>
         </div>
         </div>
-    <button id="Submit">SUBMIT</button>
+    <button id="Submit"class="pure-button">SUBMIT</button>
 
 </body>
 </html>

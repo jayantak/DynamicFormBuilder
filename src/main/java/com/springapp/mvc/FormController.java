@@ -43,7 +43,6 @@ public class FormController {
         try {
             output =  parser.parse(param1);
             JSONoutput=(JSONObject) output;
-                System.out.println(JSONoutput);
         }
         catch(Exception e)
         {
@@ -52,8 +51,6 @@ public class FormController {
 
         jops1.JSONWrite(JSONoutput, "dataOut.json");
 
-        System.out.println(JSONoutput);
-        System.out.println("Hello World");
         return new ResponseEntity(param1, HttpStatus.OK);
 	}
 }

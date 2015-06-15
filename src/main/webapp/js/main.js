@@ -18,7 +18,7 @@ $(document).ready(function() {$(function() {
             form.addElement(items, fields[i][0], fields[i][1]);
         }
 
-        items.push("<button id =\"Submit\" type=\"submit\" class=\"pure-button\">Submit</button>");
+        //items.push('<button id ="Submit" type="submit" class="pure-button">Submit</button>');
 
         $(form1).html(items.join(' '));
 
@@ -35,8 +35,6 @@ $(Submit).click(function(){
     });
 
     var res = res + '}';
-    console.log(output);
-    console.log(res);
 
 
     $.post('sendForm', {"param1": res}, function(response) {
