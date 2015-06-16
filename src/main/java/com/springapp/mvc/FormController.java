@@ -10,12 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-
 
 @Controller
 @RequestMapping("/")
@@ -37,7 +32,7 @@ public class FormController {
     public ResponseEntity fetchPageData() throws IOException{
 
         JSONOperations jops1 = new JSONOperations();
-        JSONObject input = jops1.JSONRead("data19.json");
+        JSONObject input = jops1.JSONRead("dataFields.json");
 
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
@@ -46,7 +41,7 @@ public class FormController {
 	public ResponseEntity fetchFormData() throws IOException{
 
 		JSONOperations jops1 = new JSONOperations();
-		JSONObject input1 = jops1.JSONRead("data19.json");
+		JSONObject input1 = jops1.JSONRead("dataFields.json");
 
 		return new ResponseEntity(input1.toString(), HttpStatus.OK);
 	}

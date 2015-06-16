@@ -31,7 +31,6 @@ var submitForm = function(){
     $.post('sendForm', {"param1": res}, function(response) {
         console.log(response);
     }).done(doneOut()).fail(errorOut(e));
-
 };
 
 $(document).ready(function() {$(function() {
@@ -58,7 +57,6 @@ $(document).ready(function() {$(function() {
             paginationSpeed : 400,
             singleItem:true
         });
-
     });
 
     $("#SubmitButton").click(function(){

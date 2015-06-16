@@ -13,4 +13,4 @@ form.addElement = function(items, key, val)
     }
 }
 
-//module.exports= form;
+module.exports= form;
