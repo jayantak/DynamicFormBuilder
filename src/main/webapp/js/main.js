@@ -4,7 +4,7 @@ var output=[];
 
 $(document).ready(function() {$(function() {
 
-    $("img").attr('src', 'img.jpg');
+    $("img").attr("src", "/images/img.jpg");
 
     $.getJSON('formData', function(data) {
 
