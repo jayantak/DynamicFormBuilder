@@ -19,7 +19,7 @@
 <div class="content">
     <br><br>
     <h2 class="content-head is-center">Form</h2>
-    <image src="/image.jpg"></image>
+    <img src = ""/>
     <div class="pure-g">
         <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
             <form id = "form1" class="pure-form pure-form-aligned">
@@ -27,7 +27,5 @@
         </div>
         </div>
     <button id="Submit"class="pure-button">SUBMIT</button>
-
-
 </body>
 </html>
