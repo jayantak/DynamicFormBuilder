@@ -24,7 +24,7 @@
 <br><br><br>
   <div class="content">
     <p>
-      <table class = "pure-table">
+      <table class = "pure-table pure-table-striped">
     <thead>
     <tr>
       <th>Field</th>

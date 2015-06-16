@@ -38,7 +38,7 @@
                 <div class="pure-u-2-5">
                     <form id = "form1" class="pure-form pure-form-aligned">
                     </form>
-                    <button id="Submit" class="pure-button pure-button-primary">SUBMIT</button>
+                    <button id="SubmitButton" class="pure-button pure-button-primary">SUBMIT</button>
                 </div>
                 <div class="pure-u-1-5"></div>
                 <div class="pure-u-2-5">
