@@ -1,11 +1,11 @@
 {
-  "image": "img.jpg",
-  "form" : {
-    "Name": "text",
-    "Parent": "text",
-    "Date": "date",
-    "Time": "time",
-    "Password": "password",
-    "File": "file",
-  }
+  "Lena" : {"set":"carousel", "type":"image", "file":"img.jpg"},
+  "Pikachu" : {"set":"carousel", "type":"image", "file":"img2.jpg"},
+  "Football" : {"set":"carousel", "type":"image", "file":"img3.jpg"},
+  "Name": {"set":"form", "type":"text",},
+  "Parent": {"set":"form", "type":"text",},
+  "Date": {"set":"form", "type":"date",},
+  "Time": {"set":"form", "type":"text",},
+  "Password": {"set":"form", "type":"password",},
+  "File": {"set":"form", "type":"text",},
 }

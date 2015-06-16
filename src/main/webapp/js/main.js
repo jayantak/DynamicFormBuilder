@@ -1,15 +1,18 @@
-var items = [];
+var Items = {};
+
+Items.formItems = [];
+Items.carouselItems = [];
+
 var fields = [];
 var output=[];
 
 $(document).ready(function() {$(function() {
 
-    $("img").attr("src", "/images/img.jpg");
-
     $.getJSON('formData', function(data) {
 
 
         $.each(data, function(key, val) {
+
             fields.push([key, val]);
         });
 
@@ -17,39 +20,45 @@ $(document).ready(function() {$(function() {
 
         for(i = 0; i<fields.length; i++)
         {
-            form.addElement(items, fields[i][0], fields[i][1]);
+            form.addElement(Items, fields[i][0], fields[i][1]);
         }
 
-        //items.push('<button id ="Submit" type="submit" class="pure-button">Submit</button>');
+        $("#carousel1").html(Items.carouselItems.join(' '));
+        $("form").html(Items.formItems.join(' '));
+        $("#carousel1").owlCarousel({
 
-        $("form").html(items.join(' '));
+            navigation : true, // Show next and prev buttons
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem:true
+
+        });
 
     });
 
+    $(Submit).click(function(){
 
-$(Submit).click(function(){
+        var res = '{ ';
 
-    var res = '{ ';
+        $("input").each(function(){
+            output.push([$(this).attr('name'), $(this).val()]);
+            res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
+        });
 
-    $("input").each(function(){
-        output.push([$(this).attr('name'), $(this).val()]);
-        res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
-    });
-
-    var res = res + '}';
+        var res = res + '}';
 
 
-    $.post('sendForm', {"param1": res}, function(response) {
-        console.log(response);
-    }).done(function() {
-        console.log("done");
-        $("form")[0].reset();
-        window.location.href="formsubmitted";
-    }).fail(function(e) {
-        console.log(e.responseText);
-        $(error).html(e.responseText);
-    });
+        $.post('sendForm', {"param1": res}, function(response) {
+            console.log(response);
+        }).done(function() {
+            console.log("done");
+            $("form")[0].reset();
+            window.location.href="formsubmitted";
+        }).fail(function(e) {
+            console.log(e.responseText);
+            $(error).html(e.responseText);
+        });
 
-})
+    })
 });
 });

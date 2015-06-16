@@ -65,10 +65,7 @@ public class FormController {
 		JSONOperations jops1 = new JSONOperations();
 		JSONObject input1 = jops1.JSONRead("data19.json");
 
-        Object input2 = input1.get("form");
-        JSONObject input = (JSONObject) input2;
-
-		return new ResponseEntity(input.toString(), HttpStatus.OK);
+		return new ResponseEntity(input1.toString(), HttpStatus.OK);
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
