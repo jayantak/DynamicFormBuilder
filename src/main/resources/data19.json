@@ -5,7 +5,7 @@
   "Name": {"set":"form", "type":"text",},
   "Parent": {"set":"form", "type":"text",},
   "Date": {"set":"form", "type":"date",},
-  "Time": {"set":"form", "type":"text",},
+  "Time": {"set":"form", "type":"time",},
   "Password": {"set":"form", "type":"password",},
-  "File": {"set":"form", "type":"text",},
+  "File": {"set":"form", "type":"file",},
 }
