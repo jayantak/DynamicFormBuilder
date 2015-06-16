@@ -52,7 +52,7 @@ $(document).ready(function() {$(function() {
             console.log(response);
         }).done(function() {
             console.log("done");
-            $("form")[0].reset();
+            $("#form1")[0].reset();
             window.location.href="formsubmitted";
         }).fail(function(e) {
             console.log(e.responseText);

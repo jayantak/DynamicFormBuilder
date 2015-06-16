@@ -42,23 +42,6 @@ public class FormController {
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/image.jpg", headers = "Accept=image/jpeg, image/jpg, image/png, image/gif", method = RequestMethod.GET)
-//    public ResponseEntity
-//    getImage() {
-//        try {
-//            InputStream inputStream = this.getClass().getResourceAsStream("WEB-INF/pages/img.jpg");
-//            BufferedImage bufferedImage = ImageIO.read(inputStream);
-//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//            ImageIO.write(bufferedImage, "jpg", byteArrayOutputStream);
-//
-//            return new ResponseEntity(byteArrayOutputStream.toByteArray(), HttpStatus.OK);
-//
-//        } catch (IOException e) {
-//
-//            throw new RuntimeException(e);
-//        }
-//    }
-
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
 
