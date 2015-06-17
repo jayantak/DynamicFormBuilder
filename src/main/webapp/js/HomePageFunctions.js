@@ -36,7 +36,7 @@ define(function(require)
         $("#carousel1")
             .html(Items.carouselItems.join(' '))
             .owlCarousel({
-                navigation : true, // Show next and prev buttons
+                navigation : true,
                 slideSpeed : 300,
                 paginationSpeed : 400,
                 singleItem:true

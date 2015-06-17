@@ -21,15 +21,6 @@ public class FormController {
         return "HomePage";
 	}
 
-    @RequestMapping(method = RequestMethod.GET, value = "/pageData")
-    public ResponseEntity fetchPageData() throws IOException{
-
-        JSONOperations jops1 = new JSONOperations();
-        JSONObject input = jops1.JSONRead("dataFields.json");
-
-        return new ResponseEntity(input.toString(), HttpStatus.OK);
-    }
-
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
 
@@ -47,6 +38,7 @@ public class FormController {
 
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
+
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm")
 	public ResponseEntity giveData(@RequestParam String param1) throws IOException {

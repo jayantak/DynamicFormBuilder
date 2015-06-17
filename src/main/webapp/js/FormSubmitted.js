@@ -1,7 +1,5 @@
 define(function(require) {
 
-
-console.log("reached3");
     var Table = require('./TableAdd');
     var Items = {};
 
@@ -10,7 +8,6 @@ console.log("reached3");
     var l;
 
     $(document).ready(function () {
-        console.log("reached4");
         $(function () {
             $.getJSON('dataOut', function (data) {
 
