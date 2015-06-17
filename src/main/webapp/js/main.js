@@ -14,7 +14,6 @@ var doneOut = function() {
 
 var errorOut = function(e) {
     console.log(e.responseText);
-    $(error).html(e.responseText);
 };
 
 var submitForm = function(){
@@ -30,7 +29,7 @@ var submitForm = function(){
 
     $.post('sendForm', {"param1": res}, function(response) {
         console.log(response);
-    }).done(doneOut()).fail(errorOut(e));
+    }).done(doneOut).fail(errorOut);
 };
 
 $(document).ready(function() {$(function() {
@@ -59,21 +58,7 @@ $(document).ready(function() {$(function() {
         });
     });
 
-    $("#SubmitButton").click(function(){
-
-        var res = '{ ';
-
-        $("input").each(function(){
-            output.push([$(this).attr('name'), $(this).val()]);
-            res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
-        });
-
-        var res = res + '}';
-
-        $.post('sendForm', {"param1": res}, function(response) {
-            console.log(response);
-        }).done(doneOut()).fail(errorOut(e));
+    $("#SubmitButton").click(submitForm);
 
     })
-});
 });

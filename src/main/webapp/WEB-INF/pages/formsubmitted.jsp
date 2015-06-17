@@ -31,7 +31,7 @@
       <th>Value</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="tableSubmitted">
 
     </tbody>
   </table>
