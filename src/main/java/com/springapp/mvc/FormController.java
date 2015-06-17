@@ -18,15 +18,8 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String frontPage(ModelMap model) throws IOException {
 
-        return "hello";
+        return "HomePage";
 	}
-
-    @RequestMapping(method = RequestMethod.GET, value = "/imageTest")
-    public String imageTest
-            (ModelMap model) throws IOException {
-
-        return "DisplayImage";
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/pageData")
     public ResponseEntity fetchPageData() throws IOException{

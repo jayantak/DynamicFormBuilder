@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="http://purecss.io/combo/1.18.13?/css/layouts/marketing.css">
     <title></title>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="../../js/addElement1.js"></script>
-  <script type="text/javascript" src="../../js/main1.js"></script>
+  <script data-main="../../js/FormSubmitted.js" src="../../libraries/require.js"></script>
 </head>
 <body>
 <div class="header">

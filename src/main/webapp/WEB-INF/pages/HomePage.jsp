@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="css/font-awesome.css">
         <link rel="stylesheet" href="css/marketing.css">
         <link rel="stylesheet" href="css/pure-min.css">
-        <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
         <script type="text/javascript" src="libraries/jquery.min.js"></script>
         <script src="../../libraries/bootstrap-collapse.js"></script>
         <script src="../../libraries/bootstrap-transition.js"></script>
@@ -22,8 +21,7 @@
         <script src="../../libraries/run_prettify.js"></script>
         <script src="../../libraries/owl.carousel.js"></script>
         <script src="../../libraries/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="../../js/addElement.js"></script>
-        <script type="text/javascript" src="../../js/main.js"></script>
+        <script data-main="../../js/HomePage.js" src="../../libraries/require.js"></script>
     </head>
     <body id ="b">
         <div class="header">

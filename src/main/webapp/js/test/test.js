@@ -1,9 +1,7 @@
-var assert = require('assert');
-var forms = require('../addElement.js');
-
-describe('Forms', function()
+describe(function(require)
 {
-
+    var assert = require('assert');
+    var forms = require('../FormAdd.js');
     it('Element should be added', function()
     {
         var items1 = new Object();
@@ -25,7 +23,5 @@ describe('Forms', function()
         console.log(items1[0]);
         assert.equal(items1.formItems[0],'<label for="' + C + '">' + C + '</label><input name ="' + C + '" type="' + D["type"] + '"></input>');
         assert.equal(items1.carouselItems[0], '<div class="item"><img class="pure-img" src="images/'+B["file"]+'"></div>');
-
     })
-
 });
