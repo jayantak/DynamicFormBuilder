@@ -39,13 +39,8 @@ public class FormControllerTest {
 
     @Test
     public void testFetchData() throws Exception {
-        mockMvc.perform(get("/data"))
+        mockMvc.perform(get("/dataOut"))
                 .andExpect(status().isOk());
     }
 
-    @Test
-    public void testGiveData() throws Exception {
-        mockMvc.perform(get("/return"))
-                .andExpect(status().isCreated());
-    }
 }
