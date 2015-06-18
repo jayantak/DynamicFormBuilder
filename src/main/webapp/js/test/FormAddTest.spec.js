@@ -23,5 +23,6 @@ define(function(require)
         };
         forms.addElement(items1, C, D);
         assert.equal(items1.formItems[0],'<label for="' + C + '">' + C + '</label><input name ="' + C + '" type="' + D["type"] + '"></input>');
-    })
+    });
+
 });
