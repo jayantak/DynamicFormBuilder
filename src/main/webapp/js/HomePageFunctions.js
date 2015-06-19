@@ -2,13 +2,6 @@ define(function(require)
 {
     form = require('./FormAdd');
 
-    var Items = {};
-
-    Items.formItems = [];
-    Items.carouselItems = [];
-    var fields = [];
-    var output = [];
-
     var doneOut = function () {
         console.log("done");
         $("#form1")[0].reset();
@@ -20,7 +13,11 @@ define(function(require)
     };
 
     var createForm =  function(data) {
-
+        var Items = {};
+        var fields = [];
+        Items.formItems = [];
+        Items.carouselItems = [];
+        console.log(data);
         $.each(data, function(key, val) {
 
             fields.push([key, val]);
@@ -41,9 +38,12 @@ define(function(require)
                 paginationSpeed : 400,
                 singleItem:true
             });
+
+        return Items;
     };
 
     var submitForm = function () {
+        var output = [];
 
         var res = '{ ';
 

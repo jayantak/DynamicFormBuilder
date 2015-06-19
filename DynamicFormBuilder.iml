@@ -53,5 +53,6 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Node.js v0.12.4 Core Modules" level="application" />
+    <orderEntry type="library" name="DynamicFormBuilder node_modules" level="project" />
   </component>
 </module>
