@@ -1,13 +1,19 @@
 define(function()
 {
-    var addElement = function(items, key, val)
+    var addElement = function(field, items)
     {
-        if(val["set"] == "carousel")
+        var keys = Object.keys(field[1]);
+
+        if(field[0] == "carousel")
         {
-            items.carouselItems.push('<div class="item"><img class="pure-img" src="images/'+val["file"]+'"></div>');
+            for(i = 0; i<keys.length; i++){
+                items.carouselItems.push('<div class="item"><img class="pure-img" src="images/'+field[1][keys[i]]["file"]+'"></div>');
+            }
         }
-        else if(val["set"]=="form") {
-            items.formItems.push('<label for="' + key + '">' + key + '</label><input name ="' + key + '" type="' + val["type"] + '"></input>');
+        else if(field[0] == "form") {
+            for(i = 0; i<keys.length; i++) {
+                items.formItems.push('<label for="' + keys[i] + '">' + keys[i] + '</label><input name ="' + keys[i] + '" type="' + field[1][keys[i]]["type"] + '"></input>');
+            }
         }
     };
 

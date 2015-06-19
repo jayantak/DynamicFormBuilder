@@ -17,15 +17,17 @@ define(function(require)
         var fields = [];
         Items.formItems = [];
         Items.carouselItems = [];
-        console.log(data);
-        $.each(data, function(key, val) {
 
+        $.each(data, function(key, val) {
             fields.push([key, val]);
         });
 
-        for(i = 0; i<fields.length; i++)
+        var i = 0;
+
+        while(i<fields.length)
         {
-            form.addElement(Items, fields[i][0], fields[i][1]);
+            form.addElement(fields[i], Items);
+            i++;
         }
 
         $("form").html(Items.formItems.join(' '));

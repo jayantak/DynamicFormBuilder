@@ -1,10 +1,20 @@
 {
-  "Lena" : {"set":"carousel", "type":"image", "file":"img.jpg"},
-  "Pikachu" : {"set":"carousel", "type":"image", "file":"img3.jpg"},
-  "Football" : {"set":"carousel", "type":"image", "file":"img3.jpg"},
-  "Dog": {"set":"form", "type":"colour",},
-  "Parent": {"set":"form", "type":"text",},
-  "Password": {"set":"form", "type":"password",},
-  "SecurityAnswer": {"set":"form", "type":"password",},
-  "File": {"set":"form", "type":"file",},
+  "form":{
+    "Name":{
+      "type":"text"
+    }
+    "Parent":{
+      "type":"password"
+    }
+  }
+  "carousel":{
+    "Lena":{
+      "type":"image",
+      "file":"img.jpg"
+    }
+    "Pikachu":{
+      "type":"image",
+      "file":"img2.jpg"
+    }
+  }
 }

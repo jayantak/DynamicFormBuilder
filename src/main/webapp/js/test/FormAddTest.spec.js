@@ -4,25 +4,29 @@ define(function(require)
     it('Carousel element should be added', function() {
         var items1 = {};
         items1.carouselItems = [];
-        var A = "TestCarouselItem";
+        var A = "carousel";
         var B = {
-            "set" : "carousel",
-            "type" : "image",
-            "file" : "img.jpg"
+            TestCarouselItem:{
+                type:"image",
+                file:"img.jpg"
+            }
         };
-        forms.addElement(items1, A, B);
-        assert.equal(items1.carouselItems[0], '<div class="item"><img class="pure-img" src="images/'+B["file"]+'"></div>');
+        keys = Object.keys(B);
+        forms.addElement([A, B], items1);
+        assert.equal(items1.carouselItems[0], '<div class="item"><img class="pure-img" src="images/'+B[keys[0]]["file"]+'"></div>');
     });
     it('Form element should be added', function() {
         var items1 = {};
         items1.formItems = [];
-        var C = "TestFormItem";
+        var C = "form";
         var D = {
-            "set" : "form",
-            "type" : "text"
+            TestFormItem:{
+                type:"text"
+            }
         };
-        forms.addElement(items1, C, D);
-        assert.equal(items1.formItems[0],'<label for="' + C + '">' + C + '</label><input name ="' + C + '" type="' + D["type"] + '"></input>');
+        keys = Object.keys(D);
+        forms.addElement([C, D], items1);
+        assert.equal(items1.formItems[0],'<label for="' + keys[0] + '">' + keys[0] + '</label><input name ="' + keys[0] + '" type="' + D[keys[0]]["type"] + '"></input>');
     });
 
 });
