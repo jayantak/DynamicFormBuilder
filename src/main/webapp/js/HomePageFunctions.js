@@ -40,8 +40,7 @@ define(function(require)
                 paginationSpeed : 400,
                 singleItem:true
             });
-
-        return Items;
+        console.log(Items);
     };
 
     var submitForm = function () {
