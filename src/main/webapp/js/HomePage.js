@@ -1,4 +1,4 @@
-define(['jquery', './HomePageFunctions', './FormAdd'], function ($, Page, Form) {
+define(['jquery', 'HomePageFunctions', 'FormAdd'], function ($, Page, Form) {
 
     $(document).ready(function() {$(function() {
 

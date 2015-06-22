@@ -1,4 +1,4 @@
-define(['jquery', './FormAdd'], function($, form)
+define(['jquery', 'FormAdd'], function($, form)
 {
     var doneOut = function () {
         console.log("done");
@@ -25,6 +25,8 @@ define(['jquery', './FormAdd'], function($, form)
         $.post('sendForm', {"param1": res}, function (response) {
             console.log(response);
         }).done(doneOut).fail(errorOut);
+        
+
     };
 
     return {

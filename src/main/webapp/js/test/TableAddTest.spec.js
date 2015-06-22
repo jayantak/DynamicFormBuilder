@@ -8,4 +8,9 @@ define(["TableAdd", "ObjectCompare"], function(table, objCompare){
 
         assert.equal(items[0], '<tr><td>TESTVAL1</td><td>TESTVAL2</td></tr>');
     });
+
+    it('Table Object must be created correctly', function(){
+
+
+    });
 })
