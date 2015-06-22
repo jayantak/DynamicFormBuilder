@@ -18,6 +18,7 @@ define(function() {
         });
 
         $("#tableSubmitted").html(Items.tableItems.join(' '));
+        return Items;
     };
 
     return {

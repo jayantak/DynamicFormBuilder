@@ -9,13 +9,30 @@ requirejs.config({
         owlCarouselMin: 'owl.carousel.min',
         prettify: 'prettify',
         runPrettify: 'run_prettify',
-        FormAdd: '../js/FormAdd'
+        FormAdd: '../js/FormAdd',
+        FormSubmitted: '../js/FormSubmitted',
+        HomePage: '../js/HomePage',
+        HomePageFunctions: '../js/HomePageFunctions',
+        TableAdd: '../js/TableAdd',
+        ObjectCompare: '../js/test/ObjectCompare'
     },
     shim: {
         jQuery:{
             exports: '$'
         },
         FormAdd: {
+            deps: ['jquery']
+        },
+        FormSubmitted: {
+            deps: ['jquery']
+        },
+        HomePage: {
+            deps: ['jquery']
+        },
+        HomePageFunctions: {
+            deps: ['jquery']
+        },
+        TableAdd: {
             deps: ['jquery']
         }
     }

@@ -1,30 +1,5 @@
-define(["FormAdd"], function(forms)
+define(["FormAdd", "ObjectCompare"], function(forms, objCompare)
 {
-    function isEquivalent(a, b) {
-        var aProps = Object.getOwnPropertyNames(a);
-        var bProps = Object.getOwnPropertyNames(b);
-
-        if (aProps.length != bProps.length) {
-            return false;
-        }
-
-        for (var i = 0; i < aProps.length; i++) {
-            var propName = aProps[i];
-
-            if(typeof(a[propName])=="object"){
-                if(isEquivalent(a[propName], b[propName])==false){
-                    return false;
-                }
-            }
-            else if (a[propName] !== b[propName]) {
-                return false;
-            }
-
-        }
-
-        return true;
-    }
-
     it('Carousel element should be added', function() {
         var items1 = {};
         items1.carouselItems = [];
@@ -84,6 +59,6 @@ define(["FormAdd"], function(forms)
             carouselItems:['<div class="item"><img class="pure-img" src="images/img2.jpg"></div>', '<div class="item"><img class="pure-img" src="images/img.jpg"></div>']
         };
 
-        assert.equal(isEquivalent(ItemsTest, forms.createForm(data)), true);
+        assert.equal(objCompare.isEquivalent(ItemsTest, forms.createForm(data)), true);
     })
     });
