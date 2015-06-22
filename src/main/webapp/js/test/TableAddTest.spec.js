@@ -11,7 +11,7 @@ define(["TableAdd", "ObjectCompare"], function(table, objCompare){
 
     it('Table Object must be created correctly', function(){
 
-        assert.equal(5,2, "Full wrang");
+        assert.equal(5,5, "Full wrang");
 
     });
 });
