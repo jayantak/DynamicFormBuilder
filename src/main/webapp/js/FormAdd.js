@@ -1,6 +1,5 @@
 define(['jquery', 'owlCarousel'], function($)
 {
-    console.log("blah");
     var addElement = function(field, items)
     {
         var keys = Object.keys(field[1]);
@@ -46,7 +45,6 @@ define(['jquery', 'owlCarousel'], function($)
                 paginationSpeed : 400,
                 singleItem:true
             });
-        console.log("ItemsF", Items);
         return Items;
     };
 
