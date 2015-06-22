@@ -13,4 +13,4 @@ define(["TableAdd", "ObjectCompare"], function(table, objCompare){
 
 
     });
-})
+});
