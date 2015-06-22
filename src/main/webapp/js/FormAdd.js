@@ -1,5 +1,6 @@
-define(['jquery', 'owlCarousel', 'owlCarouselMin'], function($, owlCarousel, owlCarouselMin)
+define(['jquery', 'owlCarousel'], function($)
 {
+    console.log("blah");
     var addElement = function(field, items)
     {
         var keys = Object.keys(field[1]);
@@ -18,7 +19,6 @@ define(['jquery', 'owlCarousel', 'owlCarouselMin'], function($, owlCarousel, owl
     };
 
     var createForm =  function(data) {
-        console.log(data);
         var Items = {};
         var fields = [];
         Items.formItems = [];
@@ -46,7 +46,8 @@ define(['jquery', 'owlCarousel', 'owlCarouselMin'], function($, owlCarousel, owl
                 paginationSpeed : 400,
                 singleItem:true
             });
-        console.log(Items);
+        console.log("ItemsF", Items);
+        return Items;
     };
 
     return {

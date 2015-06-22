@@ -1,6 +1,29 @@
-define(function(require, jquery)
+define(["FormAdd"], function(forms)
 {
-    var forms = require('../FormAdd.js');
+    function isEquivalent(a, b) {
+        var aProps = Object.getOwnPropertyNames(a);
+        var bProps = Object.getOwnPropertyNames(b);
+
+        if (aProps.length != bProps.length) {
+            return false;
+        }
+
+        for (var i = 0; i < aProps.length; i++) {
+            var propName = aProps[i];
+
+            if(typeof(a[propName])=="object"){
+                if(isEquivalent(a[propName], b[propName])==false){
+                    return false;
+                }
+            }
+            else if (a[propName] !== b[propName]) {
+                return false;
+            }
+
+        }
+
+        return true;
+    }
 
     it('Carousel element should be added', function() {
         var items1 = {};
@@ -13,6 +36,7 @@ define(function(require, jquery)
             }
         };
         keys = Object.keys(B);
+        console.log(forms);
         forms.addElement([A, B], items1);
         assert.equal(items1.carouselItems[0], '<div class="item"><img class="pure-img" src="images/'+B[keys[0]]["file"]+'"></div>');
     });
@@ -33,32 +57,33 @@ define(function(require, jquery)
     it('Object "Items" should be created correctly', function(){
         var data = {
             form:{
-                Name:{
-                    type:"text"
-                },
                 Parent:{
                     type:"password"
+                },
+                Name:{
+                    type:"text"
                 }
             },
             carousel:{
-                Lena:{
-                    type:"image",
-                    file:"img.jpg"
-                },
+
                 Pikachu:{
                     type:"image",
                     file:"img2.jpg"
+                },
+                Lena:{
+                    type:"image",
+                    file:"img.jpg"
                 }
             }
         };
 
 
         var ItemsTest = {
-            carouselItems:['<div class="item"><img class="pure-img" src="images/img2.jpg"></div>', '<div class="item"><img class="pure-img" src="images/img.jpg"></div>'],
-            formItems:['<label for="Parent">Parent</label><input name ="Parent" type="password"></input>', '<label for="Name">Name</label><input name ="Name" type="text"></input>']
 
+            formItems:['<label for="Parent">Parent</label><input name ="Parent" type="password"></input>', '<label for="Name">Name</label><input name ="Name" type="text"></input>'],
+            carouselItems:['<div class="item"><img class="pure-img" src="images/img2.jpg"></div>', '<div class="item"><img class="pure-img" src="images/img.jpg"></div>']
         };
 
-        assert.equal(ItemsTest, forms.createForm(data));
+        assert.equal(isEquivalent(ItemsTest, forms.createForm(data)), true);
     })
     });

@@ -1,16 +1,9 @@
 var allTestFiles = [];
 var TEST_REGEXP = /(spec|test)\.js$/i;
 
-Object.keys(window.__karma__.files).forEach(function(file) {
-  if (TEST_REGEXP.test(file)) {
-    // Normalize paths to RequireJS module names.
-    allTestFiles.push(file);
-  }
-});
-
 requirejs.config({
     // Karma serves files under /base, which is the basePath from your config file
-    baseUrl: 'src/main/webapp/libraries',
+    baseUrl: 'base/src/main/webapp/libraries',
     paths:{
         bootstrapCollapse : 'bootstrap-collapse',
         bootstrapTab: 'bootstrap-tab',
@@ -19,13 +12,16 @@ requirejs.config({
         owlCarousel: 'owl.carousel',
         owlCarouselMin: 'owl.carousel.min',
         prettify: 'prettify',
-        runPrettify: 'run_prettify'
+        runPrettify: 'run_prettify',
+        FormAdd: '../js/FormAdd'
     },
     shim: {
         jQuery:{
-            exports: 'jquery'
+            exports: '$'
         },
-
+        FormAdd: {
+            deps: ['jquery']
+        }
     },
 
     // dynamically load all test files
@@ -34,3 +30,11 @@ requirejs.config({
     // we have to kickoff jasmine, as it is asynchronous
     callback: window.__karma__.start
 });
+
+Object.keys(window.__karma__.files).forEach(function(file) {
+    if (TEST_REGEXP.test(file)) {
+        // Normalize paths to RequireJS module names.
+        allTestFiles.push(file);
+    }
+});
+

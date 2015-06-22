@@ -8,13 +8,18 @@ requirejs.config({
         owlCarousel: 'owl.carousel',
         owlCarouselMin: 'owl.carousel.min',
         prettify: 'prettify',
-        runPrettify: 'run_prettify'
+        runPrettify: 'run_prettify',
+        FormAdd: '../js/FormAdd'
     },
     shim: {
         jQuery:{
             exports: '$'
+        },
+        FormAdd: {
+            deps: ['jquery']
         }
     }
 });
 
 requirejs(["../js/HomePage"]);
+console.log("DONE!!!");

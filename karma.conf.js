@@ -1,6 +1,3 @@
-// Karma configuration
-// Generated on Thu Jun 18 2015 14:51:07 GMT+0530 (IST)
-
 module.exports = function(config) {
   config.set({
 
@@ -16,8 +13,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test-main.js',
-      {pattern: 'src/main/webapp/js/*.js', included: false},
-      {pattern: 'src/main/webapp/js/test/*.js', included: false}
+      {pattern: 'src/main/webapp/**/**.js', included: false}
     ],
 
 
