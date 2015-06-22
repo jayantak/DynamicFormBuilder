@@ -8,7 +8,7 @@ Object.keys(window.__karma__.files).forEach(function(file) {
   }
 });
 
-require.config({
+requirejs.config({
     // Karma serves files under /base, which is the basePath from your config file
     baseUrl: 'src/main/webapp/libraries',
     paths:{
@@ -25,9 +25,7 @@ require.config({
         jQuery:{
             exports: 'jquery'
         },
-        validate: {
-            deps: ['jquery']
-        }
+
     },
 
     // dynamically load all test files
