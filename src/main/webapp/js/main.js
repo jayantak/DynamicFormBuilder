@@ -39,4 +39,3 @@ requirejs.config({
 });
 
 requirejs(["../js/HomePage"]);
-console.log("DONE!!!");

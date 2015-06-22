@@ -11,7 +11,6 @@ define(["FormAdd", "ObjectCompare"], function(forms, objCompare)
             }
         };
         keys = Object.keys(B);
-        console.log(forms);
         forms.addElement([A, B], items1);
         assert.equal(items1.carouselItems[0], '<div class="item"><img class="pure-img" src="images/'+B[keys[0]]["file"]+'"></div>');
     });

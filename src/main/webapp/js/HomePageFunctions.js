@@ -25,8 +25,10 @@ define(['jquery', 'FormAdd'], function($, form)
         $.post('sendForm', {"param1": res}, function (response) {
             console.log(response);
         }).done(doneOut).fail(errorOut);
-        
 
+
+        console.log(res);
+        return res;
     };
 
     return {
