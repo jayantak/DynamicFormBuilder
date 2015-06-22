@@ -1,4 +1,4 @@
-define(function(require)
+define(function(require, jquery)
 {
     var forms = require('../FormAdd.js');
 

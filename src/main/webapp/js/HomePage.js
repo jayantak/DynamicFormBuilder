@@ -1,7 +1,4 @@
-define(function (require) {
-
-    var Page = require('./HomePageFunctions');
-    var Form = require('./FormAdd');
+define(['jquery', './HomePageFunctions', './FormAdd'], function ($, Page, Form) {
 
     $(document).ready(function() {$(function() {
 

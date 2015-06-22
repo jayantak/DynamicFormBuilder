@@ -1,7 +1,5 @@
-define(function(require)
+define(['jquery', './FormAdd'], function($, form)
 {
-    form = require('./FormAdd');
-
     var doneOut = function () {
         console.log("done");
         $("#form1")[0].reset();

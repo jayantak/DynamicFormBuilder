@@ -1,4 +1,4 @@
-define(function()
+define(['jquery', 'owlCarousel', 'owlCarouselMin'], function($, owlCarousel, owlCarouselMin)
 {
     var addElement = function(field, items)
     {
