@@ -17,7 +17,40 @@ define(function()
         }
     };
 
+    var createForm =  function(data) {
+        console.log(data);
+        var Items = {};
+        var fields = [];
+        Items.formItems = [];
+        Items.carouselItems = [];
+
+        $.each(data, function(key, val) {
+            fields.push([key, val]);
+        });
+
+        var i = 0;
+
+        while(i<fields.length)
+        {
+            addElement(fields[i], Items);
+            i++;
+        }
+
+        $("form").html(Items.formItems.join(' '));
+
+        $("#carousel1")
+            .html(Items.carouselItems.join(' '))
+            .owlCarousel({
+                navigation : true,
+                slideSpeed : 300,
+                paginationSpeed : 400,
+                singleItem:true
+            });
+        console.log(Items);
+    };
+
     return {
-        addElement : addElement
+        addElement : addElement,
+        createForm : createForm
     };
 });

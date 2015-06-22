@@ -1,13 +1,15 @@
 define(function (require) {
 
     var Page = require('./HomePageFunctions');
+    var Form = require('./FormAdd');
 
     $(document).ready(function() {$(function() {
 
-        $.getJSON('formData', Page.createForm);
+        $.getJSON('formData', Form.createForm);
 
         $("#SubmitButton").click(Page.submitForm);
 
     })
     });
 });
+

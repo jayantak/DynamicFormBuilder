@@ -2,16 +2,16 @@
   "form":{
     "Name":{
       "type":"text"
-    }
+    },
     "Parent":{
       "type":"password"
     }
-  }
+  },
   "carousel":{
     "Lena":{
       "type":"image",
       "file":"img.jpg"
-    }
+    },
     "Pikachu":{
       "type":"image",
       "file":"img2.jpg"

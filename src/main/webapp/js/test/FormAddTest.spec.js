@@ -1,6 +1,7 @@
 define(function(require)
 {
     var forms = require('../FormAdd.js');
+
     it('Carousel element should be added', function() {
         var items1 = {};
         items1.carouselItems = [];
@@ -29,4 +30,35 @@ define(function(require)
         assert.equal(items1.formItems[0],'<label for="' + keys[0] + '">' + keys[0] + '</label><input name ="' + keys[0] + '" type="' + D[keys[0]]["type"] + '"></input>');
     });
 
-});
+    it('Object "Items" should be created correctly', function(){
+        var data = {
+            form:{
+                Name:{
+                    type:"text"
+                },
+                Parent:{
+                    type:"password"
+                }
+            },
+            carousel:{
+                Lena:{
+                    type:"image",
+                    file:"img.jpg"
+                },
+                Pikachu:{
+                    type:"image",
+                    file:"img2.jpg"
+                }
+            }
+        };
+
+
+        var ItemsTest = {
+            carouselItems:['<div class="item"><img class="pure-img" src="images/img2.jpg"></div>', '<div class="item"><img class="pure-img" src="images/img.jpg"></div>'],
+            formItems:['<label for="Parent">Parent</label><input name ="Parent" type="password"></input>', '<label for="Name">Name</label><input name ="Name" type="text"></input>']
+
+        };
+
+        assert.equal(ItemsTest, forms.createForm(data));
+    })
+    });
