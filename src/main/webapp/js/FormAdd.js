@@ -2,7 +2,12 @@ define(['jquery', 'owlCarousel'], function($)
 {
     var addElement = function(field, items)
     {
+
         var keys = Object.keys(field[1]);
+
+        var textLocation = '#' + field[0] + '1';
+
+
 
         if(field[0] == "carousel")
         {
@@ -22,6 +27,7 @@ define(['jquery', 'owlCarousel'], function($)
                 else
                 {
                     items.formItems.push('<label for="' + keys[i] + '">' + keys[i] + '</label><input name ="' + keys[i] + '" type="' + field[1][keys[i]]["type"] + '"></input>');
+                    $(textLocation).append('<label for="' + keys[i] + '">' + keys[i] + '</label><input name ="' + keys[i] + '" type="' + field[1][keys[i]]["type"] + '"></input>')
                 }
 
 
@@ -40,6 +46,12 @@ define(['jquery', 'owlCarousel'], function($)
         });
 
         var i = 0;
+        var elements={
+                form: {
+                    text: " "
+                }
+
+        };
 
         while(i<fields.length)
         {
@@ -47,10 +59,10 @@ define(['jquery', 'owlCarousel'], function($)
             i++;
         }
 
-        $("form").html(Items.formItems.join(' '));
+       // $("#form1").append(Items.formItems.join(' '));
 
         $("#carousel1")
-            .html(Items.carouselItems.join(' '))
+            .append(Items.carouselItems.join(' '))
             .owlCarousel({
                 navigation : true,
                 slideSpeed : 300,
