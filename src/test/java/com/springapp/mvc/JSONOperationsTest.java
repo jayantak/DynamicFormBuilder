@@ -89,6 +89,6 @@ public class JSONOperationsTest {
             e.printStackTrace();
         }
 
-        assertEquals(objj,obj);
+        assertEquals(objj,5);
     }
 }
