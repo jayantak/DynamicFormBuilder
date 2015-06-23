@@ -12,15 +12,36 @@ define(['jquery', 'FormAdd'], function($, form)
 
     var submitForm = function () {
         var output = [];
+        var checkRB={
+
+        };
 
         var res = '{ ';
 
         $("input").each(function () {
-            output.push([$(this).attr('name'), $(this).val()]);
-            res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
+
+            if($(this).attr('type')=="radio")
+            {
+                var rbName=$(this).attr('name');
+                checkRB[rbName]=0;
+                if(($(this).is(':checked')) && (checkRB[rbName]==0))
+                {
+                    output.push([$(this).attr('name'), $(this).val()]);
+                    res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
+                    checkRB[rbName]=1;
+                }
+
+            }
+            else {
+
+                output.push([$(this).attr('name'), $(this).val()]);
+                res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
+            }
+
         });
 
         var res = res + '}';
+        console.log("res=",res);
 
         $.post('sendForm', {"param1": res}, function (response) {
             console.log(response);

@@ -1,10 +1,27 @@
 {
   "form":{
+    "Parent":{
+      "type":"password"
+    },
     "Name":{
       "type":"text"
     },
-    "Parent":{
-      "type":"password"
+
+    "Male":{
+      "type": "radio",
+      "name": "sex"
+    },
+    "Female":{
+      "type": "radio",
+      "name": "sex"
+    },
+    "abc":{
+      "type": "radio",
+      "name": "def"
+    },
+    "fdg": {
+      "type": "radio"
+      "name": "def"
     }
   },
   "carousel":{
@@ -17,4 +34,5 @@
       "file":"img2.jpg"
     }
   }
+
 }

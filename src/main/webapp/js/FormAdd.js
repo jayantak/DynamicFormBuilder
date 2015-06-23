@@ -11,8 +11,20 @@ define(['jquery', 'owlCarousel'], function($)
             }
         }
         else if(field[0] == "form") {
+
             for(i = 0; i<keys.length; i++) {
-                items.formItems.push('<label for="' + keys[i] + '">' + keys[i] + '</label><input name ="' + keys[i] + '" type="' + field[1][keys[i]]["type"] + '"></input>');
+
+                if(field[1][keys[i]]["type"]=="radio")
+                {
+                    items.formItems.push('<input type="radio" id ="'+ keys[i] + '" name="' + field[1][keys[i]]["name"] + '" value="' +keys[i]+ '"> '+ keys[i] + '');
+                }
+
+                else
+                {
+                    items.formItems.push('<label for="' + keys[i] + '">' + keys[i] + '</label><input name ="' + keys[i] + '" type="' + field[1][keys[i]]["type"] + '"></input>');
+                }
+
+
             }
         }
     };
