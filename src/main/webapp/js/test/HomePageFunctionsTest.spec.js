@@ -2,6 +2,7 @@ define(['HomePageFunctions'], function(Page){
 
     it('POST HTTPRequest must succeed', function(){
 
-        var res = Page.submitForm;
+        var dummyElement = document.createElement('div');
+        document.getElementById = jasmine.createSpy('HTML Element').andReturn(dummyElement);
     })
 });
