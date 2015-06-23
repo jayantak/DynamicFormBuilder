@@ -14,14 +14,6 @@
     "Female":{
       "type": "radio",
       "name": "sex"
-    },
-    "abc":{
-      "type": "radio",
-      "name": "def"
-    },
-    "fdg": {
-      "type": "radio"
-      "name": "def"
     }
   },
   "carousel":{
