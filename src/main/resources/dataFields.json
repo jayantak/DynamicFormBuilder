@@ -7,13 +7,15 @@
       "type":"text"
     },
 
-    "Male":{
+    "Sex":
+    {
       "type": "radio",
-      "name": "sex"
+      "options": ["Male","Female","Other"]
     },
-    "Female":{
+    "Choice":
+    {
       "type": "radio",
-      "name": "sex"
+      "options": ["Choice1","Choice2"]
     }
   },
   "carousel":{
