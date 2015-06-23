@@ -18,6 +18,8 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String frontPage(ModelMap model) throws IOException {
 
+        dbTest a = new dbTest();
+        a.readDatabase();
         return "HomePage";
 	}
 
