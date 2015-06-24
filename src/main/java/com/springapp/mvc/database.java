@@ -1,17 +1,12 @@
 package com.springapp.mvc;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by kjayanta on 23/06/15.
- */
 public class database {
 
     Statement statement = null;
@@ -72,8 +67,6 @@ public class database {
 
     public void writeValues(String ValuesString) throws IOException{
 
-        JSONObject pageFields = new JSONObject();
-
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","lego");
@@ -85,20 +78,20 @@ public class database {
 
             JSONObject Values = (JSONObject) ReadObject;
 
-            Set set =Values.keySet();
-            Iterator iter=set.iterator();
-            String query="insert into records values(";
+            Set set = Values.keySet();
+            Iterator iter = set.iterator();
+            String query = "insert into records values(";
             while(iter.hasNext())
             {
-                String key= (iter.next()).toString();
-                query=query+"'" + Values.get(key) + "'";
+                String key = (iter.next()).toString();
+                query = query+"'" + Values.get(key) + "'";
                 if(iter.hasNext())
                 {
                     query = query + ",";
                 }
             }
-            //System.out.println(query.subString(0,query.length()-1));
-            query=query+ ");";
+
+            query = query+ ");";
             System.out.println(query);
 
             statement.executeUpdate(query);
