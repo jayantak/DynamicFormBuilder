@@ -13,16 +13,21 @@ public class database {
     Connection connection = null;
     ResultSet resultSet = null;
 
+    String databaseName = "formFlight";
+    String userName = "root";
+    String password = "";
+    String tableName = "people";
+
     public JSONObject readFields() throws IOException{
 
         JSONObject pageFields = new JSONObject();
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","lego");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
             statement = connection.createStatement();
 
-            resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='records'");
+            resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
 
             JSONObject formFields = new JSONObject();
 
@@ -69,7 +74,7 @@ public class database {
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","lego");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
             statement = connection.createStatement();
 
             JSONParser parser = new JSONParser();
@@ -80,7 +85,7 @@ public class database {
 
             Set set = Values.keySet();
             Iterator iter = set.iterator();
-            String query = "insert into records values(";
+            String query = "insert into " + tableName + " values(";
             while(iter.hasNext())
             {
                 String key = (iter.next()).toString();
@@ -90,7 +95,6 @@ public class database {
                     query = query + ",";
                 }
             }
-
             query = query+ ");";
             System.out.println(query);
 
