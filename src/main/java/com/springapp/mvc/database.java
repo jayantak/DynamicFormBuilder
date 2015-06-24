@@ -5,6 +5,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class database {
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","lego");
             statement = connection.createStatement();
 
             resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='records'");
@@ -75,7 +76,7 @@ public class database {
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/formSchool","root","lego");
             statement = connection.createStatement();
 
             JSONParser parser = new JSONParser();
@@ -84,15 +85,23 @@ public class database {
 
             JSONObject Values = (JSONObject) ReadObject;
 
-            Object keys = Values.keySet();
+            Set set =Values.keySet();
+            Iterator iter=set.iterator();
+            String query="insert into records values(";
+            while(iter.hasNext())
+            {
+                String key= (iter.next()).toString();
+                query=query+"'" + Values.get(key) + "'";
+                if(iter.hasNext())
+                {
+                    query = query + ",";
+                }
+            }
+            //System.out.println(query.subString(0,query.length()-1));
+            query=query+ ");";
+            System.out.println(query);
 
-            System.out.println();
-
-            JSONArray Array = new JSONArray();
-
-            Array.add(keys);
-            
-            System.out.println(Values.get(Array[0][0]));
+            statement.executeUpdate(query);
 
         }
         catch(Exception e){
