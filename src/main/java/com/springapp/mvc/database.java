@@ -1,9 +1,12 @@
 package com.springapp.mvc;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by kjayanta on 23/06/15.
@@ -81,6 +84,15 @@ public class database {
 
             JSONObject Values = (JSONObject) ReadObject;
 
+            Object keys = Values.keySet();
+
+            System.out.println();
+
+            JSONArray Array = new JSONArray();
+
+            Array.add(keys);
+            
+            System.out.println(Values.get(Array[0][0]));
 
         }
         catch(Exception e){
@@ -104,4 +116,5 @@ public class database {
         }
 
     }
+
 }
