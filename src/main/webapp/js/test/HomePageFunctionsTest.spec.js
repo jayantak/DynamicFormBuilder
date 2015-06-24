@@ -36,8 +36,6 @@ define(['HomePageFunctions', 'FormAdd'], function(Page, Form){
 
         $(b).append('Hello');
 
-        $('#Jayanta').append('Third');
-
         console.log(b);
     })
 });
