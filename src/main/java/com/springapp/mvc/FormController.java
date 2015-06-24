@@ -18,18 +18,20 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String frontPage(ModelMap model) throws IOException {
 
-        dbTest a = new dbTest();
-        a.readDatabase();
         return "HomePage";
 	}
+
 
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
 
-		JSONOperations jops1 = new JSONOperations();
-		JSONObject input1 = jops1.JSONRead("dataFields.json");
+//		JSONOperations jops1 = new JSONOperations();
+//		JSONObject input1 = jops1.JSONRead("dataFields.json");
 
-		return new ResponseEntity(input1.toString(), HttpStatus.OK);
+        database db = new database();
+        JSONObject input2 = db.readFields();
+
+		return new ResponseEntity(input2.toString(), HttpStatus.OK);
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
@@ -61,6 +63,9 @@ public class FormController {
         }
 
         jops1.JSONWrite(JSONoutput, "dataOut.json");
+
+        database db =  new database();
+        db.writeValues(param1);
 
         return new ResponseEntity(param1, HttpStatus.OK);
 	}
