@@ -1,10 +1,12 @@
 package com.springapp.mvc;
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class database {
@@ -15,12 +17,18 @@ public class database {
 
     String databaseName = "formFlight";
     String userName = "root";
-    String password = "";
+    String password = "lego";
     String tableName = "people";
+    public static String [] arr = new String[10];
+    public static int ctr;
+    public JSONObject pageFields = new JSONObject();
+   public JSONObject formFields = new JSONObject();
+    public JSONObject field = new JSONObject();
+
 
     public JSONObject readFields() throws IOException{
 
-        JSONObject pageFields = new JSONObject();
+
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,26 +37,32 @@ public class database {
 
             resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
 
-            JSONObject formFields = new JSONObject();
+
 
             while(resultSet.next()){
 
-                JSONObject field = new JSONObject();
+
                 String type = resultSet.getString("COLUMN_COMMENT");
                 String name = resultSet.getString("COLUMN_NAME");
 
                 field.put("type", type);
 
                 formFields.put(name,field);
+                System.out.println(formFields);
+                arr[ctr++]=name;
 
             }
+            int i;
+            ctr--;
+            for(i=0;i<ctr;i++)
 
             pageFields.put("form", formFields);
-            System.out.println(pageFields.toJSONString());
+//            System.out.println("Here123");
+//            System.out.println(pageFields);
             return pageFields;
         }
         catch(Exception e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         finally{
             try {
@@ -72,7 +86,10 @@ public class database {
 
     public void writeValues(String ValuesString) throws IOException{
 
+
+
         try{
+            int i,j;
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
             statement = connection.createStatement();
@@ -85,20 +102,40 @@ public class database {
 
             Set set = Values.keySet();
             Iterator iter = set.iterator();
-            String query = "insert into " + tableName + " values(";
+            String query = "insert into " + tableName + " (";
             while(iter.hasNext())
             {
                 String key = (iter.next()).toString();
-                query = query+"'" + Values.get(key) + "'";
+                System.out.print(key);
+
+                query=query + key;
                 if(iter.hasNext())
                 {
                     query = query + ",";
                 }
             }
+            query = query + ") VALUES (";
+            Iterator iter1 = set.iterator();
+            while(iter1.hasNext())
+            {
+                String key = (iter1.next()).toString();
+                query = query+"'" + Values.get(key) + "'";
+                if(iter1.hasNext())
+                {
+                    query = query + ",";
+                }
+
+            }
+
+//            for(i=0;i<ctr;i++)
+//            {
+//                System.out.print(arr[i]);
+//            }
             query = query+ ");";
             System.out.println(query);
 
             statement.executeUpdate(query);
+
 
         }
         catch(Exception e){

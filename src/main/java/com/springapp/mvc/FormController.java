@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.security.Key;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -52,6 +56,16 @@ public class FormController {
 
         JSONObject JSONoutput = new JSONObject();
         Object output;
+
+        //Set set=param1.keySet();
+
+//
+//        Iterator iter = set.iterator();
+//        while(iter.hasNext())
+//        {
+//            String str= (iter.next().toString());
+//            System.out.println(param1.get(str));
+//        }
 
         try {
             output =  parser.parse(param1);
