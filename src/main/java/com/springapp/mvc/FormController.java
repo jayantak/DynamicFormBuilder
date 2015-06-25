@@ -49,39 +49,42 @@ public class FormController {
 
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm")
-	public ResponseEntity giveData(@RequestParam String param1) throws IOException {
+	public ResponseEntity giveData(@RequestParam Map<String, String> param1) throws IOException {
 
         JSONOperations jops1 = new JSONOperations();
         JSONParser parser = new JSONParser();
 
         JSONObject JSONoutput = new JSONObject();
         Object output;
+        System.out.println("param1 is " + param1);
 
-        //Set set=param1.keySet();
+        Set set=param1.keySet();
 
-//
-//        Iterator iter = set.iterator();
-//        while(iter.hasNext())
+
+        Iterator iter = set.iterator();
+        while(iter.hasNext())
+        {
+            String str= (iter.next().toString());
+            System.out.println("dsfgag   " + str);
+            System.out.println(param1.get(str));
+        }
+
+//        try {
+//            output =  parser.parse(param1);
+//            JSONoutput=(JSONObject) output;
+//        }
+//        catch(Exception e)
 //        {
-//            String str= (iter.next().toString());
-//            System.out.println(param1.get(str));
+//            e.printStackTrace();
 //        }
 
-        try {
-            output =  parser.parse(param1);
-            JSONoutput=(JSONObject) output;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        jops1.JSONWrite(JSONoutput, "dataOut.json");
-
+//        jops1.JSONWrite(JSONoutput, "dataOut.json");
+//
         database db =  new database();
-        db.writeValues(param1);
+        db.writeValues1(param1);
 
-        return new ResponseEntity(param1, HttpStatus.OK);
+        return new ResponseEntity( param1, HttpStatus.CREATED);//Check here
+
 	}
 
     @RequestMapping(method = RequestMethod.GET, value="/formsubmitted")
