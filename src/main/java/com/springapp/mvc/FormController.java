@@ -1,7 +1,6 @@
 package com.springapp.mvc;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.security.Key;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -30,16 +26,19 @@ public class FormController {
 	public ResponseEntity fetchFormData() throws IOException{
 
         database db = new database();
-        JSONObject input2 = db.readFields();
+        JSONObject input = db.readFields();
 
-		return new ResponseEntity(input2.toString(), HttpStatus.OK);
+		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
     public ResponseEntity fetchFormOutput() throws IOException{
 
-        JSONOperations jops1 = new JSONOperations();
-        JSONObject input = jops1.JSONRead("dataOut.json");
+//        JSONOperations jops1 = new JSONOperations();
+//        JSONObject input = jops1.JSONRead("dataOut.json");
+
+        database db = new database();
+        JSONObject input = db.readValues();
 
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
@@ -49,7 +48,7 @@ public class FormController {
 	public ResponseEntity giveData(@RequestParam Map<String, String> param1) throws IOException {
 
         database db =  new database();
-        db.writeValues1(param1);
+        db.writeValues(param1);
 
         return new ResponseEntity(HttpStatus.CREATED);
 	}

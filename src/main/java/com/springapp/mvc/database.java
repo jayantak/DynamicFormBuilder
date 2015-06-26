@@ -3,26 +3,28 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 public class database {
 
     Statement statement = null;
+    Statement statement1 = null;
     Connection connection = null;
     ResultSet resultSet = null;
+    ResultSet resultSet1 = null;
 
     String databaseName = "formFlight";
     String userName = "root";
     String password = "";
     String tableName = "people";
-    public JSONObject pageFields = new JSONObject();
-   public JSONObject formFields = new JSONObject();
-    public JSONObject field = new JSONObject();
-
 
     public JSONObject readFields() throws IOException{
+
+        JSONObject pageFields = new JSONObject();
+        JSONObject formFields = new JSONObject();
+        JSONObject field = new JSONObject();
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -36,7 +38,7 @@ public class database {
                 String type = resultSet.getString("COLUMN_COMMENT");
                 String name = resultSet.getString("COLUMN_NAME");
 
-                if(name.equals("Time_Of_Entry")){
+                if(type.equals("timestamp")){
                     continue;
                 }
 
@@ -67,56 +69,28 @@ public class database {
                 e.printStackTrace();
             }
         }
-
         return pageFields;
     }
 
-    public void writeValues1(Map input) throws IOException{
-        String query = "INSERT into people (%s) VALUES (%a)";
+    public void writeValues(Map input) throws IOException{
 
-        Set keys= input.keySet();
+        String query = "INSERT into people (%s) VALUES ('%s');";
 
-
+        Collection keys= input.keySet();
+        Collection values = input.values();
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
             statement = connection.createStatement();
 
-            String columns = keys.stream().reduce((key1, key2) -> key1 + "," + key2).get().toString();
-            String values = keys.stream().reduce((key1, key2) -> input.get(key1.toString()) + "," + input.get(key2.toString())).get().toString();
+            String columnsQuery = keys.stream().reduce((key1, key2) -> key1 + "," + key2).get().toString();
 
-            String.format(query, columns, values);
+            String valuesQuery = values.stream().reduce((value1, value2) -> value1 + "','" + value2).get().toString();
 
-            Iterator iter3 = keys.iterator();
-            while(iter3.hasNext())
-            {
-                String str= (iter3.next().toString());
-                query=query+str;
-                if(iter3.hasNext())
-                {
-                    query=query+",";
-                }
-
-            }
-
-            query= query + ") VALUES (";
-            Iterator iter4 = keys.iterator();
-            while(iter4.hasNext())
-            {
-                String str= (iter4.next().toString());
-                query=query+ "'" + input.get(str) + "'";
-                if(iter4.hasNext())
-                {
-                    query=query+",";
-                }
-            }
-            query= query + ");";
-            System.out.println(query);
+            query = String.format(query, columnsQuery, valuesQuery);
 
             statement.executeUpdate(query);
-
-
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -140,26 +114,35 @@ public class database {
 
     }
 
-    public JSONObject readEntry() throws IOException{
+    public JSONObject readValues() throws IOException{
+
+        JSONObject pageFields = new JSONObject();
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
             statement = connection.createStatement();
+            statement1 = connection.createStatement();
 
+            resultSet1 = statement1.executeQuery("SELECT * FROM " + tableName+ " ORDER BY Time_Of_Entry DESC LIMIT 1;");
             resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
 
+            resultSet1.next();
             while(resultSet.next()){
 
+                String field = resultSet.getString("COLUMN_NAME");
                 String type = resultSet.getString("COLUMN_COMMENT");
-                String name = resultSet.getString("COLUMN_NAME");
+                String value = resultSet1.getString(field);
 
-                field.put("type", type);
+                if(type.equals("timestamp")){
+                    continue;
+                }
 
-                formFields.put(name,field);
+                pageFields.put(field, value);
+
+
             }
 
-            pageFields.put("form", formFields);
             return pageFields;
         }
         catch(Exception e){
@@ -184,5 +167,4 @@ public class database {
 
         return pageFields;
     }
-
 }
