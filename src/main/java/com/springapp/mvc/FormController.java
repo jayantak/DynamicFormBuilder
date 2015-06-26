@@ -29,9 +29,6 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
 
-//		JSONOperations jops1 = new JSONOperations();
-//		JSONObject input1 = jops1.JSONRead("dataFields.json");
-
         database db = new database();
         JSONObject input2 = db.readFields();
 
@@ -48,43 +45,13 @@ public class FormController {
     }
 
 
-	@RequestMapping(method = RequestMethod.POST, value = "/sendForm")
+	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map<String, String> param1) throws IOException {
 
-        JSONOperations jops1 = new JSONOperations();
-        JSONParser parser = new JSONParser();
-
-        JSONObject JSONoutput = new JSONObject();
-        Object output;
-        System.out.println("param1 is " + param1);
-
-        Set set=param1.keySet();
-
-
-        Iterator iter = set.iterator();
-        while(iter.hasNext())
-        {
-            String str= (iter.next().toString());
-            System.out.println("dsfgag   " + str);
-            System.out.println(param1.get(str));
-        }
-
-//        try {
-//            output =  parser.parse(param1);
-//            JSONoutput=(JSONObject) output;
-//        }
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-
-//        jops1.JSONWrite(JSONoutput, "dataOut.json");
-//
         database db =  new database();
         db.writeValues1(param1);
 
-        return new ResponseEntity( param1, HttpStatus.CREATED);//Check here
-
+        return new ResponseEntity(HttpStatus.CREATED);
 	}
 
     @RequestMapping(method = RequestMethod.GET, value="/formsubmitted")

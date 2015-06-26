@@ -1,7 +1,5 @@
 package com.springapp.mvc;
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.sql.*;
@@ -17,18 +15,14 @@ public class database {
 
     String databaseName = "formFlight";
     String userName = "root";
-    String password = "lego";
+    String password = "";
     String tableName = "people";
-    public static String [] arr = new String[10];
-    public static int ctr;
     public JSONObject pageFields = new JSONObject();
    public JSONObject formFields = new JSONObject();
     public JSONObject field = new JSONObject();
 
 
     public JSONObject readFields() throws IOException{
-
-
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -37,28 +31,21 @@ public class database {
 
             resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
 
-
-
             while(resultSet.next()){
-
 
                 String type = resultSet.getString("COLUMN_COMMENT");
                 String name = resultSet.getString("COLUMN_NAME");
 
+                if(name.equals("Time_Of_Entry")){
+                    continue;
+                }
+
                 field.put("type", type);
 
                 formFields.put(name,field);
-                System.out.println(formFields);
-                arr[ctr++]=name;
-
             }
-            int i;
-            ctr--;
-            for(i=0;i<ctr;i++)
 
             pageFields.put("form", formFields);
-//            System.out.println("Here123");
-//            System.out.println(pageFields);
             return pageFields;
         }
         catch(Exception e){
@@ -84,132 +71,50 @@ public class database {
         return pageFields;
     }
 
-//    public void writeValues(String ValuesString) throws IOException{
-//
-//
-//
-//        try{
-//            int i,j;
-//            Class.forName("com.mysql.jdbc.Driver");
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
-//            statement = connection.createStatement();
-//
-//            JSONParser parser = new JSONParser();
-//            Object ReadObject = new Object();
-//            ReadObject = parser.parse(ValuesString);
-//
-//            JSONObject Values = (JSONObject) ReadObject;
-//
-//            Set set = Values.keySet();
-//            Iterator iter = set.iterator();
-//            String query = "insert into " + tableName + " (";
-//            while(iter.hasNext())
-//            {
-//                String key = (iter.next()).toString();
-//                //System.out.print(key);
-//
-//                query=query + key;
-//                if(iter.hasNext())
-//                {
-//                    query = query + ",";
-//                }
-//            }
-//            query = query + ") VALUES (";
-//            Iterator iter1 = set.iterator();
-//            while(iter1.hasNext())
-//            {
-//                String key = (iter1.next()).toString();
-//                query = query+"'" + Values.get(key) + "'";
-//                if(iter1.hasNext())
-//                {
-//                    query = query + ",";
-//                }
-//
-//            }
-//
-////            for(i=0;i<ctr;i++)
-////            {
-////                System.out.print(arr[i]);
-////            }
-//            query = query+ ");";
-//            System.out.println(query);
-//
-//            statement.executeUpdate(query);
-//
-//
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
-//        finally{
-//            try {
-//                if(resultSet != null){
-//                    resultSet.close();
-//                }
-//                if(statement != null){
-//                    statement.close();
-//                }
-//                if(statement != null){
-//                    connection.close();
-//                }
-//            }
-//            catch(SQLException e){
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    }
+    public void writeValues1(Map input) throws IOException{
+        String query = "INSERT into people (%s) VALUES (%a)";
 
-    public void writeValues1(Map m1) throws IOException{
-        String q;
-
-        System.out.println("m1 is   "+ m1);
-        Set set1=m1.keySet();
+        Set keys= input.keySet();
 
 
 
         try{
-            int i,j;
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
             statement = connection.createStatement();
 
+            String columns = keys.stream().reduce((key1, key2) -> key1 + "," + key2).get().toString();
+            String values = keys.stream().reduce((key1, key2) -> input.get(key1.toString()) + "," + input.get(key2.toString())).get().toString();
 
+            String.format(query, columns, values);
 
-            q="INSERT into people (";
-
-            Iterator iter3 = set1.iterator();
+            Iterator iter3 = keys.iterator();
             while(iter3.hasNext())
             {
-
                 String str= (iter3.next().toString());
-                str= str.replaceAll("[\\[\\],]","");
-                System.out.println("strrrr   " + str);
-                q=q+str;
+                query=query+str;
                 if(iter3.hasNext())
                 {
-                    q=q+",";
+                    query=query+",";
                 }
 
             }
 
-            q= q + ") VALUES (";
-            Iterator iter4 = set1.iterator();
+            query= query + ") VALUES (";
+            Iterator iter4 = keys.iterator();
             while(iter4.hasNext())
             {
                 String str= (iter4.next().toString());
-                q=q+ "'" + m1.get(str) + "'";
+                query=query+ "'" + input.get(str) + "'";
                 if(iter4.hasNext())
                 {
-                    q=q+",";
+                    query=query+",";
                 }
-
-
             }
-            q= q + ");";
-            System.out.println(q);
+            query= query + ");";
+            System.out.println(query);
 
-            statement.executeUpdate(q);
+            statement.executeUpdate(query);
 
 
         }
@@ -233,6 +138,51 @@ public class database {
             }
         }
 
+    }
+
+    public JSONObject readEntry() throws IOException{
+
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
+            statement = connection.createStatement();
+
+            resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
+
+            while(resultSet.next()){
+
+                String type = resultSet.getString("COLUMN_COMMENT");
+                String name = resultSet.getString("COLUMN_NAME");
+
+                field.put("type", type);
+
+                formFields.put(name,field);
+            }
+
+            pageFields.put("form", formFields);
+            return pageFields;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        finally{
+            try {
+                if(resultSet != null){
+                    resultSet.close();
+                }
+                if(statement != null){
+                    statement.close();
+                }
+                if(statement != null){
+                    connection.close();
+                }
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+
+        return pageFields;
     }
 
 }

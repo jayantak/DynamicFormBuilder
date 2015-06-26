@@ -47,10 +47,9 @@ define(['jquery', 'FormAdd'], function($, form)
         });
 
         var res = res + '}';
-        //console.log("res=",res);
         console.log(a.toString());
 
-        $.post('sendForm', {"":a}, function (response) {
+        $.post('sendForm', a, function (response) {
             console.log(a);
         }).done(doneOut).fail(errorOut);
 
