@@ -9,16 +9,27 @@ import java.util.Set;
 
 public class database {
 
-    Statement statement = null;
-    Statement statement1 = null;
-    Connection connection = null;
-    ResultSet resultSet = null;
-    ResultSet resultSet1 = null;
-
     String databaseName = "formFlight";
     String userName = "root";
     String password = "";
     String tableName = "people";
+
+    public Statement getStatement() throws IOException {
+
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + databaseName, userName, password);
+            statement = connection.createStatement();
+
+            return statement;
+        } catch (Exception e) {
+            System.out.println("Here" + e.getMessage());
+        }
+        return statement;
+    }
 
     public JSONObject readFields() throws IOException{
 
@@ -27,11 +38,8 @@ public class database {
         JSONObject field = new JSONObject();
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
-            statement = connection.createStatement();
 
-            resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
+            ResultSet resultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "'");
 
             while(resultSet.next()){
 
@@ -53,94 +61,47 @@ public class database {
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-        finally{
-            try {
-                if(resultSet != null){
-                    resultSet.close();
-                }
-                if(statement != null){
-                    statement.close();
-                }
-                if(statement != null){
-                    connection.close();
-                }
-            }
-            catch(SQLException e){
-                e.printStackTrace();
-            }
-        }
         return pageFields;
     }
 
     public void writeValues(Map input) throws IOException{
+        try{
+            getStatement().executeUpdate(generateWriteQuery(input));
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public String generateWriteQuery(Map input) {
 
         String query = "INSERT into people (%s) VALUES ('%s');";
 
         Collection keys= input.keySet();
         Collection values = input.values();
 
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
-            statement = connection.createStatement();
+        String columnsQuery = keys.stream().reduce((key1, key2) -> key1 + "," + key2).get().toString();
+        String valuesQuery = values.stream().reduce((value1, value2) -> value1 + "','" + value2).get().toString();
 
-            String columnsQuery = keys.stream().reduce((key1, key2) -> key1 + "," + key2).get().toString();
-
-            String valuesQuery = values.stream().reduce((value1, value2) -> value1 + "','" + value2).get().toString();
-
-            query = String.format(query, columnsQuery, valuesQuery);
-
-            statement.executeUpdate(query);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        finally{
-            try {
-                if(resultSet != null){
-                    resultSet.close();
-                }
-                if(statement != null){
-                    statement.close();
-                }
-                if(statement != null){
-                    connection.close();
-                }
-            }
-            catch(SQLException e){
-                e.printStackTrace();
-            }
-        }
-
+        query = String.format(query, columnsQuery, valuesQuery);
+        return query;
     }
-
+ 
     public JSONObject readValues() throws IOException{
 
         JSONObject pageFields = new JSONObject();
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+databaseName,userName,password);
-            statement = connection.createStatement();
-            statement1 = connection.createStatement();
 
-            resultSet1 = statement1.executeQuery("SELECT * FROM " + tableName+ " ORDER BY Time_Of_Entry DESC LIMIT 1;");
-            resultSet = statement.executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName+ "'");
+            ResultSet valueResultSet = getStatement().executeQuery("SELECT * FROM " + tableName + " ORDER BY Time_Of_Entry DESC LIMIT 1;");
+            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "'");
 
-            resultSet1.next();
-            while(resultSet.next()){
-
-                String field = resultSet.getString("COLUMN_NAME");
-                String type = resultSet.getString("COLUMN_COMMENT");
-                String value = resultSet1.getString(field);
-
-                if(type.equals("timestamp")){
-                    continue;
-                }
+            valueResultSet.next();
+            while(fieldResultSet.next()) {
+                String field = fieldResultSet.getString("COLUMN_NAME");
+                String value = valueResultSet.getString(field);
 
                 pageFields.put(field, value);
-
-
             }
 
             return pageFields;
@@ -148,23 +109,6 @@ public class database {
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-        finally{
-            try {
-                if(resultSet != null){
-                    resultSet.close();
-                }
-                if(statement != null){
-                    statement.close();
-                }
-                if(statement != null){
-                    connection.close();
-                }
-            }
-            catch(SQLException e){
-                e.printStackTrace();
-            }
-        }
-
         return pageFields;
     }
 }

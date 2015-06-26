@@ -26,7 +26,6 @@ define(['jquery', 'FormAdd'], function($, form)
             if($(this).attr('type')=="radio")
             {
                 var rbName=$(this).attr('name');
-                console.log(rbName);
                 checkRB[rbName]=0;
                 if(($(this).is(':checked')) && (checkRB[rbName]==0))
                 {

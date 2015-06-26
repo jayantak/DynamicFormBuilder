@@ -46,7 +46,7 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map<String, String> param1) throws IOException {
-
+//
         database db =  new database();
         db.writeValues(param1);
 
