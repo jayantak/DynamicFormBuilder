@@ -15,7 +15,11 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class FormController {
-	@RequestMapping(method = RequestMethod.GET)
+
+
+    private final database db = new database("FormFlight", "root", "", "people");
+
+    @RequestMapping(method = RequestMethod.GET)
 	public String frontPage(ModelMap model) throws IOException {
 
         return "HomePage";
@@ -24,8 +28,6 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
-
-        database db = new database();
         JSONObject input = db.readFields();
 
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
@@ -34,20 +36,13 @@ public class FormController {
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
     public ResponseEntity fetchFormOutput() throws IOException{
 
-//        JSONOperations jops1 = new JSONOperations();
-//        JSONObject input = jops1.JSONRead("dataOut.json");
-
-        database db = new database();
         JSONObject input = db.readValues();
-
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
 
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map<String, String> param1) throws IOException {
-//
-        database db =  new database();
         db.writeValues(param1);
 
         return new ResponseEntity(HttpStatus.CREATED);

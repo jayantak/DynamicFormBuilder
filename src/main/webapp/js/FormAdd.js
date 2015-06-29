@@ -1,12 +1,11 @@
 define(['jquery', 'owlCarousel'], function($)
 {
-    var addElement = function(field, items)
+    var addElement = function(field)
     {
 
         var keys = Object.keys(field[1]);
 
         var formLocation = '#' + field[0] + '1';
-
 
 
         if(field[0] == "carousel")
@@ -52,7 +51,7 @@ define(['jquery', 'owlCarousel'], function($)
 
         while(i<fields.length)
         {
-            addElement(fields[i], Items);
+            addElement(fields[i]);
             i++;
         }
 

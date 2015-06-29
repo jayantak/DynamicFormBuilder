@@ -5,18 +5,24 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 
 public class database {
 
-    String databaseName = "formFlight";
-    String userName = "root";
-    String password = "";
-    String tableName = "people";
+    String databaseName;
+    String userName ;
+    String password ;
+    String tableName ;
 
-    public Statement getStatement() throws IOException {
+    public database(String databaseName, String userName, String password, String tableName) {
+        this.databaseName = databaseName;
+        this.userName = userName;
+        this.password = password;
+        this.tableName = tableName;
+    }
 
-        Connection connection = null;
+    public Statement getStatement() {
+
+        Connection connection;
         Statement statement = null;
 
         try {
@@ -26,7 +32,7 @@ public class database {
 
             return statement;
         } catch (Exception e) {
-            System.out.println("Here" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         return statement;
     }
@@ -75,7 +81,7 @@ public class database {
 
     public String generateWriteQuery(Map input) {
 
-        String query = "INSERT into people (%s) VALUES ('%s');";
+        String query = "INSERT into "+ tableName+ " (%s) VALUES ('%s');";
 
         Collection keys= input.keySet();
         Collection values = input.values();
@@ -86,17 +92,16 @@ public class database {
         query = String.format(query, columnsQuery, valuesQuery);
         return query;
     }
- 
+
     public JSONObject readValues() throws IOException{
 
         JSONObject pageFields = new JSONObject();
 
         try{
-
-            ResultSet valueResultSet = getStatement().executeQuery("SELECT * FROM " + tableName + " ORDER BY Time_Of_Entry DESC LIMIT 1;");
+            ResultSet valueResultSet = getStatement().executeQuery("SELECT * FROM " + tableName);
             ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "'");
 
-            valueResultSet.next();
+            valueResultSet.last();
             while(fieldResultSet.next()) {
                 String field = fieldResultSet.getString("COLUMN_NAME");
                 String value = valueResultSet.getString(field);

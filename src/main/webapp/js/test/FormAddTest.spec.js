@@ -1,6 +1,12 @@
 define(["FormAdd", "ObjectCompare"], function(forms, objCompare)
 {
     it('Carousel element should be added', function() {
+        //var formAdd = forms();
+        //
+        //var carouselHtmlSpy = sinon.spy(formAdd, carouselHtml);
+        //formAdd.addElement();
+        //
+        //expect(formAdd).carouselHtml().calledWithExactly("","");
         var items1 = {};
         items1.carouselItems = [];
         var A = "carousel";
