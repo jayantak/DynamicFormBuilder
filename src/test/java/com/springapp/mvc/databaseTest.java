@@ -24,7 +24,6 @@ public class databaseTest {
     @Test
     public void testStatementMustNotBeNull() throws Exception {
         Statement statement = db.getStatement();
-
         assertNotNull(statement);
     }
 
@@ -60,6 +59,7 @@ public class databaseTest {
 
     @Test
     public void valuesShouldBeWrittenToDb() throws Exception{
+
         Map<String,String> map = new HashMap<String,String>() {{
             put("Test1", "x");
             put("Test2", "a");
@@ -85,13 +85,13 @@ public class databaseTest {
         val2 =resultSet.getString("Test2");
         assertEquals("y", val1);
         assertEquals("b", val2);
-
     }
 
     @Test
     public void readValuesTest() throws Exception {
-        db.getStatement().executeUpdate("INSERT INTO TESTTABLE(Test1, Test2) VALUES('s','t');");
 
+        db.getStatement().executeUpdate("INSERT INTO TESTTABLE(Test1, Test2) VALUES('a','b');");
+        db.getStatement().executeUpdate("INSERT INTO TESTTABLE(Test1, Test2) VALUES('s','t');");
 
         JSONObject newEntry = db.readValues();
         JSONObject testJSON = new JSONObject();
@@ -99,9 +99,5 @@ public class databaseTest {
         testJSON.put("Test2","t");
 
         assertEquals(testJSON,newEntry);
-
-
-
     }
-
 }

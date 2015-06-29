@@ -1,4 +1,5 @@
 package com.springapp.mvc;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
@@ -43,6 +44,7 @@ public class database {
 
         JSONObject pageFields = new JSONObject();
         JSONObject formFields = new JSONObject();
+        JSONArray options = new JSONArray();
         JSONObject field = new JSONObject();
 
         try{
@@ -51,6 +53,8 @@ public class database {
 
             while(resultSet.next()){
 
+                field = new JSONObject();
+
                 String type = resultSet.getString("COLUMN_COMMENT");
                 String name = resultSet.getString("COLUMN_NAME");
 
@@ -58,9 +62,23 @@ public class database {
                     continue;
                 }
 
+                if(type.equals("radio")){
+                    ResultSet resultSet1 = getStatement().executeQuery("SELECT DISTINCT SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING(COLUMN_TYPE, 7, LENGTH(COLUMN_TYPE) - 8), \"','\", 1 + units.i + tens.i * 10) , \"','\", -1) AS abc\n" +
+                            "FROM INFORMATION_SCHEMA.COLUMNS\n" +
+                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) units\n" +
+                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) tens\n" +
+                            "WHERE TABLE_NAME = '"+tableName+"' AND COLUMN_NAME = '"+ name + "';");
+                    while(resultSet1.next()){
+                        String value = resultSet1.getString(1);
+                        options.add(value);
+                        System.out.println(resultSet1.getString(1));
+                    }
+                    field.put("options", options);
+                }
+
                 field.put("type", type);
 
-                formFields.put(name,field);
+                formFields.put(name, field);
             }
 
             pageFields.put("form", formFields);
