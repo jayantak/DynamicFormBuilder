@@ -30,6 +30,8 @@ public class database {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + databaseName, userName, password);
             statement = connection.createStatement();
 
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
+
             return statement;
         } catch (Exception e) {
             System.out.println(e.getMessage());
