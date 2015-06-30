@@ -14,5 +14,8 @@
     "mocha-sinon": "^1.1.4",
     "requirejs": "^2.1.18",
     "sinon": "^1.15.3"
+  },
+  "scripts":{
+    "start":""
   }
 }

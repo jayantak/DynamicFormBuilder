@@ -49,8 +49,6 @@ define(["FormAdd", "ObjectCompare"], function(forms, objCompare)
         assert.equal(append.callCount, 2);
         append.thisValues[0].selector.should.be.equal('#form1');
         append.thisValues[1].selector.should.be.equal('#TestCarouselItem');
-        assert.equal(formTextHTML1.callCount, 1);
-        assert.equal(formDivHTML1.callCount, 1);
 
     });
 

@@ -28,7 +28,7 @@ public class database {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/" + databaseName, userName, password);
+            connection = DriverManager.getConnection("jdbc:mysql://173.194.229.162:3306/" + databaseName, userName, password);
             statement = connection.createStatement();
 
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);

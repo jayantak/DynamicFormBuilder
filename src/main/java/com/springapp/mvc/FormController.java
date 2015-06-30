@@ -17,7 +17,7 @@ import java.util.Map;
 public class FormController {
 
 
-    private final database db = new database("formGeneric", "root", "", "pokemon");
+    private final database db = new database("tests", "jayanta", "lego", "people");
 
     @RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
