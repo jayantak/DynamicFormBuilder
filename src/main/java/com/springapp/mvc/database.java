@@ -28,7 +28,7 @@ public class database {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + databaseName, userName, password);
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/" + databaseName, userName, password);
             statement = connection.createStatement();
 
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
@@ -71,7 +71,6 @@ public class database {
                     while(resultSet1.next()){
                         String value = resultSet1.getString(1);
                         options.add(value);
-                        System.out.println(resultSet1.getString(1));
                     }
                     field.put("options", options);
                 }
