@@ -17,10 +17,10 @@ import java.util.Map;
 public class FormController {
 
 
-    private final database db = new database("FormFlight", "root", "", "people");
+    private final database db = new database("formGeneric", "root", "", "pokemon");
 
     @RequestMapping(method = RequestMethod.GET)
-	public String frontPage(ModelMap model) throws IOException {
+	public String frontPage() throws IOException {
 
         return "HomePage";
 	}

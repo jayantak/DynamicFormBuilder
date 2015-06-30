@@ -30,12 +30,12 @@ define(['HomePageFunctions', 'FormAdd'], function(Page, Form){
 
         var b = $.parseHTML('<div id ="Jayanta">');
 
-        console.log(b);
+      //  console.log(b);
 
         $(b).append('Sudeep');
 
         $(b).append('Hello');
 
-        console.log(b);
+        //console.log(b);
     })
 });

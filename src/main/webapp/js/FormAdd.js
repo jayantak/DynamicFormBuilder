@@ -8,6 +8,7 @@ define(['jquery', 'owlCarousel'], function($) {
       return '<input name ="' + name + '" type="' + type + '"></input>'
     };
 
+
     var formDivHTML = function(name) {
         return '<div class="item" id = '+ name + '><label for="' + name + '">' + name + '</label></div>';
     };

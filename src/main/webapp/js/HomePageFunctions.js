@@ -11,38 +11,31 @@ define(['jquery', 'FormAdd'], function($, form)
     };
 
     var submitForm = function () {
-        var a={
-
-        };
+        var a={};
         var output = [];
-        var checkRB={
-
-        };
+        var checkRB={};
 
         var res = '{ ';
 
         $("input").each(function () {
 
-            if($(this).attr('type')=="radio")
-            {
+            if($(this).attr('type')=="radio") {
+
                 var rbName=$(this).attr('name');
                 checkRB[rbName]=0;
-                if(($(this).is(':checked')) && (checkRB[rbName]==0))
-                {
+                if(($(this).is(':checked')) && (checkRB[rbName]==0)) {
+
                     output.push([$(this).attr('name'), $(this).val()]);
                     res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
                     checkRB[rbName]=1;
                     a[$(this).attr('name')]=$(this).val();
                 }
-
             }
             else {
-
                 output.push([$(this).attr('name'), $(this).val()]);
                 res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
                 a[$(this).attr('name')]=$(this).val();
             }
-
         });
 
         var res = res + '}';
@@ -52,8 +45,6 @@ define(['jquery', 'FormAdd'], function($, form)
             console.log(a);
         }).done(doneOut).fail(errorOut);
 
-
-        console.log(res);
         return res;
     };
 
