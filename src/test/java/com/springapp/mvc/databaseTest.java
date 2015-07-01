@@ -16,7 +16,7 @@ public class databaseTest {
     private database db;
     @Before
     public void setUp() throws  Exception{
-        db = new database("TESTDB", "jayanta","lego","TESTTABLE");
+        db = new database("jdbc:mysql://localhost:3306/", "TESTDB", "jayanta","lego","TESTTABLE");
         db.getStatement().executeUpdate("DROP TABLE IF EXISTS TESTTABLE;");
         db.getStatement().executeUpdate("CREATE TABLE IF NOT EXISTS TESTTABLE(Test1 varchar(20) COMMENT 'text', Test2 varchar(30) COMMENT 'text');");
     }

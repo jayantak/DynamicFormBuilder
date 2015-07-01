@@ -1,20 +1,26 @@
 package com.springapp.mvc;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.Collection;
 import java.util.Map;
 
+@PropertySource("classpath:application.properties")
 public class database {
 
+    String URI;
     String databaseName;
     String userName ;
     String password ;
     String tableName ;
 
-    public database(String databaseName, String userName, String password, String tableName) {
+    public database(String URI, String databaseName, String userName, String password, String tableName) {
+        this.URI = URI;
         this.databaseName = databaseName;
         this.userName = userName;
         this.password = password;
@@ -28,7 +34,8 @@ public class database {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://173.194.229.162:3306/" + databaseName, userName, password);
+            System.out.println(URI);
+            connection = DriverManager.getConnection(URI + databaseName, userName, password);
             statement = connection.createStatement();
 
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);

@@ -1,6 +1,7 @@
 package com.springapp.mvc;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,8 +17,17 @@ import java.util.Map;
 @RequestMapping("/")
 public class FormController {
 
-
-    private final database db = new database("tests", "jayanta", "lego", "people");
+    @Value("${mysql.uri}")
+    String uri;
+    @Value("${mysql.database}")
+    String databaseName;
+    @Value("${mysql.userName}")
+    String userName;
+    @Value("${mysql.password}")
+    String password;
+    @Value("${mysql.tableName}")
+    String tableName;
+//    private final database db = new database(uri, "formFlight", "root", "", "people");
 
     @RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
@@ -28,14 +38,16 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
-        JSONObject input = db.readFields();
 
+        database db = new database(uri, databaseName, userName, password, tableName);
+        JSONObject input = db.readFields();
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
     public ResponseEntity fetchFormOutput() throws IOException{
 
+        database db = new database(uri, databaseName, userName, password, tableName);
         JSONObject input = db.readValues();
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
@@ -43,8 +55,9 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map<String, String> param1) throws IOException {
-        db.writeValues(param1);
 
+        database db = new database(uri, databaseName, userName, password, tableName);
+        db.writeValues(param1);
         return new ResponseEntity(HttpStatus.CREATED);
 	}
 
