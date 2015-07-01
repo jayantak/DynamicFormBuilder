@@ -2,7 +2,6 @@ package com.springapp.mvc;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.util.Collection;
 import java.util.Map;
 
 @PropertySource("classpath:application.properties")
-public class database {
+public class DatabaseOperations {
 
     String URI;
     String databaseName;
@@ -19,7 +18,7 @@ public class database {
     String password ;
     String tableName ;
 
-    public database(String URI, String databaseName, String userName, String password, String tableName) {
+    public DatabaseOperations(String URI, String databaseName, String userName, String password, String tableName) {
         this.URI = URI;
         this.databaseName = databaseName;
         this.userName = userName;
@@ -34,7 +33,6 @@ public class database {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println(URI);
             connection = DriverManager.getConnection(URI + databaseName, userName, password);
             statement = connection.createStatement();
 
