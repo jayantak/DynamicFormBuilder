@@ -2,14 +2,12 @@ package com.springapp.mvc;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.springframework.context.annotation.PropertySource;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.Collection;
 import java.util.Map;
 
-@PropertySource("classpath:application.properties")
 public class DatabaseOperations {
 
     String URI;

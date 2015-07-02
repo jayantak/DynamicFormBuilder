@@ -16,28 +16,22 @@ import java.util.Map;
 @RequestMapping("/")
 public class FormController {
 
-    @Value("${mysql.uri}")
-    private String uri;
-    @Value("${mysql.database}")
-    private String databaseName;
-    @Value("${mysql.userName}")
-    private String userName;
-    @Value("${mysql.password}")
-    private String password;
-    @Value("${mysql.tableName}")
-    private String tableName;
+    @Value("${mysql.uri}") private String uri;
+    @Value("${mysql.database}") private String databaseName;
+    @Value("${mysql.userName}") private String userName;
+    @Value("${mysql.password}") private String password;
+    @Value("${mysql.tableName}") private String tableName;
+    @Value("${data.source}") private String source;
+    @Value("${json.in}") private String jsonFields;
+    @Value("${json.out}") private String jsonOut;
 
-    @Value("${data.source}")
-    private String source;
-
-    @Value("${json.in}")
-    private String jsonFields;
-    @Value("${json.out}")
-    private String jsonOut;
+    DatabaseOperations db;
+    JSONOperations jsonOperations = new JSONOperations();
 
     @RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
 
+        db = new DatabaseOperations(uri, databaseName, userName, password, tableName);
         return "HomePage";
 	}
 
@@ -46,50 +40,35 @@ public class FormController {
 
         JSONObject input = null;
         if(source.equals("json")) {
-            JSONOperations jops1 = new JSONOperations();
-            input = jops1.JSONRead(jsonFields);
+            input = jsonOperations.JSONRead(jsonFields);
         }
         else if(source.equals("mysql")) {
-            DatabaseOperations db = new DatabaseOperations(uri, databaseName, userName, password, tableName);
             input = db.readFields();
         }
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
-
-    @RequestMapping(method = RequestMethod.GET, value = "/dataTest")
-    public ResponseEntity dataTest(@RequestParam(value = "input", defaultValue = "mysql") String input) throws IOException{
-
-        return new ResponseEntity(input, HttpStatus.OK);
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
     public ResponseEntity fetchFormOutput() throws IOException{
 
         JSONObject input = null;
         if(source.equals("json")) {
-            JSONOperations jops1 = new JSONOperations();
-            input = jops1.JSONRead(jsonOut);
+            input = jsonOperations.JSONRead(jsonOut);
         }
         else if(source.equals("mysql")) {
-            DatabaseOperations db = new DatabaseOperations(uri, databaseName, userName, password, tableName);
             input = db.readValues();
         }
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
 
-
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map userData) throws IOException {
 
         if(source.equals("json")) {
-            JSONOperations jops1 = new JSONOperations();
-
             JSONObject JSONoutput = new JSONObject(userData);
-
-            jops1.JSONWrite(JSONoutput, jsonOut);
+            jsonOperations.JSONWrite(JSONoutput, jsonOut);
         }
         else if(source.equals("mysql")) {
-            DatabaseOperations db = new DatabaseOperations(uri, databaseName, userName, password, tableName);
             db.writeValues(userData);
         }
         return new ResponseEntity(HttpStatus.CREATED);
@@ -100,6 +79,4 @@ public class FormController {
 
         return "formsubmitted";
     }
-
-
 }
