@@ -1,6 +1,7 @@
 package com.springapp.mvc;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -80,13 +81,28 @@ public class FormController {
         return new ResponseEntity(HttpStatus.CREATED);
 	}
 
-    @RequestMapping(method = RequestMethod.POST, value = "/sendFields", consumes = "application/json", produces = "application/json")
-    public ResponseEntity createForm(@RequestParam Map<String, String> userData) throws IOException {
+    @RequestMapping(method = RequestMethod.POST, value = "/sendFields"/*, consumes = "application/json", produces = "application/json"*/)
+    public ResponseEntity createForm(@RequestParam /*Map<String, Map<String, String>>*/ String param1) throws IOException {
+        System.out.println(param1);
+        JSONObject JSONoutput = new JSONObject();
+        Object output;
+        JSONOperations jops1 = new JSONOperations();
+        JSONParser parser = new JSONParser();
 
         if(source.equals("json")) {
-            JSONObject JSONoutput = new JSONObject(userData);
-            System.out.println(JSONoutput.toJSONString());
-            jsonOperations.JSONWrite(JSONoutput, jsonFields);
+//            JSONObject JSONoutput = new JSONObject(userData);
+//            System.out.println("this is JSON " + JSONoutput.toJSONString());
+//            jsonOperations.JSONWrite(JSONoutput, jsonFields);
+            try{
+                output =  parser.parse(param1);
+                JSONoutput=(JSONObject) output;
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            jops1.JSONWrite(JSONoutput, "dataFields.json");
+
         }
         else if(source.equals("mysql")) {
             //db.writeValues(userData);

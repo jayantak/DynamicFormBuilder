@@ -40,9 +40,10 @@ define(['jquery'], function($){
         var jsonObject={
             form:formObject
         };
+       var str1= JSON.stringify(jsonObject);
 
-        $.post('sendFields', jsonObject, function (response) {
-            console.log(jsonObject);
+        $.post('sendFields', {"param1": str1}, function (response) {
+            console.log(str1);
         }).done(doneOut).fail(errorOut);
     };
 
