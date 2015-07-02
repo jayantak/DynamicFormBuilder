@@ -35,6 +35,11 @@ public class FormController {
         return "HomePage";
 	}
 
+    @RequestMapping(method = RequestMethod.GET, value = "/createForm")
+    public String createForm() throws Exception {
+        return "createForm";
+    }
+
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
 
@@ -66,6 +71,7 @@ public class FormController {
 
         if(source.equals("json")) {
             JSONObject JSONoutput = new JSONObject(userData);
+            System.out.println(JSONoutput.toJSONString());
             jsonOperations.JSONWrite(JSONoutput, jsonOut);
         }
         else if(source.equals("mysql")) {
@@ -73,6 +79,20 @@ public class FormController {
         }
         return new ResponseEntity(HttpStatus.CREATED);
 	}
+
+    @RequestMapping(method = RequestMethod.POST, value = "/sendFields", consumes = "application/json", produces = "application/json")
+    public ResponseEntity createForm(@RequestParam Map<String, String> userData) throws IOException {
+
+        if(source.equals("json")) {
+            JSONObject JSONoutput = new JSONObject(userData);
+            System.out.println(JSONoutput.toJSONString());
+            jsonOperations.JSONWrite(JSONoutput, jsonFields);
+        }
+        else if(source.equals("mysql")) {
+            //db.writeValues(userData);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value="/formsubmitted")
     public String formSubmitted() throws IOException {

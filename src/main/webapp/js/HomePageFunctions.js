@@ -11,7 +11,7 @@ define(['jquery', 'FormAdd'], function($, form)
     };
 
     var submitForm = function () {
-        var a={};
+        var formData={};
         var output = [];
         var checkRB={};
 
@@ -28,21 +28,20 @@ define(['jquery', 'FormAdd'], function($, form)
                     output.push([$(this).attr('name'), $(this).val()]);
                     res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
                     checkRB[rbName]=1;
-                    a[$(this).attr('name')]=$(this).val();
+                    formData[$(this).attr('name')]=$(this).val();
                 }
             }
             else {
                 output.push([$(this).attr('name'), $(this).val()]);
                 res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
-                a[$(this).attr('name')]=$(this).val();
+                formData[$(this).attr('name')]=$(this).val();
             }
         });
 
         var res = res + '}';
-        console.log(a.toString());
 
-        $.post('sendForm', a, function (response) {
-            console.log(a);
+        $.post('sendForm', formData, function (response) {
+            console.log(formData);
         }).done(doneOut).fail(errorOut);
 
         return res;

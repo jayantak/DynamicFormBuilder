@@ -18,7 +18,9 @@ requirejs.config({
         HomePage: '../js/HomePage',
         HomePageFunctions: '../js/HomePageFunctions',
         TableAdd: '../js/TableAdd',
-        ObjectCompare: '../js/test/ObjectCompare'
+        ObjectCompare: '../js/test/ObjectCompare',
+        createForm: '../js/createForm',
+        createFormAdd: '../js/createFormAdd'
     },
     shim: {
         jQuery:{
@@ -37,6 +39,12 @@ requirejs.config({
             deps: ['jquery']
         },
         TableAdd: {
+            deps: ['jquery']
+        },
+        createForm: {
+            deps: ['jquery']
+        },
+        createFormAdd: {
             deps: ['jquery']
         }
     },

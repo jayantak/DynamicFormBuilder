@@ -46,4 +46,4 @@ requirejs.config({
     }
 });
 
-requirejs(["../js/HomePage"]);
+requirejs(["../js/createForm"]);
