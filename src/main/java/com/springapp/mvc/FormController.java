@@ -29,12 +29,21 @@ public class FormController {
     DatabaseOperations db;
     JSONOperations jsonOperations = new JSONOperations();
 
+
+
     @RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
 
         db = new DatabaseOperations(uri, databaseName, userName, password, tableName);
         return "HomePage";
 	}
+
+    @RequestMapping(method = RequestMethod.GET, value = "/newForm")
+    public String newForm() throws Exception {
+
+        return "HomePage";
+    }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/createForm")
     public String createForm() throws Exception {

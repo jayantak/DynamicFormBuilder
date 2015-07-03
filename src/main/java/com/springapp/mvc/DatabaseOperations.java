@@ -43,7 +43,7 @@ public class DatabaseOperations {
         return statement;
     }
 
-    public JSONObject readFields() throws IOException{
+    public JSONObject readFields() throws IOException {
 
         JSONObject pageFields = new JSONObject();
         JSONObject formFields = new JSONObject();

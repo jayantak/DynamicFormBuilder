@@ -2,7 +2,7 @@ define(['jquery'], function($){
 
     var doneOut = function () {
         console.log("done");
-        window.location.href = "HomePage";
+        window.location.href = "newForm";
     };
 
     var errorOut = function (e) {
