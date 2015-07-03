@@ -27,7 +27,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -138,5 +137,7 @@
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: classworlds:classworlds:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.twdata.maven:mojo-executor:1.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:2.13.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:bson:2.13.2" level="project" />
   </component>
 </module>
