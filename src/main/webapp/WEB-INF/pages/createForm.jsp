@@ -34,7 +34,8 @@
     <div class = "pure-g">
 
       <div class="pure-u-2-5">
-        <form class="pure-form">
+        <form id = "fullForm" class="pure-form">
+          <label for = "formName">Form Name: </label><input id = "formName" placeholder="Form Name">
             <fieldset id = "newForm" >
             </fieldset>
         </form>

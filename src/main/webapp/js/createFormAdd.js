@@ -14,9 +14,15 @@ define(['jquery'], function($){
         var fieldID = 'field' + fieldNumber;
         var typeID = 'type'+ fieldNumber;
 
-
         $('#newForm').append('<div class = "pure-control-group"><label for="' + fieldID + '">Field ' + fieldNumber + ':</label><input id ="' + fieldID + '" type="text">' +
-            '</input><label for="' + typeID + '"> Type ' + fieldNumber + ':</label><input id ="' + typeID + '" type="text"></input></div>');
+            '</input><label for="' + typeID + '"> Type ' + fieldNumber + ':</label><select id ="' + typeID + '" type="text">' +
+            '<option value = "text">Text</option>' +
+            '<option value = "password">Password</option>' +
+            '<option value = "number">Number</option>' +
+            '<option value = "date">Date</option>' +
+            '<option value = "email">Email</option>' +
+            '<option value = "password">Password</option>' +
+            '<option value = "color">Colour</option></select></div>');
     };
 
 
@@ -24,10 +30,12 @@ define(['jquery'], function($){
 
         var formObject = {};
 
+        var formName = $('#formName').val();
+
         for(i = 1; i <= fieldCount; i++){
 
             var fieldID = '#field'+i;
-            var typeID = '#type'+i;
+            var typeID = '#type'+i+' :selected';
 
             var attributes = {
                 type:($(typeID).val())
@@ -38,7 +46,8 @@ define(['jquery'], function($){
         }
 
         var jsonObject={
-            form:formObject
+            form:formObject,
+            formName:formName
         };
        var str1= JSON.stringify(jsonObject);
 

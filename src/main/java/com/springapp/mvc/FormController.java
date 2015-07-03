@@ -90,31 +90,27 @@ public class FormController {
         return new ResponseEntity(HttpStatus.CREATED);
 	}
 
-    @RequestMapping(method = RequestMethod.POST, value = "/sendFields"/*, consumes = "application/json", produces = "application/json"*/)
-    public ResponseEntity createForm(@RequestParam /*Map<String, Map<String, String>>*/ String param1) throws IOException {
-        System.out.println(param1);
+    @RequestMapping(method = RequestMethod.POST, value = "/sendFields")
+    public ResponseEntity createForm(@RequestParam String param1) throws IOException {
         JSONObject JSONoutput = new JSONObject();
         Object output;
         JSONOperations jops1 = new JSONOperations();
         JSONParser parser = new JSONParser();
+        try{
+            output =  parser.parse(param1);
+            JSONoutput=(JSONObject) output;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
         if(source.equals("json")) {
-//            JSONObject JSONoutput = new JSONObject(userData);
-//            System.out.println("this is JSON " + JSONoutput.toJSONString());
-//            jsonOperations.JSONWrite(JSONoutput, jsonFields);
-            try{
-                output =  parser.parse(param1);
-                JSONoutput=(JSONObject) output;
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-            jops1.JSONWrite(JSONoutput, "dataFields.json");
 
+            jops1.JSONWrite(JSONoutput, "dataFields.json");
         }
         else if(source.equals("mysql")) {
-            //db.writeValues(userData);
+            db.writeForm(JSONoutput);
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }

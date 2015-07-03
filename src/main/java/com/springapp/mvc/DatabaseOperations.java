@@ -6,7 +6,9 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class DatabaseOperations {
 
@@ -137,5 +139,41 @@ public class DatabaseOperations {
             System.out.println(e.getMessage());
         }
         return pageFields;
+    }
+
+    public void writeForm(JSONObject Values) throws IOException {
+
+        JSONObject Form = (JSONObject) Values.get("form");
+        String tableName = Values.get("formName").toString();
+        this.tableName = tableName;
+        Set set = Form.keySet();
+        Iterator iterator = set.iterator();
+        String key, comment;
+        JSONObject attributes;
+
+        String query = "CREATE TABLE " + tableName + "(%s);";
+        String fields = "";
+
+        while(iterator.hasNext()) {
+
+            key = iterator.next().toString();
+
+            attributes = (JSONObject) Form.get(key);
+
+            comment = attributes.get("type").toString();
+
+            fields = fields.concat(key + " varchar(30) COMMENT '" + comment + "'");
+            if (iterator.hasNext()){
+                fields = fields.concat(", ");
+            }
+        }
+
+        query = String.format(query, fields);
+        try{
+            getStatement().executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
