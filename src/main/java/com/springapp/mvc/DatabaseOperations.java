@@ -176,4 +176,29 @@ public class DatabaseOperations {
             System.out.println(e.getMessage());
         }
     }
+
+    public JSONArray readForms() throws IOException{
+        JSONArray pageFields = new JSONArray();
+
+
+        try{
+            ResultSet formResultSet = getStatement().executeQuery("SHOW tables;");
+
+
+            while(formResultSet.next()) {
+
+                String field = formResultSet.getString(1);
+
+                pageFields.add(field);
+            }
+
+
+
+            return pageFields;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return pageFields;
+    }
 }

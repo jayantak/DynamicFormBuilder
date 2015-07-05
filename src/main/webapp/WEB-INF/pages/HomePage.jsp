@@ -27,6 +27,7 @@
 
                 <div class="pure-u-2-5">
                     <form id = "form1" class="pure-form pure-form-aligned">
+                        <legend id ="formName"></legend>
                     </form>
                     <button id="SubmitButton" class="pure-button pure-button-primary">SUBMIT</button>
                 </div>

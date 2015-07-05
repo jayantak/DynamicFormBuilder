@@ -45,6 +45,9 @@ define(['jquery', 'owlCarousel'], function($) {
                 }
             }
         }
+        else if(field[0] == "formName") {
+            $('#formName').append(field[1]);
+        }
     };
 
     var generateForm =  function(data) {

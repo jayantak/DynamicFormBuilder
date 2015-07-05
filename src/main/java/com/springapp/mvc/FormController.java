@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Value;
@@ -119,5 +120,26 @@ public class FormController {
     public String formSubmitted() throws IOException {
 
         return "formsubmitted";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/forms")
+    public ResponseEntity fetchFormList() throws IOException{
+
+        JSONArray input= new JSONArray();
+        if(source.equals("json")) {
+           // input = jsonOperations.JSONRead(jsonOut);
+        }
+        else if(source.equals("mysql")) {
+            input = db.readForms();
+        }
+
+        System.out.println(input.toJSONString());
+        return new ResponseEntity(input.toString(), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/formpage")
+    public String formList() throws IOException {
+
+        return "currentForms";
     }
 }
