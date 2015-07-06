@@ -27,17 +27,19 @@
 <body>
 <div class="header">
   <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-    <a class="pure-menu-heading">Form Submitted</a>
+    <a class="pure-menu-heading">Dynamic Form Builder</a>
 
     <ul class="pure-menu-list">
-      <li class="pure-menu-item"><a href="/" class="pure-menu-link">Submit another form</a>
+      <li class="pure-menu-item"><a href="/" class="pure-menu-link">Back To Home</a>
       </li>
     </ul>
   </div>
 </div>
 <br><br><br>
   <div class="content">
+    <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
     <p>
+      <legend id ="formName">Form Submitted</legend>
       <table class = "pure-table pure-table-striped">
     <thead>
     <tr>
@@ -53,5 +55,6 @@
 
 
 </div>
+    </div>
 </body>
 </html>

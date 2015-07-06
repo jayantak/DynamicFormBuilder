@@ -1,6 +1,6 @@
 define(['jquery'], function($) {
     var addElement = function (key) {
-       $('#FormTable').append('<tr><td><a href=""> ' + key + '</a></td></tr>');
+       $('#FormTable').append('<tr><td><a href="/newForm?form='+key+'"> ' + key + '</a></td></tr>');
 
     };
 

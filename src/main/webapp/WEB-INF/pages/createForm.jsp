@@ -27,6 +27,10 @@
   <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
       <a class="pure-menu-heading" href="">Dynamic Form Builder</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="/" class="pure-menu-link">Back To Home</a>
+        </li>
+      </ul>
     </div>
   </div>
   <br><br>
@@ -36,6 +40,7 @@
       <div class="">
         <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
         <form id = "fullForm" class="pure-form">
+          <legend id ="title">Create New Form</legend>
           <label for = "formName">Form Name: </label><input id = "formName" placeholder="Form Name">
             <fieldset id = "newForm" >
             </fieldset>

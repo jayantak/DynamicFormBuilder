@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class DatabaseOperations {
+public class MySQLOperations {
 
     String URI;
     String databaseName;
@@ -18,7 +18,7 @@ public class DatabaseOperations {
     String password ;
     String tableName ;
 
-    public DatabaseOperations(String URI, String databaseName, String userName, String password, String tableName) {
+    public MySQLOperations(String URI, String databaseName, String userName, String password, String tableName) {
         this.URI = URI;
         this.databaseName = databaseName;
         this.userName = userName;
@@ -177,13 +177,15 @@ public class DatabaseOperations {
         }
     }
 
+    public void setTableName(String form){
+        this.tableName = form;
+    }
+
     public JSONArray readForms() throws IOException{
         JSONArray pageFields = new JSONArray();
 
-
         try{
             ResultSet formResultSet = getStatement().executeQuery("SHOW tables;");
-
 
             while(formResultSet.next()) {
 
@@ -191,9 +193,6 @@ public class DatabaseOperations {
 
                 pageFields.add(field);
             }
-
-
-
             return pageFields;
         }
         catch(Exception e){

@@ -26,30 +26,39 @@
 <body>
 <div class="header">
   <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-    <a class="pure-menu-heading">List of Forms</a>
+    <a class="pure-menu-heading">Dynamic Form Builder</a>
 
-    <ul class="pure-menu-list">
-      <%--<li class="pure-menu-item"><a href="/" class="pure-menu-link">Submit another form</a>--%>
-      <%--</li>--%>
-    </ul>
+      <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="/" class="pure-menu-link">Back To Home</a>
+          </li>
+      </ul>
   </div>
 </div>
 <br><br><br>
 <div class="content">
-  <p>
-  <table id = "FormTable" class = "pure-table pure-table-striped">
-    <thead>
-    <tr>
-      <th>Current Forms</th>
-    </tr>
-    </thead>
-    <tbody id="formList">
+    <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+    <div>
+        <legend>List of existing forms</legend>
+    </div>
+  <div>
+    <table id = "FormTable" class = "pure-table pure-table-striped">
+      <thead>
+        <tr>
+          <th>Current Forms</th>
+        </tr>
+      </thead>
+      <tbody id="formList">
 
-    </tbody>
-  </table>
-  </p>
+      </tbody>
+    </table>
+  </div>
+    <div>
+        <br>
+        <br>
+        <button id="CreateForm" class="pure-button pure-button-primary">Create New Form</button>
+    </div>
 
-
+</div>
 </div>
 </body>
 </html>

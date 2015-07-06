@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import com.mongodb.DBObject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,31 +19,36 @@ import java.util.Map;
 @RequestMapping("/")
 public class FormController {
 
+    @Value("${data.source}") private String source;
     @Value("${mysql.uri}") private String uri;
-    @Value("${mysql.database}") private String databaseName;
+    @Value("${mysql.database}") private String mysqlDBName;
     @Value("${mysql.userName}") private String userName;
     @Value("${mysql.password}") private String password;
     @Value("${mysql.tableName}") private String tableName;
-    @Value("${data.source}") private String source;
     @Value("${json.in}") private String jsonFields;
     @Value("${json.out}") private String jsonOut;
+    @Value("${mongo.host}") private String mongoHost;
+    @Value("${mongo.port}") private String mongoPort;
+    @Value("${mongo.databaseName}") private String mongoDBName;
+    @Value("${mongo.collName}") private String mongoCollName;
 
-    DatabaseOperations db;
+    MySQLOperations mySQLOperations;
     JSONOperations jsonOperations = new JSONOperations();
-
-
+    MongoOperations mongoOperations;
 
     @RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
 
-        db = new DatabaseOperations(uri, databaseName, userName, password, tableName);
-        return "HomePage";
+        mySQLOperations = new MySQLOperations(uri, mysqlDBName, userName, password, tableName);
+        mongoOperations = new MongoOperations(mongoHost, mongoPort, mongoDBName, mongoCollName);
+        return "currentForms";
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/newForm")
-    public String newForm() throws Exception {
+    public String newForm(@RequestParam(value = "form", required = false, defaultValue = "people") String form) throws Exception {
 
-        return "HomePage";
+        mySQLOperations.setTableName(form);
+        return "NewForm";
     }
 
 
@@ -56,10 +62,10 @@ public class FormController {
 
         JSONObject input = null;
         if(source.equals("json")) {
-            input = jsonOperations.JSONRead(jsonFields);
+            input = mongoOperations.getFields();
         }
         else if(source.equals("mysql")) {
-            input = db.readFields();
+            input = mySQLOperations.readFields();
         }
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
@@ -72,7 +78,7 @@ public class FormController {
             input = jsonOperations.JSONRead(jsonOut);
         }
         else if(source.equals("mysql")) {
-            input = db.readValues();
+            input = mySQLOperations.readValues();
         }
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
@@ -82,11 +88,10 @@ public class FormController {
 
         if(source.equals("json")) {
             JSONObject JSONoutput = new JSONObject(userData);
-            System.out.println(JSONoutput.toJSONString());
             jsonOperations.JSONWrite(JSONoutput, jsonOut);
         }
         else if(source.equals("mysql")) {
-            db.writeValues(userData);
+            mySQLOperations.writeValues(userData);
         }
         return new ResponseEntity(HttpStatus.CREATED);
 	}
@@ -111,7 +116,7 @@ public class FormController {
             jops1.JSONWrite(JSONoutput, "dataFields.json");
         }
         else if(source.equals("mysql")) {
-            db.writeForm(JSONoutput);
+            mySQLOperations.writeForm(JSONoutput);
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }
@@ -130,10 +135,9 @@ public class FormController {
            // input = jsonOperations.JSONRead(jsonOut);
         }
         else if(source.equals("mysql")) {
-            input = db.readForms();
+            input = mySQLOperations.readForms();
         }
 
-        System.out.println(input.toJSONString());
         return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
 

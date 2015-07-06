@@ -50,7 +50,7 @@ define(['jquery', 'owlCarousel'], function($) {
         }
     };
 
-    var generateForm =  function(data) {
+    var createForm =  function(data) {
         var Items = {};
         var fields = [];
         Items.formItems = [];
@@ -83,6 +83,6 @@ define(['jquery', 'owlCarousel'], function($) {
         carouselHTML : carouselHTML,
         formTextHTML : formTextHTML,
         addElement : addElement,
-        createForm : generateForm
+        createForm : createForm
     };
 });

@@ -1,9 +1,5 @@
 define(['jquery'], function($){
 
-    var doneOut = function () {
-        console.log("done");
-        window.location.href = "newForm";
-    };
 
     var errorOut = function (e) {
         console.log(e.responseText);
@@ -21,7 +17,6 @@ define(['jquery'], function($){
             '<option value = "number">Number</option>' +
             '<option value = "date">Date</option>' +
             '<option value = "email">Email</option>' +
-            '<option value = "password">Password</option>' +
             '<option value = "color">Colour</option></select></div>');
     };
 
@@ -49,11 +44,15 @@ define(['jquery'], function($){
             form:formObject,
             formName:formName
         };
-       var str1= JSON.stringify(jsonObject);
+        var str1= JSON.stringify(jsonObject);
+        var target = 'newForm?form='+formName;
 
         $.post('sendFields', {"param1": str1}, function (response) {
             console.log(str1);
-        }).done(doneOut).fail(errorOut);
+        }).done(function () {
+            console.log("done");
+            window.location.href = target;
+        }).fail(errorOut);
     };
 
     return {

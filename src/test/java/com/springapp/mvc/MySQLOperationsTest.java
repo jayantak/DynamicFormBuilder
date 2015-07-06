@@ -11,12 +11,12 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class DatabaseOperationsTest {
+public class MySQLOperationsTest {
 
-    private DatabaseOperations db;
+    private MySQLOperations db;
     @Before
     public void setUp() throws  Exception{
-        db = new DatabaseOperations("jdbc:mysql://localhost:3306/", "TESTDB", "root","","TESTTABLE");
+        db = new MySQLOperations("jdbc:mysql://localhost:3306/", "TESTDB", "root","","TESTTABLE");
         db.getStatement().executeUpdate("DROP TABLE IF EXISTS TESTTABLE;");
         db.getStatement().executeUpdate("CREATE TABLE IF NOT EXISTS TESTTABLE(Test1 varchar(20) COMMENT 'text', Test2 varchar(30) COMMENT 'text');");
     }

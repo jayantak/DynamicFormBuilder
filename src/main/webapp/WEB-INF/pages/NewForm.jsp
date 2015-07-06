@@ -19,10 +19,15 @@
         <div class="header">
             <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
                 <a class="pure-menu-heading" href="">Dynamic Form Builder</a>
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="/" class="pure-menu-link">Back To Home</a>
+                    </li>
+                </ul>
             </div>
         </div>
         <br><br>
         <div class="content">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
             <div class = "pure-g">
 
                 <div class="pure-u-2-5">
@@ -38,6 +43,7 @@
                 </div>
                 </div>
         </div>
+            </div>
 
     </body>
 </html>
