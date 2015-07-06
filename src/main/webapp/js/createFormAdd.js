@@ -47,7 +47,7 @@ define(['jquery'], function($){
         var str1= JSON.stringify(jsonObject);
         var target = 'newForm?form='+formName;
 
-        $.post('sendFields', {"param1": str1}, function (response) {
+        $.post('sendFields', {"fieldData": str1}, function (response) {
             console.log(str1);
         }).done(function () {
             console.log("done");

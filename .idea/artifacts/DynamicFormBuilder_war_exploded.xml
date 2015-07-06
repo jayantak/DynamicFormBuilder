@@ -105,6 +105,7 @@
           <element id="library" level="project" name="Maven: org.twdata.maven:mojo-executor:1.5.2" />
           <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.13.2" />
           <element id="library" level="project" name="Maven: org.mongodb:bson:2.13.2" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

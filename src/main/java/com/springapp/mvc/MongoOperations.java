@@ -1,9 +1,15 @@
 package com.springapp.mvc;
 
 
+import com.google.gson.Gson;
 import com.mongodb.*;
 import org.bson.BSONObject;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class MongoOperations {
 
@@ -16,6 +22,10 @@ public class MongoOperations {
         this.host = host;
         this.port = port;
         this.databaseName = databaseName;
+        this.collName = collName;
+    }
+
+    public void setCollName(String collName){
         this.collName = collName;
     }
 
@@ -32,27 +42,61 @@ public class MongoOperations {
         return null;
     }
 
+    public DBCollection getMongoCollection(){
+        return getMongoDB().getCollection(collName);
+    }
+
     public JSONObject getFields(){
 
-        DBCollection dbCollection = getMongoDB().getCollection(collName);
         BasicDBObject query = new BasicDBObject("formName", new BasicDBObject("$exists", true));
-        BSONObject bsonObject = dbCollection.find(query).next();
-        JSONObject abc = new JSONObject();
-        abc.putAll(bsonObject.toMap());
-        abc.remove("_id");
-        return abc;
+        BSONObject bsonObject = getMongoCollection().find(query).next();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.putAll(bsonObject.toMap());
+        jsonObject.remove("_id");
+        return jsonObject;
     }
 
     public JSONObject readValues(){
 
-        DBCollection dbCollection = getMongoDB().getCollection(collName);
-        BasicDBObject query = new BasicDBObject("formName", new BasicDBObject("$exists", true));
-        BSONObject bsonObject = dbCollection.find(query).next();
-        JSONObject abc = new JSONObject();
-        abc.putAll(bsonObject.toMap());
-        abc.remove("_id");
-        System.out.println(abc);
-        return abc;
+        BasicDBObject query = new BasicDBObject("formName", new BasicDBObject("$exists", false));
+
+        DBCursor cursor = getMongoCollection().find(query);
+        int entries = cursor.count();
+        for (int i = 1; i < entries; i++) {
+            cursor.next();
+        }
+        BSONObject bsonObject = cursor.next();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.putAll(bsonObject.toMap());
+        jsonObject.remove("_id");
+        return jsonObject;
     }
 
+    public void writeValues(Map map){
+
+        BasicDBObject basicDBObject = new BasicDBObject(map);
+        getMongoCollection().insert(basicDBObject);
+    }
+
+    public void writeForm(Map map){
+        BasicDBObject basicDBObject = new BasicDBObject(map);
+        this.collName = basicDBObject.get("formName").toString();
+        getMongoCollection().insert(basicDBObject);
+    }
+
+    public JSONArray readForms() {
+
+        JSONArray jsonArray = new JSONArray();
+
+        Set set = getMongoDB().getCollectionNames();
+
+        Iterator iterator = set.iterator();
+
+        while(iterator.hasNext()){
+
+            jsonArray.add(iterator.next());
+        }
+        jsonArray.remove("system.indexes");
+        return jsonArray;
+    }
 }

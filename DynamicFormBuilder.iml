@@ -139,5 +139,6 @@
     <orderEntry type="library" name="Maven: org.twdata.maven:mojo-executor:1.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:2.13.2" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:bson:2.13.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.2.2" level="project" />
   </component>
 </module>
