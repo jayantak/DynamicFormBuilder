@@ -1,7 +1,5 @@
 package com.springapp.mvc;
 
-
-import com.google.gson.Gson;
 import com.mongodb.*;
 import org.bson.BSONObject;
 import org.json.simple.JSONArray;
