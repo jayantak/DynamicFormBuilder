@@ -3,3 +3,5 @@ target/*
 node/*
 node_modules/*
 /target/
+tomcat/*
+/tomcat/

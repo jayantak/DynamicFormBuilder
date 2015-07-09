@@ -16,6 +16,11 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.0.23" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.23" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.0.23" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.0.23" />
+          <element id="library" level="project" name="Maven: org.eclipse.jdt.core.compiler:ecj:4.4.2" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.6.4" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.6.4" />
           <element id="library" level="project" name="Maven: org.apache.directory.studio:org.apache.commons.io:2.4" />
