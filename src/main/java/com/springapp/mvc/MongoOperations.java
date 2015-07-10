@@ -85,11 +85,8 @@ public class MongoOperations {
     public JSONArray readForms() {
 
         JSONArray jsonArray = new JSONArray();
-
         Set set = getMongoDB().getCollectionNames();
-
         Iterator iterator = set.iterator();
-
         while(iterator.hasNext()){
 
             jsonArray.add(iterator.next());

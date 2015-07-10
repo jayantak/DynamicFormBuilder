@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -96,8 +97,38 @@ public class MySQLOperationsTest {
         JSONObject newEntry = db.readValues();
         JSONObject testJSON = new JSONObject();
         testJSON.put("Test1","s");
-        testJSON.put("Test2","t");
+        testJSON.put("Test2", "t");
 
         assertEquals(testJSON,newEntry);
     }
+
+    @Test
+    public void testWriteForm() throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        JSONObject form = new JSONObject();
+        JSONObject field = new JSONObject();
+        field.put("type", "text");
+        form.put("Field1", field);
+        jsonObject.put("form", form);
+        jsonObject.put("formName", "Form1");
+
+        db.writeForm(jsonObject);
+
+        ResultSet resultSet = db.getStatement().executeQuery("SHOW TABLES;");
+        resultSet.next();
+        assertEquals("Form1", resultSet.getString(1));
+        resultSet = db.getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='Form1';");
+        resultSet.last();
+        assertEquals("Field1", resultSet.getString("COLUMN_NAME"));
+    }
+
+    @Test
+    public void testReadForms() throws Exception {
+        db.getStatement().executeUpdate("CREATE TABLE IF NOT EXISTS AAAA(Field1 varchar(30));");
+
+        JSONArray jsonArray = db.readForms();
+
+        assertEquals("AAAA", jsonArray.get(0));
+    }
+
 }

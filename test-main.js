@@ -20,7 +20,11 @@ requirejs.config({
         TableAdd: '../js/TableAdd',
         ObjectCompare: '../js/test/ObjectCompare',
         createForm: '../js/createForm',
-        createFormAdd: '../js/createFormAdd'
+        createFormAdd: '../js/createFormAdd',
+        currentForm: '../js/currentForm',
+        currentFormJSON: '../js/currentFormJSON',
+        formValues: '../js/formValues',
+        formValuesAdd: '../js/formValuesAdd'
     },
     shim: {
         jQuery:{
@@ -45,6 +49,18 @@ requirejs.config({
             deps: ['jquery']
         },
         createFormAdd: {
+            deps: ['jquery']
+        },
+        currentForm: {
+            deps: ['jquery']
+        },
+        currentFormAdd: {
+            deps: ['jquery']
+        },
+        formValues: {
+            deps: ['jquery']
+        },
+        formValuesAdd: {
             deps: ['jquery']
         }
     },
