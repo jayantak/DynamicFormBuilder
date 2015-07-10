@@ -52,7 +52,6 @@ public class FormController {
         return "NewForm";
     }
 
-
     @RequestMapping(method = RequestMethod.GET, value = "/createForm")
     public String createForm() throws Exception {
         return "createForm";
@@ -61,7 +60,7 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.GET, value = "/formData")
 	public ResponseEntity fetchFormData() throws IOException{
 
-        JSONObject input = null;
+        JSONObject input = new JSONObject();
         switch(source){
             case "mongo":
                 input = mongoOperations.getFields();
@@ -115,11 +114,11 @@ public class FormController {
             default:
                 throw new IllegalArgumentException("Invalid Source Data type"+ source);
         }
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.OK);
 	}
 
     @RequestMapping(method = RequestMethod.POST, value = "/sendFields")
-    public ResponseEntity createForm(@RequestParam String fieldData) throws IOException {
+    public ResponseEntity createFormFields(@RequestParam String fieldData) throws IOException {
 
         JSONObject JSONoutput = new JSONObject();
         Object output;
@@ -182,5 +181,53 @@ public class FormController {
     public String formList() throws IOException {
 
         return "currentForms";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/formValues")
+    public String formValues(@RequestParam(value = "form", required = false, defaultValue = "people") String form) throws Exception {
+
+        mongoOperations.setCollName(form);
+        mySQLOperations.setTableName(form);
+        return "formValues";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/allFormResponses")
+    public ResponseEntity allFormValues() throws IOException {
+
+        JSONArray input = new JSONArray();
+        switch(source){
+            case "mongo":
+                input = mongoOperations.getResponses();
+                break;
+            case "mysql":
+                input = mySQLOperations.getResponses();
+                break;
+            case "json":
+//                input = jsonOperations.JSONRead(jsonFields);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Source Data type"+ source);
+        }
+        return new ResponseEntity(input.toString(), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/formFieldNames")
+    public ResponseEntity fetchFormFields() throws IOException{
+
+        JSONArray input = new JSONArray();
+        switch(source){
+            case "mongo":
+                input = mongoOperations.getFieldNames();
+                break;
+            case "mysql":
+                input = mySQLOperations.getFieldNames();
+                break;
+            case "json":
+//                input = jsonOperations.JSONRead(jsonFields);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid Source Data type"+ source);
+        }
+        return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
 }

@@ -27,6 +27,7 @@ public class Server {
         server.getHost().setAppBase(tomcatBaseDirPath);
         server.getHost().setAutoDeploy(true);
         server.getHost().setDeployOnStartup(true);
+
         server.addWebapp(server.getHost(), "", warFileToDeploy.getAbsolutePath());
         server.start();
         server.getServer().await();

@@ -97,4 +97,49 @@ public class MongoOperations {
         jsonArray.remove("system.indexes");
         return jsonArray;
     }
+
+    public JSONArray getResponses() {
+
+        BasicDBObject query = new BasicDBObject("formName", new BasicDBObject("$exists", false));
+
+        DBCursor cursor = getMongoCollection().find(query);
+        int entries = cursor.count();
+        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArrayResponse = new JSONArray();
+        for (int i = 1; i <= entries; i++) {
+            jsonArrayResponse = new JSONArray();
+
+            BSONObject bsonObject = cursor.next();
+            Set set = bsonObject.keySet();
+            Iterator iterator = set.iterator();
+            while(iterator.hasNext()){
+                String key = iterator.next().toString();
+                if(!key.equals("_id")){
+                    String value = (bsonObject.get(key)).toString();
+                    jsonArrayResponse.add(value);
+                }
+            }
+            jsonArray.add(jsonArrayResponse);
+        }
+
+        return jsonArray;
+    }
+
+    public JSONArray getFieldNames() {
+
+        JSONArray jsonArray = new JSONArray();
+
+        BasicDBObject query = new BasicDBObject("formName", new BasicDBObject("$exists", true));
+        BSONObject bsonObject = getMongoCollection().find(query).next();
+        Object object = bsonObject.get("form");
+        bsonObject = (BSONObject) object;
+        Set set = bsonObject.keySet();
+
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()){
+            jsonArray.add(iterator.next().toString());
+        }
+
+        return jsonArray;
+    }
 }

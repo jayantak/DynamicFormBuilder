@@ -12,6 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -38,9 +39,71 @@ public class FormControllerTest {
     }
 
     @Test
-    public void testFetchData() throws Exception {
-        mockMvc.perform(get("/dataOut"))
+    public void testFrontPage1() throws Exception {
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
     }
 
+    @Test
+    public void testNewForm() throws Exception {
+        mockMvc.perform(get("/newForm"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testCreateForm() throws Exception {
+        mockMvc.perform(get("/createForm"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFetchFormData() throws Exception {
+        mockMvc.perform(get("/formData"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFetchFormOutput() throws Exception {
+        mockMvc.perform(get("/dataOut"))
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    public void testFormSubmitted() throws Exception {
+        mockMvc.perform(get("/formsubmitted"))
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    public void testFetchFormList() throws Exception {
+        mockMvc.perform(get("/forms"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFormList() throws Exception {
+        mockMvc.perform(get("/formpage"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFormValues() throws Exception {
+        mockMvc.perform(get("/formValues"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testAllFormValues() throws Exception {
+        mockMvc.perform(get("/allFormResponses"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testFetchFormFields() throws Exception {
+        mockMvc.perform(get("/formFieldNames"))
+                .andExpect(status().isOk());
+
+    }
 }

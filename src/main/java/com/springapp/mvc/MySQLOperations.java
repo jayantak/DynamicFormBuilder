@@ -54,7 +54,7 @@ public class MySQLOperations {
 
         try{
 
-            ResultSet resultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "'");
+            ResultSet resultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "';");
 
             while(resultSet.next()){
 
@@ -199,5 +199,50 @@ public class MySQLOperations {
             System.out.println(e.getMessage());
         }
         return pageFields;
+    }
+
+    public JSONArray getResponses() throws IOException{
+
+        JSONArray data = new JSONArray();
+
+        try{
+            ResultSet number = getStatement().executeQuery("SELECT COUNT(*)\n" +
+                    "FROM INFORMATION_SCHEMA.COLUMNS\n" +
+                    "   WHERE table_name = '"+tableName+"';");
+            number.next();
+            int columns = number.getInt(1);
+            ResultSet resultSet = getStatement().executeQuery("SELECT * FROM "+tableName + ";");
+
+            while(resultSet.next()){
+                JSONArray response = new JSONArray();
+                for (int i = 1; i <= columns; i++) {
+                    String value = resultSet.getString(i);
+                    response.add(i-1, value);
+                }
+                data.add(response);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+
+    public JSONArray getFieldNames() throws IOException{
+
+        JSONArray data = new JSONArray();
+
+        try{
+            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "';");
+
+            while(fieldResultSet.next()){
+                data.add(fieldResultSet.getString("COLUMN_NAME"));
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return data;
     }
 }
