@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fc57c9d-81f6-408e-b54c-4f1bd2745834" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DynamicFormBuilder.iws" afterPath="$PROJECT_DIR$/DynamicFormBuilder.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/currentFormTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/currentFormTest.spec.js" />
     </list>
     <ignored path="DynamicFormBuilder.iws" />
