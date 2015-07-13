@@ -5,7 +5,7 @@ define(['jquery', 'owlCarousel'], function($) {
     };
 
     var formTextHTML = function(name, fieldName) {
-    var pattern,max=999,min=0,maxlength=999;
+    var pattern,max=999999,min=0,maxlength=999,pattern=".*";
     if("max" in fieldName)
          max=fieldName["max"];
 
@@ -14,6 +14,8 @@ define(['jquery', 'owlCarousel'], function($) {
 
      if("maxlength" in fieldName)
         maxlength=fieldName["maxlength"];
+        if("pattern" in fieldName)
+            pattern=fieldName["pattern"];
 
     var noOfValidations = fieldName["validation"].length;
     for(k=0;k<noOfValidations;k++)
@@ -22,18 +24,18 @@ define(['jquery', 'owlCarousel'], function($) {
                 {
                 if(fieldName["type"] == "number")
                      {
-                         return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" min="' + min +'" max="' + max +'" required></input>';
+                         return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" min="' + min +'" max="' + max +'" required pattern="' + pattern +'"></input>';
                      }
-                    return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required maxlength="' + maxlength + '" ></input>';
+                    return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required maxlength="' + maxlength + '" pattern="' + pattern +'"></input>';
                 }
 
             }
             if(fieldName["type"] == "number")
             {
-               return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" min="' + min +'" max="' + max +'"></input>';
+               return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" min="' + min +'" max="' + max +'"pattern="' + pattern +'"></input>';
              }
 
-return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required maxlength="' + maxlength + '" ></input>';
+return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required maxlength="' + maxlength + '" pattern="' + pattern +'"></input>';
 }
     var formDivHTML = function(name) {
         return '<div class="item" id = '+ name + '1><label for="' + name + '">' + name + '</label></div>';

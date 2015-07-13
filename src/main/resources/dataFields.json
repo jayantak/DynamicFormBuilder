@@ -3,11 +3,13 @@
     "Parent":{
       "type":"text",
       "maxlength": 8,
+      "pattern": "[a-zA-Z]*",
       "validation":["noNumerals","size"]
     },
     "Name":{
       "type":"text",
       "maxlength": 8,
+
       "validation": ["noNumerals","necessary","size"]
     },
     "Address":{
@@ -32,6 +34,7 @@
     "Password":
     {
       "type": "password",
+      "pattern": "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}",
       "validation": ["necessary","password"]
     },
 
@@ -41,6 +44,13 @@
       "validation":[],
       "min": 5,
       "max": 199
+    },
+
+    "PinCode":
+    {
+      "type": "text",
+      "validation": [],
+      "pattern": "[0-9]{6}"
     }
 
   }
