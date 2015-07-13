@@ -15,4 +15,3 @@ define(['jquery', 'createFormAdd'], function ($, Create) {
     })
     });
 });
-

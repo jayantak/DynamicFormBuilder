@@ -57,6 +57,7 @@ define(['jquery'], function($){
 
     return {
         addField:addField,
-        submitForm:submitForm
+        submitForm:submitForm,
+        errorOut:errorOut
     }
 });

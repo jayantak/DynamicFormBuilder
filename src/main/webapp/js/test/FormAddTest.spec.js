@@ -50,6 +50,7 @@ define(["FormAdd", "ObjectCompare"], function(forms, objCompare)
         append.thisValues[0].selector.should.be.equal('#form1');
         append.thisValues[1].selector.should.be.equal('#TestCarouselItem');
 
-    });
+        append.restore();
 
+    });
 });
