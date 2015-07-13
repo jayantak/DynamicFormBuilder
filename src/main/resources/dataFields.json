@@ -2,20 +2,17 @@
   "form":{
     "Parent":{
       "type":"text",
-      "max": 8,
-      "min": 4,
+      "maxlength": 8,
       "validation":["noNumerals","size"]
     },
     "Name":{
       "type":"text",
-      "max": 8,
-      "min": 4,
+      "maxlength": 8,
       "validation": ["noNumerals","necessary","size"]
     },
     "Address":{
       "type": "text",
-      "max": 8,
-      "min": 4,
+      "maxlength": 8,
       "validation": ["numerals"]
     },
 
