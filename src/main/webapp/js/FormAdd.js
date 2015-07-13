@@ -106,6 +106,7 @@ return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + n
                 paginationSpeed : 400,
                 singleItem:true
             });
+//$('input[type="submit"]').attr('enabled','enabled')
         return Items;
     };
 

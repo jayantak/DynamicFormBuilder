@@ -16,6 +16,7 @@
         <script data-main="../js/main.js" src="../../libraries/require.js"></script>
     </head>
     <body id ="b">
+
         <div class="header">
             <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
                 <a class="pure-menu-heading" href="">Dynamic Form Builder</a>
@@ -31,10 +32,11 @@
             <div class = "pure-g">
 
                 <div class="pure-u-2-5">
-                    <form id = "form1" class="pure-form pure-form-aligned">
+                    <form id = "form1" class="pure-form pure-form-aligned" action = "/formsubmitted">
                         <legend id ="formName"></legend>
+                        <input type="submit" class="pure-button" id="SubmitButton">
                     </form>
-                    <button id="SubmitButton" class="pure-button pure-button-primary">SUBMIT</button>
+
                 </div>
                 <div class="pure-u-1-5"></div>
                 <div class="pure-u-2-5">

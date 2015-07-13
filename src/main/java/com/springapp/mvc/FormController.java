@@ -44,12 +44,7 @@ public class FormController {
         return "currentForms";
 	}
 
-    @RequestMapping(method = RequestMethod.GET, value = "/validation")
-    public String jsonPage() throws IOException {
 
-
-        return "jsonPage";
-    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/newForm")
     public String newForm(@RequestParam(value = "form", required = false, defaultValue = "people") String form) throws Exception {
@@ -69,8 +64,7 @@ public class FormController {
     @RequestMapping(method = RequestMethod.GET, value = "/formData")
     public ResponseEntity fetchFormData() throws IOException {
 
-        JSONObject input = null;
-        JSONObject input1 = null;
+        JSONObject input = new JSONObject();
         switch(source){
             case "mongo":
                 input = mongoOperations.getFields();
@@ -80,7 +74,7 @@ public class FormController {
                 break;
             case "json":
                 JSONOperations jops1 = new JSONOperations();
-                input1 = jops1.JSONRead("dataFields.json");
+                input = jops1.JSONRead("dataFields.json");
                 break;
 
             default:
@@ -88,7 +82,7 @@ public class FormController {
         }
 
 
-        return new ResponseEntity(input1.toString(), HttpStatus.OK);
+        return new ResponseEntity(input.toString(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
@@ -124,6 +118,7 @@ public class FormController {
             case "json":
                 JSONObject JSONoutput = new JSONObject(userData);
                 jsonOperations.JSONWrite(JSONoutput, jsonOut);
+                System.out.println(userData);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid Source Data type"+ source);

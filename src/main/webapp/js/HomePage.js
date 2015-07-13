@@ -4,6 +4,9 @@ define(['jquery', 'HomePageFunctions', 'FormAdd'], function ($, Page, Form) {
 
         $.getJSON('formData', Form.createForm);
 
+       //$('input[type="submit"]').attr('disabled','disabled');
+
+
         $("#SubmitButton").click(Page.submitForm);
 
     })
