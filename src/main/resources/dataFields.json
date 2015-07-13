@@ -1,32 +1,51 @@
 {
   "form":{
     "Parent":{
-      "type":"password"
+      "type":"text",
+      "max": 8,
+      "min": 4,
+      "validation":["noNumerals","size"]
     },
     "Name":{
-      "type":"text"
+      "type":"text",
+      "max": 8,
+      "min": 4,
+      "validation": ["noNumerals","necessary","size"]
+    },
+    "Address":{
+      "type": "text",
+      "max": 8,
+      "min": 4,
+      "validation": ["numerals"]
     },
 
-    "Sex":
+
+    "Date":
     {
-      "type": "radio",
-      "options": ["Male","Female","Other"]
+      "type": "date"
+      "validation":[]
     },
-    "Choice":
+
+    "Email":
     {
-      "type": "radio",
-      "options": ["Choice1","Choice2"]
-    }
-  },
-  "carousel":{
-    "Lena":{
-      "type":"image",
-      "file":"img.jpg"
+      "type": "email",
+      "validation": ["necessary","email"]
     },
-    "Pikachu":{
-      "type":"image",
-      "file":"img2.jpg"
+
+    "Password":
+    {
+      "type": "password",
+      "validation": ["necessary","password"]
+    },
+
+    "Age":
+    {
+      "type": "number",
+      "validation":[],
+      "min": 5,
+      "max": 199
     }
+
   }
 
 }

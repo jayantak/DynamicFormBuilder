@@ -44,6 +44,13 @@ public class FormController {
         return "currentForms";
 	}
 
+    @RequestMapping(method = RequestMethod.GET, value = "/validation")
+    public String jsonPage() throws IOException {
+
+
+        return "jsonPage";
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/newForm")
     public String newForm(@RequestParam(value = "form", required = false, defaultValue = "people") String form) throws Exception {
 
@@ -57,10 +64,13 @@ public class FormController {
         return "createForm";
     }
 
-	@RequestMapping(method = RequestMethod.GET, value = "/formData")
-	public ResponseEntity fetchFormData() throws IOException{
+    //Check something in the following function
 
-        JSONObject input = new JSONObject();
+    @RequestMapping(method = RequestMethod.GET, value = "/formData")
+    public ResponseEntity fetchFormData() throws IOException {
+
+        JSONObject input = null;
+        JSONObject input1 = null;
         switch(source){
             case "mongo":
                 input = mongoOperations.getFields();
@@ -69,13 +79,17 @@ public class FormController {
                 input = mySQLOperations.readFields();
                 break;
             case "json":
-                input = jsonOperations.JSONRead(jsonFields);
+                JSONOperations jops1 = new JSONOperations();
+                input1 = jops1.JSONRead("dataFields.json");
                 break;
+
             default:
                 throw new IllegalArgumentException("Invalid Source Data type"+ source);
         }
-		return new ResponseEntity(input.toString(), HttpStatus.OK);
-	}
+
+
+        return new ResponseEntity(input1.toString(), HttpStatus.OK);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/dataOut")
     public ResponseEntity fetchFormOutput() throws IOException{

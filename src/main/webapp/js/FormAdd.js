@@ -4,12 +4,27 @@ define(['jquery', 'owlCarousel'], function($) {
         return '<div class="item"><img class="pure-img" src="images/'+ source +'"></div>';
     };
 
-    var formTextHTML = function(name, type) {
-      return '<input name ="' + name + '" type="' + type + '"></input>'
+    var formTextHTML = function(name, fieldName) {
+    var pattern,max=999,min=0;
+    if(fieldName ["type"]== "number")
+      return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" min="' + fieldName["min"] +'" max="' + fieldName["max"] +'"></input>';
+
+        var noOfValidations = fieldName["validation"].length;
+
+        for(k=0;k<noOfValidations;k++)
+        {
+            if(fieldName["validation"][k] == "necessary")
+            {
+                return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required min="' +min+ '" max="' +max+ '"></input>';
+            }
+
+        }
+        return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '"></input>';
+
     };
 
     var formDivHTML = function(name) {
-        return '<div class="item" id = '+ name + '><label for="' + name + '">' + name + '</label></div>';
+        return '<div class="item" id = '+ name + '1><label for="' + name + '">' + name + '</label></div>';
     };
 
     var formRadioHTML = function(name, option){
@@ -40,9 +55,12 @@ define(['jquery', 'owlCarousel'], function($) {
                         $('#'+ keys[i]).append(formRadioHTML(keys[i],field[1][keys[i]]["options"][j]));
                     }
                 }
+
+
                 else {
-                    $('#'+ keys[i]).append(formTextHTML(keys[i], field[1][keys[i]]["type"]));
+                    $('#'+ keys[i] +'1').append(formTextHTML(keys[i], field[1][keys[i]]));
                 }
+
             }
         }
         else if(field[0] == "formName") {
