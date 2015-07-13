@@ -8,7 +8,8 @@ define(['currentForm'], function(Form){
         Form.addElement("KeyName");
 
         assert(append.calledOnce);
-        append.thi
+        append.thisValues[0].selector.should.be.equal('#FormTable');
+        assert(append.calledWith('<tr><td><a href="/newForm?form=KeyName"> KeyName</a></td></tr>'))
 
         append.restore();
     })

@@ -38,7 +38,7 @@ define(['jquery', 'owlCarousel'], function($) {
 return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required maxlength="' + maxlength + '" pattern="' + pattern +'"></input>';
 }
     var formDivHTML = function(name) {
-        return '<div class="item" id = '+ name + '1><label for="' + name + '">' + name + '</label></div>';
+        return '<div class="item" id = '+ name + 'div><label for="' + name + '">' + name + '</label></div>';
     };
 
     var formRadioHTML = function(name, option){
@@ -72,7 +72,7 @@ return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + n
 
 
                 else {
-                    $('#'+ keys[i] +'1').append(formTextHTML(keys[i], field[1][keys[i]]));
+                    $('#'+ keys[i] +'div').append(formTextHTML(keys[i], field[1][keys[i]]));
                 }
 
             }
