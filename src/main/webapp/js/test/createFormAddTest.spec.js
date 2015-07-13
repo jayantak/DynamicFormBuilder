@@ -14,6 +14,7 @@ define(['createFormAdd'], function(Create){
     it('submitForm should successfully call the correct functions', function(){
 
         val = sinon.stub($.fn, "val");
+        error = sinon.stub(Create, "errorOut");
 
         Create.submitForm(2);
 
@@ -26,7 +27,7 @@ define(['createFormAdd'], function(Create){
         assert(error.notCalled);
 
         val.restore();
-
+        error.restore();
     })
 
 })

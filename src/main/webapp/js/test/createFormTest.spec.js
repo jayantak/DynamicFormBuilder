@@ -1,10 +1,6 @@
-define(['createForm'], function(){
+define(['jquery', 'createForm', 'createFormAdd'], function($, Form, Create){
 
     it('This', function(){
-
-        ready = sinon.stub($.fn, "ready");
-
-        ready();
 
 
     })
