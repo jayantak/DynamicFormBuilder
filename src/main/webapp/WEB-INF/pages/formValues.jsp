@@ -27,11 +27,17 @@
         </div>
         <br><br>
         <div class="content">
-            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
                 <div>
                      <legend id = "FormName"></legend>
                      <legend>Data</legend>
-                 </div>
+                </div>
+                <div class="l-box-lrg pure-u-2-5">
+                    <button id = "enableFilter" class="pure-button pure-button-primary">Filter</button>
+                     <form id = "filterForm" class="pure-form pure-form-aligned" action = "">
+                         <legend id ="filterLegend">Filter</legend>
+                         <input type="submit" class="pure-button" id="SubmitFilter" >
+                     </form>
+                </div>
                 <div>
                     <table id = "DataTable" class = "pure-table pure-table-striped">
                         <thead>
@@ -40,11 +46,7 @@
                         <tbody id = "data"></tbody>
                     </table>
                 </div>
-                   <div>
-                    <br>
-                    <br>
-                    </div>
-
+        </div>
 
     </body>
 </html>

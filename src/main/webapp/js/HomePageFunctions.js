@@ -40,8 +40,6 @@ define(['jquery', 'FormAdd'], function($, form)
                 res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
                 formData[$(this).attr('name')]=$(this).val();
             }
-
-
         });
 
 

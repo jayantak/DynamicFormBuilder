@@ -9,6 +9,8 @@ define(['jquery'], function($){
         for(i = 0; i < fields.length; i++){
 
             $('#fields').append('<th>'+fields[i]+'</th>');
+            $('#filterForm').append('<label for = "'+fields[i]+'">'+fields[i]+'</label><input id = "'+fields[i]+'" type = "text"/>');
+
         }
     }
 
