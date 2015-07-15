@@ -100,23 +100,4 @@ public class MongoOperationsTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void testWriteForm() throws Exception {
-
-    }
-
-    @Test
-    public void testReadForms() throws Exception {
-
-    }
-
-    @Test
-    public void testGetResponses() throws Exception {
-
-    }
-
-    @Test
-    public void testGetFieldNames() throws Exception {
-
-    }
 }

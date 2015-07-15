@@ -79,12 +79,10 @@ public class MySQLOperations {
                     }
                     field.put("options", options);
                 }
-
                 field.put("type", type);
 
                 formFields.put(name, field);
             }
-
             pageFields.put("form", formFields);
             return pageFields;
         }

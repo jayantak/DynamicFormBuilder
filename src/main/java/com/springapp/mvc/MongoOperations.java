@@ -133,10 +133,10 @@ public class MongoOperations {
         Set set = bsonObject.keySet();
 
         Iterator iterator = set.iterator();
+
         while(iterator.hasNext()){
             jsonArray.add(iterator.next().toString());
         }
-
         return jsonArray;
     }
 }

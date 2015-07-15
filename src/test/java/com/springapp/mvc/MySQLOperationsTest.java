@@ -130,5 +130,4 @@ public class MySQLOperationsTest {
 
         assertEquals("AAAA", jsonArray.get(0));
     }
-
 }

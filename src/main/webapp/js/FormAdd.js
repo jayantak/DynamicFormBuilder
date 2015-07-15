@@ -8,15 +8,14 @@ define(['jquery', 'owlCarousel'], function($) {
     var pattern,max=999999,min=0,maxlength=999,pattern=".*";
     if("max" in fieldName)
          max=fieldName["max"];
-
-     if("min" in fieldName)
+    if("min" in fieldName)
         min=fieldName["min"];
-
-     if("maxlength" in fieldName)
+    if("maxlength" in fieldName)
         maxlength=fieldName["maxlength"];
-        if("pattern" in fieldName)
+    if("pattern" in fieldName)
             pattern=fieldName["pattern"];
 
+    if("validation" in fieldName){
     var noOfValidations = fieldName["validation"].length;
     for(k=0;k<noOfValidations;k++)
             {
@@ -33,6 +32,7 @@ define(['jquery', 'owlCarousel'], function($) {
             if(fieldName["type"] == "number")
             {
                return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" min="' + min +'" max="' + max +'"pattern="' + pattern +'"></input>';
+             }
              }
 
 return '<input name ="' + name + '" type="' + fieldName["type"] + '" id = "' + name + '" required maxlength="' + maxlength + '" pattern="' + pattern +'"></input>';
