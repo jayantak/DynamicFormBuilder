@@ -8,7 +8,6 @@ define(['jquery'], function($) {
 
         var Items = {};
         Items.tableItems = [];
-        console.log(data);
 
         $.each(data, function (key) {
 

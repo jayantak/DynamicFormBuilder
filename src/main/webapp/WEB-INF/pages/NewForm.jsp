@@ -34,7 +34,7 @@
                 <div class="pure-u-2-5">
                     <form id = "form1" class="pure-form pure-form-aligned" action = "/formsubmitted">
                         <legend id ="formName"></legend>
-                        <input type="submit" class="pure-button" id="SubmitButton">
+                        <input type="submit" class="pure-button" id="SubmitButton" >
                     </form>
 
                 </div>

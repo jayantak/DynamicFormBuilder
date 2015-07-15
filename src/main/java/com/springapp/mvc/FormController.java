@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -108,7 +111,26 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map userData) throws IOException {
 
+        Collection keys= userData.keySet();
+        Collection values =userData.values();
+        System.out.println(keys);
+        System.out.println(values);
+        System.out.println(userData.get("Parent").toString());
+
+        Set set=userData.keySet();
+        Iterator iter= set.iterator();
+        //System.out.println(iter.next().toString());
+        while(iter.hasNext())
+        {
+            if(!iter.next().toString().equals("undefined"))
+            {
+
+            }
+        }
+
         switch(source){
+
+
             case "mongo":
                 mongoOperations.writeValues(userData);
                 break;
