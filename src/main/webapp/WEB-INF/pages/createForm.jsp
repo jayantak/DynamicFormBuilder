@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/marketing.css">
     <link rel="stylesheet" href="css/pure-min.css">
     <script type="text/javascript" src="libraries/jquery.min.js"></script>
-    <script data-main="../../js/mainCreate.js" src="../../libraries/require.js"></script>
+    <script data-main="../../js/CreateForm/mainCreate.js" src="../../libraries/require.js"></script>
   </head>
   <body id ="b">
   <div class="header">

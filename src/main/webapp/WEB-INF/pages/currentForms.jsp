@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/marketing.css">
   <link rel="stylesheet" href="css/pure-min.css">
-  <script data-main="../../js/mainCurrentForm.js" src="../../libraries/require.js"></script>
+  <script data-main="../../js/CurrentForm/mainCurrentForm.js" src="../../libraries/require.js"></script>
 </head>
 <body>
 <div class="header">

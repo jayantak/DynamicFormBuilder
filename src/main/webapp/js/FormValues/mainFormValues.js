@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: '../libraries',
+    baseUrl: '../../libraries',
     paths:{
         jquery: 'jquery.min',
         formValues: '../js/FormValues/formValues',

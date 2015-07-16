@@ -2,36 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fc57c9d-81f6-408e-b54c-4f1bd2745834" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/js/mainFormSubmitted.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/FormAdd.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/NewForm/FormAdd.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted/FormSubmitted.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/HomePage.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/NewForm/HomePage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/HomePageFunctions.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/NewForm/HomePageFunctions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/TableAdd.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted/TableAdd.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/createForm.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/CreateForm/createForm.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/createFormAdd.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/CreateForm/createFormAdd.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/currentForm.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/CurrentForm/currentForm.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/currentFormJSON.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/CurrentForm/currentFormJSON.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/formValues.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/FormValues/formValues.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/formValuesAdd.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/FormValues/formValuesAdd.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/FormAddTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/FormAdd.test.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/TableAddTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/TableAdd.test.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/createFormAddTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/createFormAdd.test.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/createFormTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/createForm.test.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/currentFormTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/currentForm.test.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/test/formValuesAddTest.spec.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/test/formValuesAdd.test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DynamicFormBuilder.ipr" afterPath="$PROJECT_DIR$/DynamicFormBuilder.ipr" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/NewForm/mainNewForm.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainCreate.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/CreateForm/mainCreate.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainCurrentForm.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/CurrentForm/mainCurrentForm.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainFormSubmitted.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted/mainFormSubmitted.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainFormValues.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/FormValues/mainFormValues.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DynamicFormBuilder.iws" afterPath="$PROJECT_DIR$/DynamicFormBuilder.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/NewForm.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/NewForm.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createForm.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createForm.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/currentForms.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/currentForms.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formValues.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formValues.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formsubmitted.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formsubmitted.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainCreate.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/mainCreate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainCurrentForm.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/mainCurrentForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/mainFormValues.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/mainFormValues.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-main.js" afterPath="$PROJECT_DIR$/test-main.js" />
     </list>
     <ignored path="DynamicFormBuilder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,18 +42,7 @@
     <favorites_list name="DynamicFormBuilder" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test-main.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test-main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5311973">
-              <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -114,7 +84,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/springapp/mvc/FormController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/HomePage.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/formValues.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formValues.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/formValuesAdd.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/HomePageFunctions.js" />
@@ -124,10 +93,17 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/mainCreate.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/mainCurrentForm.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createForm.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/currentForms.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formsubmitted.jsp" />
         <option value="$PROJECT_DIR$/test-main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/NewForm.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/NewForm/mainNewForm.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createForm.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/CreateForm/mainCreate.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/currentForms.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/CurrentForm/mainCurrentForm.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formsubmitted.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted/mainFormSubmitted.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formValues.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/FormValues/mainFormValues.js" />
       </list>
     </option>
   </component>
@@ -275,6 +251,62 @@
               <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DynamicFormBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DynamicFormBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DynamicFormBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DynamicFormBuilder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -350,10 +382,10 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/js/FormValues" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted" />
       <recent name="$PROJECT_DIR$/src/main/webapp/js/CurrentForm" />
       <recent name="$PROJECT_DIR$/src/main/webapp/js/CreateForm" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/js/FormSubmitted" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/js/FormValues" />
       <recent name="$PROJECT_DIR$/src/main/webapp/js/NewForm" />
     </key>
   </component>
@@ -702,7 +734,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1602289" sideWeight="0.4942717" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2360515" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24177396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20588236" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -761,23 +793,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/springapp/mvc/MySQLOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76608187">
-          <caret line="203" column="4" selection-start-line="203" selection-start-column="4" selection-end-line="203" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.1.RELEASE/spring-webmvc-4.1.1.RELEASE.jar!/org/springframework/web/servlet/mvc/annotation/AnnotationMethodHandlerAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.1.RELEASE/spring-web-4.1.1.RELEASE-sources.jar!/org/springframework/web/bind/annotation/support/HandlerMethodInvoker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6380091">
@@ -874,6 +889,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,42 +1037,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/mainFormValues.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70826304">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/springapp/mvc/MongoOperationsTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36762226">
           <caret line="83" column="32" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/mainFormSubmitted.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/CreateForm/createForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="47" selection-start-line="0" selection-start-column="47" selection-end-line="0" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1085,62 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/mainCurrentForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5311973">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/mainCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5311973">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createForm.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37942666">
-          <caret line="15" column="74" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/currentForms.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35413152">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formsubmitted.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37942666">
-          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formValues.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0623946">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/NewForm.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93591905">
-          <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/test/createFormAdd.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7588533">
@@ -1149,10 +1077,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/CreateForm/createForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="47" selection-start-line="0" selection-start-column="47" selection-end-line="0" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DynamicFormBuilder.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test-main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5311973">
-          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.5059022">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/NewForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/NewForm/mainNewForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40472177">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/CreateForm/mainCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02529511">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/currentForms.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37942666">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/CurrentForm/mainCurrentForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02529511">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formsubmitted.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/FormSubmitted/mainFormSubmitted.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formValues.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/FormValues/mainFormValues.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02529511">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
           <folding />
         </state>
       </provider>
