@@ -4,13 +4,13 @@ define(['jquery'], function($){
 
         var fields = [];
         $.each(data, function(index, name){
+
             fields.push(name);
         })
         for(i = 0; i < fields.length; i++){
 
             $('#fields').append('<th>'+fields[i]+'</th>');
-            $('#filterForm').append('<label for = "'+fields[i]+'">'+fields[i]+'</label><input id = "'+fields[i]+'" type = "text"/>');
-
+            $('#filterForm').append('<input name = "'+fields[i]+'" id = "value'+i+'" type = "text" placeholder = "'+fields[i]+'"/>');
         }
     }
 
@@ -34,5 +34,4 @@ define(['jquery'], function($){
         createHeaders: createHeaders,
         createTable: createTable
     }
-
 })

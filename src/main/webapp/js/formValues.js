@@ -1,37 +1,74 @@
 define(['jquery', 'formValuesAdd'], function($, Data){
 
+    var doneOut = function () {
+        console.log("done");
+//        $("#form1")[0].reset();
+//        window.location.href = "formsubmitted";
+    };
+
+    var errorOut = function (e) {
+        console.log(e.responseText);
+    };
+
     $(document).ready(function() {
 
-        $('#filterForm').hide();
+        $('#filterOption').hide();
 
         $.getJSON('formFieldNames', Data.createHeaders);
 
         $.getJSON('allFormResponses', Data.createTable);
 
         $('#enableFilter').click(function(){
-            $('#filterForm').toggle();
+            $('#filterOption').toggle();
         });
 
         $('#SubmitFilter').click(function(){
             var formData={};
-            var output = [];
-            var checkRB={};
+            var fieldsNo = 0;
 
-            var res = '{ ';
 
             $("input").each(function () {
-                output.push([$(this).attr('name'), $(this).val()]);
-                res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
-                formData[$(this).attr('name')]=$(this).val();
+                fieldsNo++;
             });
 
-            var res = res + '}';
+            for(i = 0; i<fieldsNo; i++){
+//                formData[$('#value'+i).attr('name')] = $('#value'+i).val();
+                formData[i] = $('#value'+i).val();
+            }
 
-            $.post('sendFilter', formData, function (response) {
-                console.log(formData);
-            }).done(doneOut).fail(error Out);
+            $.getJSON('allFormResponses', function(data){
 
-            return res;
-        })
+                $('#data').html('');
+                var fields = [];
+                var filter  = 1;
+
+                $.each(data, function(data, name){
+                    fields.push(name);
+                })
+
+                for(i = 0; i<fields.length; i++){
+
+                    filter = 1;
+
+                    for(j = 0; j<fields[i].length; j++){
+                        if((fields[i][j] != formData[j])&&(formData[j]!="")) {
+                            filter = 0;
+                        }
+
+                    }
+                    if(filter){
+                        $('#data').append('<tr id = "row'+i+'"></tr>');
+
+                        for(j = 0; j<fields[i].length; j++){
+                            $('#row'+i).append('<td>'+fields[i][j]+'</td>');
+                        }
+                    }
+                }
+            })
+
+//            $.post('sendFilter', formData, function (response) {
+//                console.log(formData);
+//            }).done(doneOut).fail(errorOut);
+        });
     });
 });

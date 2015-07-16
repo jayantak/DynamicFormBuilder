@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/marketing.css">
         <link rel="stylesheet" href="css/pure-min.css">
         <script data-main="../js/mainFormValues.js" src="../../libraries/require.js"></script>
+
     </head>
     <body id ="b">
         <div class="header">
@@ -32,11 +33,25 @@
                      <legend>Data</legend>
                 </div>
                 <div class="l-box-lrg pure-u-2-5">
+                <style scoped>
+                        .button-large {
+                            font-size: 110%;
+                        }
+                </style>
                     <button id = "enableFilter" class="pure-button pure-button-primary">Filter</button>
-                     <form id = "filterForm" class="pure-form pure-form-aligned" action = "">
-                         <legend id ="filterLegend">Filter</legend>
-                         <input type="submit" class="pure-button" id="SubmitFilter" >
+                    <pre class = "code" id = "filterOption">
+                     <style scoped>
+                         .button-orange {
+                             background: rgb(223, 117, 20);
+                         }
+                         .small {
+                             font-size: 90%;
+                         }
+                     </style>
+                     <form id = "filterForm" class="pure-form small">
                      </form>
+                     <button class="pure-button button-orange small" id="SubmitFilter" > Submit </button>
+                    </pre>
                 </div>
                 <div>
                     <table id = "DataTable" class = "pure-table pure-table-striped">
