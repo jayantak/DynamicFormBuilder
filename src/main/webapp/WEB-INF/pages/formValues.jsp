@@ -38,14 +38,14 @@
                             font-size: 110%;
                         }
                 </style>
-                    <button id = "enableFilter" class="pure-button pure-button-primary">Filter</button>
+                    <button id = "enableFilter" class="pure-button pure-button-primary">Filter &#x25B6</button>
                     <pre class = "code" id = "filterOption">
                      <style scoped>
                          .button-orange {
                              background: rgb(223, 117, 20);
                          }
                          .small {
-                             font-size: 90%;
+                             font-size: 75%;
                          }
                      </style>
                      <form id = "filterForm" class="pure-form small">

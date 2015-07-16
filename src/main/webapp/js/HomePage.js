@@ -4,9 +4,6 @@ define(['jquery', 'HomePageFunctions', 'FormAdd'], function ($, Page, Form) {
 
         $.getJSON('formData', Form.createForm);
 
-
-
-
         $("#SubmitButton").click(Page.submitForm);
         $(function () {
             $('#form1').submit(function () {

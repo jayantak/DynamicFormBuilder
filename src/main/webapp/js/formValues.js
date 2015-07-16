@@ -12,6 +12,7 @@ define(['jquery', 'formValuesAdd'], function($, Data){
 
     $(document).ready(function() {
 
+        var filter = 'Filter &#x25B6';
         $('#filterOption').hide();
 
         $.getJSON('formFieldNames', Data.createHeaders);
@@ -20,19 +21,20 @@ define(['jquery', 'formValuesAdd'], function($, Data){
 
         $('#enableFilter').click(function(){
             $('#filterOption').toggle();
+
+            filter = (filter == 'Filter &#x25BC'? 'Filter &#x25B6': 'Filter &#x25BC');
+            $('#enableFilter').html(filter);
         });
 
         $('#SubmitFilter').click(function(){
             var formData={};
             var fieldsNo = 0;
 
-
             $("input").each(function () {
                 fieldsNo++;
             });
 
             for(i = 0; i<fieldsNo; i++){
-//                formData[$('#value'+i).attr('name')] = $('#value'+i).val();
                 formData[i] = $('#value'+i).val();
             }
 
