@@ -16,36 +16,25 @@ define(['jquery', 'FormAdd'], function($, form)
 
     var submitForm = function () {
         var formData={};
-        var output = [];
         var checkRB={};
-
-        var res = '{ ';
 
         $("input").each(function () {
 
-            if($(this).attr('type')=="radio") {
+            if($(this).attr('type')=="submit") {}
+            else if($(this).attr('type')=="radio") {
 
                 var rbName=$(this).attr('name');
                 checkRB[rbName]=0;
                 if(($(this).is(':checked')) && (checkRB[rbName]==0)) {
 
-                    output.push([$(this).attr('name'), $(this).val()]);
-                    res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
                     checkRB[rbName]=1;
                     formData[$(this).attr('name')]=$(this).val();
                 }
             }
             else {
-                output.push([$(this).attr('name'), $(this).val()]);
-                res = res + '"' + $(this).attr('name') + '" : "' + $(this).val() + '" ,';
                 formData[$(this).attr('name')]=$(this).val();
             }
         });
-
-
-
-
-        var res = res + '}';
 
 
         $.post('sendForm', formData, function (response) {

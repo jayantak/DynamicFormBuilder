@@ -2,8 +2,8 @@ requirejs.config({
     baseUrl: '../libraries',
     paths:{
         jquery: 'jquery.min',
-        currentFormJSON: '../js/currentFormJSON',
-        currentForm: '../js/currentForm'
+        currentFormJSON: '../js/CurrentForm/currentFormJSON',
+        currentForm: '../js/CurrentForm/currentForm'
     },
     shim: {
         jQuery:{
@@ -18,4 +18,4 @@ requirejs.config({
     }
 });
 
-requirejs(["../js/currentFormJSON"]);
+requirejs(["../js/CurrentForm/currentFormJSON"]);

@@ -2,9 +2,10 @@ requirejs.config({
     baseUrl: '../libraries',
     paths:{
         jquery: 'jquery.min',
-        FormAdd: '../js/FormAdd',
-        HomePage: '../js/HomePage',
-        HomePageFunctions: '../js/HomePageFunctions'
+        FormAdd: '../js/NewForm/FormAdd',
+        HomePage: '../js/NewForm/HomePage',
+        HomePageFunctions: '../js/NewForm/HomePageFunctions',
+        owlCarousel: 'owl.carousel'
     },
     shim: {
         jQuery:{
@@ -18,8 +19,11 @@ requirejs.config({
         },
         HomePageFunctions: {
             deps: ['jquery']
+        },
+        owlCarousel: {
+            deps: ['jquery']
         }
     }
 });
 
-requirejs(["../js/HomePage"]);
+requirejs(["../js/NewForm/HomePage"]);

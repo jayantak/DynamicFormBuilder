@@ -2,20 +2,20 @@ requirejs.config({
     baseUrl: '../libraries',
     paths:{
         jquery: 'jquery.min',
-        createForm: '../js/CreateForm/createForm',
-        createFormAdd: '../js/CreateForm/createFormAdd'
+        FormSubmitted: '../js/FormSubmitted/FormSubmitted',
+        TableAdd: '../js/FormSubmitted/TableAdd'
     },
     shim: {
         jQuery:{
             exports: '$'
         },
-        createForm: {
+        FormSubmitted: {
             deps: ['jquery']
         },
-        createFormAdd: {
+        TableAdd: {
             deps: ['jquery']
         }
     }
 });
 
-requirejs(["../js/CreateForm/createForm"]);
+requirejs(["../js/FormSubmitted/FormSubmitted"]);

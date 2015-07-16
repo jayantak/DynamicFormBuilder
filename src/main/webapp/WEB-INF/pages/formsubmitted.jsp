@@ -14,15 +14,7 @@
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/marketing.css">
   <link rel="stylesheet" href="css/pure-min.css">
-  <script type="text/javascript" src="libraries/jquery.min.js"></script>
-  <script src="../../libraries/bootstrap-collapse.js"></script>
-  <script src="../../libraries/bootstrap-transition.js"></script>
-  <script src="../../libraries/bootstrap-tab.js"></script>
-  <script src="../../libraries/prettify.js"></script>
-  <script src="../../libraries/run_prettify.js"></script>
-  <script src="../../libraries/owl.carousel.js"></script>
-  <script src="../../libraries/owl.carousel.min.js"></script>
-  <script data-main="../../js/FormSubmitted.js" src="../../libraries/require.js"></script>
+  <script data-main="../../js/mainFormSubmitted.js" src="../../libraries/require.js"></script>
 </head>
 <body>
 <div class="header">

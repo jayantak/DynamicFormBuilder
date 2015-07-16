@@ -2,8 +2,8 @@ requirejs.config({
     baseUrl: '../libraries',
     paths:{
         jquery: 'jquery.min',
-        formValues: '../js/formValues',
-        formValuesAdd: '../js/formValuesAdd'
+        formValues: '../js/FormValues/formValues',
+        formValuesAdd: '../js/FormValues/formValuesAdd'
     },
     shim: {
         jQuery:{
@@ -18,4 +18,4 @@ requirejs.config({
     }
 });
 
-requirejs(["../js/formValues"]);
+requirejs(["../js/FormValues/formValues"]);

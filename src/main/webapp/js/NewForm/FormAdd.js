@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'owlCarousel'], function($) {
 
     var carouselHTML = function(source) {
         return '<div class="item"><img class="pure-img" src="images/'+ source +'"></div>';
