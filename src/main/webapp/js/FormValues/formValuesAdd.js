@@ -28,7 +28,6 @@ define(['jquery'], function($){
                 $('#row'+i).append('<td>'+fields[i][j]+'</td>');
             }
         }
-
     }
 
     return {

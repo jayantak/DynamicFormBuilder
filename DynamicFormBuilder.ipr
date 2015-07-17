@@ -327,6 +327,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.h2database:h2:1.4.187">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.187/h2-1.4.187.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.187/h2-1.4.187-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.187/h2-1.4.187-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.heroku.sdk:heroku-deploy:0.4.3">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/heroku/sdk/heroku-deploy/0.4.3/heroku-deploy-0.4.3.jar!/" />

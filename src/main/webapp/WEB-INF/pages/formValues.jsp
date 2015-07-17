@@ -32,11 +32,6 @@
                  <legend>Data</legend>
             </div>
             <div class="l-box-lrg pure-u-2-5">
-            <style scoped>
-                    .button-large {
-                        font-size: 110%;
-                    }
-            </style>
                 <button id = "enableFilter" class="pure-button pure-button-primary">Filter &#x25B6</button>
                 <pre class = "code" id = "filterOption">
                  <style scoped>
@@ -52,13 +47,15 @@
                  <button class="pure-button button-orange small" id="SubmitFilter" > Submit </button>
                 </pre>
             </div>
-            <div>
+            <div class = "pure-g">
+            <div class="pure-u-1">
                 <table id = "DataTable" class = "pure-table pure-table-striped">
                     <thead>
                         <tr id = "fields"></tr>
                     </thead>
                     <tbody id = "data"></tbody>
                 </table>
+            </div>
             </div>
         </div>
     </body>
