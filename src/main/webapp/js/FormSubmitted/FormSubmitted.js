@@ -1,6 +1,4 @@
-define(function(require) {
-
-    var Table = require('./TableAdd');
+define(['jquery', 'TableAdd'], function($, Table) {
 
     $(document).ready(function () {
             $.getJSON('dataOut', Table.createTable);
