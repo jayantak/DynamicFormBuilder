@@ -35,6 +35,7 @@ public class FormController {
 	MySQLOperations mySQLOperations;
 	JSONOperations jsonOperations = new JSONOperations();
 	MongoOperations mongoOperations;
+	Validation validation = new Validation();
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
@@ -100,6 +101,8 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map userData) throws IOException {
+
+		int b= validation.check(userData);
 
 		switch(source){
 

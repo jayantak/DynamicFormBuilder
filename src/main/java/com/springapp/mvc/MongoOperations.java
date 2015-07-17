@@ -139,4 +139,15 @@ public class MongoOperations {
         }
         return jsonArray;
     }
+
+    public JSONObject formStructure(){
+        BasicDBObject query = new BasicDBObject("formName", new BasicDBObject("$exists", false));
+        DBCursor cursor = getMongoCollection().find(query);
+        BSONObject bsonObject = cursor.next();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.putAll(bsonObject.toMap());
+        jsonObject.remove("_id");
+        System.out.println("form structure is " + jsonObject);
+        return jsonObject;
+    }
 }
