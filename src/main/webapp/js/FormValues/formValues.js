@@ -2,8 +2,6 @@ define(['jquery', 'formValuesAdd'], function($, Data){
 
     var doneOut = function () {
         console.log("done");
-//        $("#form1")[0].reset();
-//        window.location.href = "formsubmitted";
     };
 
     var errorOut = function (e) {
@@ -13,14 +11,13 @@ define(['jquery', 'formValuesAdd'], function($, Data){
     $(document).ready(function() {
 
         var filter = 'Filter &#x25B6';
-        $('#filterOption').hide();
 
         $.getJSON('formFieldNames', Data.createHeaders);
 
         $.getJSON('allFormResponses', Data.createTable);
 
         $('#enableFilter').click(function(){
-            $('#filterOption').toggle();
+            $('#filterOption').slideToggle();
 
             filter = (filter == 'Filter &#x25BC'? 'Filter &#x25B6': 'Filter &#x25BC');
             $('#enableFilter').html(filter);
@@ -67,10 +64,6 @@ define(['jquery', 'formValuesAdd'], function($, Data){
                     }
                 }
             })
-
-//            $.post('sendFilter', formData, function (response) {
-//                console.log(formData);
-//            }).done(doneOut).fail(errorOut);
         });
     });
 });

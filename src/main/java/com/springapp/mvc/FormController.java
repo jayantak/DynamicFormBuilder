@@ -20,7 +20,7 @@ import java.util.Map;
 public class FormController {
 
 	@Value("${data.source}") private String source;
-	@Value("${mysql.uri}") private String uri;
+	@Value("${mysql.uri}") private String mySQLuri;
 	@Value("${mysql.database}") private String mysqlDBName;
 	@Value("${mysql.userName}") private String userName;
 	@Value("${mysql.password}") private String password;
@@ -31,17 +31,24 @@ public class FormController {
 	@Value("${mongo.port}") private String mongoPort;
 	@Value("${mongo.databaseName}") private String mongoDBName;
 	@Value("${mongo.collName}") private String mongoCollName;
+	@Value("${h2.uri}") private String h2uri;
+	@Value("${h2.userName}") private String h2userName;
+	@Value("${h2.password}") private String h2password;
+	@Value("${h2.tableName}") private String h2table;
 
 	MySQLOperations mySQLOperations;
-	JSONOperations jsonOperations = new JSONOperations();
+	JSONOperations jsonOperations;
 	MongoOperations mongoOperations;
+	H2Operations h2Operations;
 	Validation validation = new Validation();
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String frontPage() throws IOException {
 
-		mySQLOperations = new MySQLOperations(uri, mysqlDBName, userName, password, tableName);
+		mySQLOperations = new MySQLOperations(mySQLuri, mysqlDBName, userName, password, tableName);
 		mongoOperations = new MongoOperations(mongoHost, mongoPort, mongoDBName, mongoCollName);
+		h2Operations = new H2Operations(h2uri, h2userName, h2password, h2table);
+		jsonOperations = new JSONOperations(jsonFields, jsonOut);
 		return "currentForms";
 	}
 
@@ -70,8 +77,7 @@ public class FormController {
 				input = mySQLOperations.readFields();
 				break;
 			case "json":
-				JSONOperations jops1 = new JSONOperations();
-				input = jops1.JSONRead("dataFields.json");
+				input = jsonOperations.JSONRead();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);
@@ -91,7 +97,7 @@ public class FormController {
 				input = mySQLOperations.readValues();
 				break;
 			case "json":
-				input = jsonOperations.JSONRead(jsonOut);
+				input = jsonOperations.JSONRead();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);
@@ -116,7 +122,7 @@ public class FormController {
 				break;
 			case "json":
 				JSONObject JSONoutput = new JSONObject(userData);
-				jsonOperations.JSONWrite(JSONoutput, jsonOut);
+				jsonOperations.JSONWrite(JSONoutput);
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);
@@ -124,34 +130,11 @@ public class FormController {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
-    @RequestMapping(method = RequestMethod.POST, value = "/sendFilter", consumes = "application/json", produces = "application/json")
-    public ResponseEntity sendFilter(@RequestParam Map userData) throws IOException {
-
-        switch(source){
-
-
-            case "mongo":
-//                mongoOperations.writeValues(userData);
-                break;
-            case "mysql":
-//                mySQLOperations.writeValues(userData);
-                break;
-            case "json":
-//                JSONObject JSONoutput = new JSONObject(userData);
-//                jsonOperations.JSONWrite(JSONoutput, jsonOut);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid Source Data type"+ source);
-        }
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
 	@RequestMapping(method = RequestMethod.POST, value = "/sendFields")
 	public ResponseEntity createFormFields(@RequestParam String fieldData) throws IOException {
 
 		JSONObject JSONoutput = new JSONObject();
 		Object output;
-		JSONOperations jops1 = new JSONOperations();
 		JSONParser parser = new JSONParser();
 		try{
 			output =  parser.parse(fieldData);
@@ -171,7 +154,7 @@ public class FormController {
 				mySQLOperations.writeForm(JSONoutput);
 				break;
 			case "json":
-				jops1.JSONWrite(JSONoutput, "dataFields.json");
+				jsonOperations.JSONWrite(JSONoutput);
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);
@@ -198,7 +181,7 @@ public class FormController {
 				input = mySQLOperations.readForms();
 				break;
 			case "json":
-//              input = jsonOperations.JSONRead(jsonOut);
+//              input = jsonOperations.JSONRead();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);
@@ -232,7 +215,7 @@ public class FormController {
 				input = mySQLOperations.getResponses();
 				break;
 			case "json":
-//                input = jsonOperations.JSONRead(jsonFields);
+//                input = jsonOperations.JSONRead();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);
@@ -252,7 +235,7 @@ public class FormController {
 				input = mySQLOperations.getFieldNames();
 				break;
 			case "json":
-//                input = jsonOperations.JSONRead(jsonFields);
+//                input = jsonOperations.JSONRead();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid Source Data type"+ source);

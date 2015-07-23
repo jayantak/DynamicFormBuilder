@@ -10,10 +10,18 @@ import org.json.simple.parser.JSONParser;
 
 public class JSONOperations {
 
-    public void JSONWrite(JSONObject obj, String fileName) throws IOException
+    String in;
+    String out;
+
+    public JSONOperations(String in, String out){
+        this.in = in;
+        this.out = out;
+    }
+
+    public void JSONWrite(JSONObject obj) throws IOException
     {
         ClassLoader classLoader = getClass().getClassLoader();
-        File JSONFile = new File(classLoader.getResource(fileName).getFile());
+        File JSONFile = new File(classLoader.getResource(out).getFile());
         FileWriter JSONFileWriter = new FileWriter(JSONFile);
         try {
             JSONFileWriter.write(obj.toJSONString());
@@ -28,10 +36,10 @@ public class JSONOperations {
         }
     }
 
-    public JSONObject JSONRead(String fileName) throws IOException
+    public JSONObject JSONRead() throws IOException
     {
         ClassLoader classLoader = getClass().getClassLoader();
-        File JSONFile = new File(classLoader.getResource(fileName).getFile());
+        File JSONFile = new File(classLoader.getResource(in).getFile());
         JSONParser parser = new JSONParser();
         JSONObject JSONObj = new JSONObject();
         Object ReadObject = new Object();

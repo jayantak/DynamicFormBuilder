@@ -33,7 +33,7 @@
             </div>
             <div class="l-box-lrg pure-u-2-5">
                 <button id = "enableFilter" class="pure-button pure-button-primary">Filter &#x25B6</button>
-                <pre class = "code" id = "filterOption">
+                <pre class = "code" id = "filterOption" style="display:none">
                  <style scoped>
                      .button-orange {
                          background: rgb(223, 117, 20);

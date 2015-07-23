@@ -16,7 +16,7 @@ public class JSONOperationsTest {
     @Test
     public void testJSONWrite() throws Exception {
 
-        JSONOperations jops1 = new JSONOperations();
+        JSONOperations jops1 = new JSONOperations("dataFields.json", "dataOut.json");
 
         JSONParser parser = new JSONParser();
 
@@ -27,7 +27,7 @@ public class JSONOperationsTest {
         ClassLoader classLoader = getClass().getClassLoader();
         File tfile1 = new File(classLoader.getResource("tfile1.txt").getFile());
 
-        jops1.JSONWrite(json1,"tfile1.txt");
+        jops1.JSONWrite(json1);
 
         JSONObject obj = new JSONObject();
         Object obj1;
@@ -44,7 +44,7 @@ public class JSONOperationsTest {
     @Test
     public void testJSONRead() throws Exception {
 
-        JSONOperations jops1 = new JSONOperations();
+        JSONOperations jops1 = new JSONOperations("dataFields.json", "dataOut.json");
 
         JSONParser parser = new JSONParser();
 
