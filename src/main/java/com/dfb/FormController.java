@@ -1,4 +1,4 @@
-package com.springapp.mvc;
+package com.dfb;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;

@@ -1,4 +1,4 @@
-package com.springapp.mvc;
+package com.dfb;
 
 import com.mongodb.*;
 import org.bson.BSONObject;

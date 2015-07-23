@@ -1,4 +1,4 @@
-package com.springapp.mvc;
+package com.dfb;
 
 import org.json.simple.JSONObject;
 
@@ -24,7 +24,6 @@ public class JSONOperations {
         FileWriter JSONFileWriter = new FileWriter(JSONFile);
         try {
             JSONFileWriter.write(obj.toJSONString());
-
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -45,8 +44,7 @@ public class JSONOperations {
             ReadObject = parser.parse(new FileReader(JSONFile));
             JSONObj = (JSONObject) ReadObject;
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             e.printStackTrace();
         }
 
