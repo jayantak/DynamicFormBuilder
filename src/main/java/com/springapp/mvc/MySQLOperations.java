@@ -54,7 +54,8 @@ public class MySQLOperations {
 
         try{
 
-            ResultSet resultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "';");
+            ResultSet resultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE " +
+                    "table_name='" + tableName + "';");
 
             while(resultSet.next()){
 
@@ -68,10 +69,14 @@ public class MySQLOperations {
                 }
 
                 if(type.equals("radio")){
-                    ResultSet resultSet1 = getStatement().executeQuery("SELECT DISTINCT SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING(COLUMN_TYPE, 7, LENGTH(COLUMN_TYPE) - 8), \"','\", 1 + units.i + tens.i * 10) , \"','\", -1) AS abc\n" +
+                    ResultSet resultSet1 = getStatement().executeQuery("SELECT DISTINCT SUBSTRING_INDEX(" +
+                            "SUBSTRING_INDEX(SUBSTRING(COLUMN_TYPE, 7, LENGTH(COLUMN_TYPE) - 8), \"','\", " +
+                            "1 + units.i + tens.i * 10) , \"','\", -1) AS abc\n" +
                             "FROM INFORMATION_SCHEMA.COLUMNS\n" +
-                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) units\n" +
-                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) tens\n" +
+                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT " +
+                            "4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) units\n" +
+                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT " +
+                            "4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) tens\n" +
                             "WHERE TABLE_NAME = '"+tableName+"' AND COLUMN_NAME = '"+ name + "';");
                     while(resultSet1.next()){
                         String value = resultSet1.getString(1);
@@ -121,7 +126,8 @@ public class MySQLOperations {
 
         try{
             ResultSet valueResultSet = getStatement().executeQuery("SELECT * FROM " + tableName);
-            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "'");
+            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE " +
+                    "table_name='" + tableName + "'");
 
             valueResultSet.last();
             while(fieldResultSet.next()) {
@@ -232,7 +238,8 @@ public class MySQLOperations {
         JSONArray data = new JSONArray();
 
         try{
-            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='" + tableName + "';");
+            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE " +
+                    "table_name='" + tableName + "';");
 
             while(fieldResultSet.next()){
                 data.add(fieldResultSet.getString("COLUMN_NAME"));

@@ -18,8 +18,7 @@ public class JSONOperations {
         this.out = out;
     }
 
-    public void JSONWrite(JSONObject obj) throws IOException
-    {
+    public void JSONWrite(JSONObject obj) throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File JSONFile = new File(classLoader.getResource(out).getFile());
         FileWriter JSONFileWriter = new FileWriter(JSONFile);
@@ -36,8 +35,7 @@ public class JSONOperations {
         }
     }
 
-    public JSONObject JSONRead() throws IOException
-    {
+    public JSONObject JSONRead() throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File JSONFile = new File(classLoader.getResource(in).getFile());
         JSONParser parser = new JSONParser();

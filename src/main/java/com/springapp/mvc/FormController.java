@@ -19,6 +19,7 @@ import java.util.Map;
 @RequestMapping("/")
 public class FormController {
 
+	//region application.properties data
 	@Value("${data.source}") private String source;
 	@Value("${mysql.uri}") private String mySQLuri;
 	@Value("${mysql.database}") private String mysqlDBName;
@@ -35,6 +36,7 @@ public class FormController {
 	@Value("${h2.userName}") private String h2userName;
 	@Value("${h2.password}") private String h2password;
 	@Value("${h2.tableName}") private String h2table;
+	//endregion
 
 	MySQLOperations mySQLOperations;
 	JSONOperations jsonOperations;
@@ -79,16 +81,19 @@ public class FormController {
 			case "json":
 				input = jsonOperations.JSONRead();
 				break;
+			case "h2":
+				input = h2Operations.readFields();
+				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/dataOut")
-	public ResponseEntity fetchFormOutput() throws IOException{
+	public ResponseEntity fetchFormOutput() throws IOException {
 
-		JSONObject input = null;
+		JSONObject input = new JSONObject();
 		switch(source){
 			case "mongo":
 				input = mongoOperations.readValues();
@@ -100,7 +105,7 @@ public class FormController {
 				input = jsonOperations.JSONRead();
 				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
@@ -110,9 +115,7 @@ public class FormController {
 
 		//int b= validation.check(userData);
 
-
 		switch(source){
-
 
 			case "mongo":
 				mongoOperations.writeValues(userData);
@@ -124,8 +127,11 @@ public class FormController {
 				JSONObject JSONoutput = new JSONObject(userData);
 				jsonOperations.JSONWrite(JSONoutput);
 				break;
+			case "h2":
+				h2Operations.writeValues(userData);
+				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(HttpStatus.OK);
 	}
@@ -156,8 +162,11 @@ public class FormController {
 			case "json":
 				jsonOperations.JSONWrite(JSONoutput);
 				break;
+			case "h2":
+				h2Operations.writeForm(JSONoutput);
+				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
@@ -169,7 +178,7 @@ public class FormController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/forms")
-	public ResponseEntity fetchFormList() throws IOException{
+	public ResponseEntity fetchFormList() throws IOException {
 
 		JSONArray input= new JSONArray();
 
@@ -183,8 +192,11 @@ public class FormController {
 			case "json":
 //              input = jsonOperations.JSONRead();
 				break;
+			case "h2":
+				input = h2Operations.readForms();
+				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
@@ -217,14 +229,17 @@ public class FormController {
 			case "json":
 //                input = jsonOperations.JSONRead();
 				break;
+			case "h2":
+				input = h2Operations.getResponses();
+				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/formFieldNames")
-	public ResponseEntity fetchFormFields() throws IOException{
+	public ResponseEntity fetchFormFields() throws IOException {
 
 		JSONArray input = new JSONArray();
 		switch(source){
@@ -237,9 +252,16 @@ public class FormController {
 			case "json":
 //                input = jsonOperations.JSONRead();
 				break;
+			case "h2":
+				input = h2Operations.getFieldNames();
+				break;
 			default:
-				throw new IllegalArgumentException("Invalid Source Data type"+ source);
+				throw unknownSource();
 		}
 		return new ResponseEntity(input.toString(), HttpStatus.OK);
+	}
+
+	public IllegalArgumentException unknownSource(){
+		return new IllegalArgumentException("Invalid Source Data type "+ source);
 	}
 }
