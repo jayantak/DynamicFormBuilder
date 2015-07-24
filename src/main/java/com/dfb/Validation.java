@@ -1,8 +1,4 @@
 package com.dfb;
-
-
-
-
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
 
@@ -31,13 +27,8 @@ public class Validation {
 
         Collection formFields1=userData.keySet();
         Collection formvalues=userData.values();
-
-
-
-        System.out.println("formfields1 is " + formFields1.toArray()[0]);
-        System.out.println("formValues is "+ formvalues.toArray()[0]);
-
-
+//        System.out.println("formfields1 is " + formFields1.toArray()[0]);
+//        System.out.println("formValues is "+ formvalues.toArray()[0]);
 
         boolean matchFound;
         int i,inputnum,min,max;
@@ -148,9 +139,8 @@ public class Validation {
                                     System.out.println("Value for " + formFields + " has to be atmost "+ max);
                             }
                         }
-
-
                     }
+
                     if(jobjattr.containsKey("necessary"))
                     {
                         necessary = jobjattr.get("necessary").toString();
@@ -158,12 +148,8 @@ public class Validation {
                             inputval = getInput(formFields1, formFields, formvalues);
                             if(inputval.length()<1)
                                 System.out.println(formFields + " field is necessary.");
-
                         }
-                        
                     }
-
-
                     //For datafieldsnew.json
                     if(jobjattr.containsKey("validation"))
                     {
@@ -177,7 +163,6 @@ public class Validation {
                             if(!matchFound)
                                 System.out.println(formFields + " contains illegal characters");
                         }
-
                        else if(validation.equals("numerals"))
                         {
                             inputval= getInput(formFields1,formFields,formvalues);
@@ -188,11 +173,7 @@ public class Validation {
                                 System.out.println(formFields + " contains illegal characters");
                         }
                     }
-
-
                 }
-
-
             }
             catch(Exception e) {
                 System.out.println("error is " + e.getMessage());
