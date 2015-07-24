@@ -113,7 +113,8 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.POST, value = "/sendForm", consumes = "application/json", produces = "application/json")
 	public ResponseEntity giveData(@RequestParam Map userData) throws IOException {
 
-		//int b= validation.check(userData);
+		int b= validation.check(mongoOperations,userData);
+		System.out.println(b);
 
 		switch(source){
 

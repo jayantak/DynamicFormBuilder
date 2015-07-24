@@ -47,10 +47,12 @@
     <div>
         <br>
         <br>
-        <button id="CreateForm" class="pure-button pure-button-primary">Create New Form</button>
+      <marquee>  <button id="CreateForm" class="pure-button pure-button-primary">Create New Form</button></marquee>
     </div>
 
 </div>
 </div>
+
+
 </body>
 </html>
