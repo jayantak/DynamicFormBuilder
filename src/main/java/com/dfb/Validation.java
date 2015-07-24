@@ -1,4 +1,8 @@
 package com.dfb;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Finished maximum length validation
 
 
 
@@ -75,6 +79,9 @@ public class Validation {
                     if(jobjattr.containsKey("maxlength")) {
 
                         maxi = jobjattr.get("maxlength").toString();
+                        float maxf= Float.parseFloat(maxi);
+
+
                         System.out.println("maxi is " + maxi);
                         i=0;
                         while(1>-1)
@@ -85,9 +92,14 @@ public class Validation {
                             }
                         }
 
-                        System.out.println("i is" + i);
+                        String value = formvalues.toArray()[i].toString();
+
+                        if(value.length()>maxf)
+                            System.out.println("Value in " + formFields+" is too large");
 
                     }
+
+                    if(jobjattr.containsKey())
 
                 }
 
