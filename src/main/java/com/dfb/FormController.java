@@ -242,6 +242,7 @@ public class FormController {
 	@RequestMapping(method = RequestMethod.GET, value = "/formFieldNames")
 	public ResponseEntity fetchFormFields() throws IOException {
 
+		int a;
 		JSONArray input = new JSONArray();
 		switch(source){
 			case "mongo":
