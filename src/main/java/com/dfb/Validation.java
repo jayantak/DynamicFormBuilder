@@ -1,8 +1,5 @@
 package com.dfb;
-<<<<<<< HEAD
-=======
 
->>>>>>> Finished maximum length validation
 
 
 
@@ -14,6 +11,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validation {
 
@@ -32,10 +31,10 @@ public class Validation {
 
 
         int i;
-        String temp,maxi;
+        String temp,maxi,input,value;
         Object objattr;
         JSONObject jobjattr;
-        String formFields;
+        String formFields,patternstr;
         JSONObject attribute;
         JSONObject formStructure1;
         JSONOperations jops1 = new JSONOperations("dataFields.json", "dataOut.json");
@@ -82,7 +81,7 @@ public class Validation {
                         float maxf= Float.parseFloat(maxi);
 
 
-                        System.out.println("maxi is " + maxi);
+                      //  System.out.println("maxi is " + maxi);
                         i=0;
                         while(1>-1)
                         {
@@ -92,14 +91,35 @@ public class Validation {
                             }
                         }
 
-                        String value = formvalues.toArray()[i].toString();
+                        value = formvalues.toArray()[i].toString();
 
                         if(value.length()>maxf)
                             System.out.println("Value in " + formFields+" is too large");
 
                     }
 
-                    if(jobjattr.containsKey())
+                    if(jobjattr.containsKey("pattern"))
+                    {
+                        patternstr = jobjattr.get("pattern").toString();
+                        Pattern pattern = Pattern.compile(patternstr);
+                        i=0;
+                        while(1>-1)
+                        {
+                            if(formFields1.toArray()[i].equals(formFields))
+                            {
+                                break;
+                            }
+                        }
+                        value = formvalues.toArray()[i].toString();
+                        Matcher matcher = pattern.matcher(value);
+                        boolean matchFound = matcher.matches();
+                        if(!matchFound)
+                            System.out.println("Value at " + formFields+ " does not obey the pattern");
+
+
+                        
+
+                    }
 
                 }
 
