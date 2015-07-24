@@ -1,0 +1,57 @@
+{
+  "form":{
+    "Parent":{
+      "type":"text",
+      "maxlength": 8,
+      "pattern": "[a-zA-Z]*",
+
+      "validation":["noNumerals","size"]
+    },
+    "Name":{
+      "type":"text",
+      "maxlength": 8,
+      "necessary":"YES"
+      "validation": "noNumerals"
+    },
+    "Address":{
+      "type": "text",
+      "maxlength": 8,
+      "validation": "numerals"
+    },
+
+
+    "Date":
+    {
+      "type": "date"
+
+    },
+
+    "Email":
+    {
+      "type": "email",
+      "necessary": "YES",
+    },
+
+    "Password":
+    {
+      "type": "password",
+      "pattern": "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}",
+      "necessary": "YES",
+    },
+
+    "Age":
+    {
+      "type": "number",
+      "min": 5,
+      "max": 199
+    },
+
+    "PinCode":
+    {
+      "type": "text",
+      "pattern": "[0-9]{6}"
+    }
+
+  }
+
+}

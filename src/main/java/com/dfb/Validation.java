@@ -40,11 +40,11 @@ public class Validation {
 
 
         boolean matchFound;
-        int i;
-        String temp,maxi,input,value,type;
+        int i,inputnum,min,max;
+        String temp,maxi,input,value,type,necessary,validation;
         Object objattr;
         JSONObject jobjattr;
-        String formFields,patternstr,inputval;
+        String formFields,patternstr,inputval,mins,maxs;
         JSONObject attribute;
         JSONObject formStructure1;
         JSONOperations jops1 = new JSONOperations("dataFields.json", "dataOut.json");
@@ -101,7 +101,7 @@ public class Validation {
                     if(jobjattr.containsKey("pattern"))
                     {
                         patternstr = jobjattr.get("pattern").toString();
-                        inputval= getInput(formFields1,formFields,formvalues);
+                        inputval= getInput(formFields1, formFields, formvalues);
                         matchFound = patternchecker(patternstr, inputval);
                         if(!matchFound)
                             System.out.println("Value at " + formFields+ " does not obey the pattern");
@@ -129,12 +129,66 @@ public class Validation {
 
                         }
 
+                        if(type.equals("number"))
+                        {
+                            inputval= getInput(formFields1,formFields,formvalues);
+                            inputnum = Integer.parseInt(inputval);
+                            if(jobjattr.containsKey("min"))
+                            {
+                                mins=jobjattr.get("min").toString();
+                                min=Integer.parseInt(mins);
+                                if(inputnum<min)
+                                    System.out.println("Value for " + formFields + " has to be atleast "+ min);
+                            }
+                            if(jobjattr.containsKey("max"))
+                            {
+                                maxs=jobjattr.get("max").toString();
+                                max=Integer.parseInt(maxs);
+                                if(inputnum>max)
+                                    System.out.println("Value for " + formFields + " has to be atmost "+ max);
+                            }
+                        }
+
 
                     }
+                    if(jobjattr.containsKey("necessary"))
+                    {
+                        necessary = jobjattr.get("necessary").toString();
+                        if(necessary.equals("YES")) {
+                            inputval = getInput(formFields1, formFields, formvalues);
+                            if(inputval.length()<1)
+                                System.out.println(formFields + " field is necessary.");
+
+                        }
+                        
+                    }
+
+
+                    //For datafieldsnew.json
                     if(jobjattr.containsKey("validation"))
                     {
-                        String validations = jobjattr.get("validation").toString();
+                        validation = jobjattr.get("validation").toString();
+                        if(validation.equals("noNumerals"))
+                        {
+                            inputval= getInput(formFields1,formFields,formvalues);
+                            patternstr = "[a-zA-Z]+(\\s+[a-zA-Z]+)*";
+                            matchFound = patternchecker(patternstr, inputval);
+
+                            if(!matchFound)
+                                System.out.println(formFields + " contains illegal characters");
+                        }
+
+                       else if(validation.equals("numerals"))
+                        {
+                            inputval= getInput(formFields1,formFields,formvalues);
+                            patternstr = "[a-zA-Z0-9]+(\\s+[a-zA-Z0-9]+)*";
+                            matchFound = patternchecker(patternstr, inputval);
+
+                            if(!matchFound)
+                                System.out.println(formFields + " contains illegal characters");
+                        }
                     }
+
 
                 }
 
