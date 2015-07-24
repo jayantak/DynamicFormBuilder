@@ -1,5 +1,4 @@
 package com.dfb;
-package com.springapp.mvc;
 
 
 
@@ -14,7 +13,7 @@ import java.util.Set;
 
 public class Validation {
 
-    JSONOperations jsonOperations = new JSONOperations();
+    JSONOperations jsonOperations = new JSONOperations("dataFields.json", "dataOut.json");
 
     public int check(MongoOperations mongoOperations, Map userData) throws IOException {
 
@@ -27,6 +26,7 @@ public class Validation {
         System.out.println("formValues is "+ formvalues.toArray()[0]);
 
 
+
         int i;
         String temp,maxi;
         Object objattr;
@@ -34,7 +34,7 @@ public class Validation {
         String formFields;
         JSONObject attribute;
         JSONObject formStructure1;
-        JSONOperations jops1 = new JSONOperations();
+        JSONOperations jops1 = new JSONOperations("dataFields.json", "dataOut.json");
         System.out.println("userdata is "+ userData);
 
         formStructure1 = mongoOperations.getFields();
