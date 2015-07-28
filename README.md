@@ -1,3 +1,2 @@
 # Glean
-A Dynamic Form Builder made in JAVA
-
+A Dynamic Form Builder made with the Spring Framework
