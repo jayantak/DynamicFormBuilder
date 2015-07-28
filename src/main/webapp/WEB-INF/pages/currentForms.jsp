@@ -47,7 +47,7 @@
     <div>
         <br>
         <br>
-      <marquee>  <button id="CreateForm" class="pure-button pure-button-primary">Create New Form</button></marquee>
+      <button id="CreateForm" class="pure-button pure-button-primary">Create New Form</button>
     </div>
 
 </div>
