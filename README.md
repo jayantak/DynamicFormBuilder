@@ -9,7 +9,10 @@ INSTRUCTIONS
 <li>'mongo' for MongoDB</li>
 <li>'mysql' for MySql</li>
 </ol>
-+
++Install Tomcat server on a local machine
++Perform Maven 'clean' and Maven 'install'
++Run Server.java
++Go to localhost:8080 on your browser and enjoy :)
 
 
 
