@@ -39,12 +39,12 @@ public class Validation {
         JSONObject attribute;
         JSONObject formStructure1;
         JSONOperations jops1 = new JSONOperations("dataFields.json", "dataOut.json");
-        System.out.println("userdata is "+ userData);
+    //    System.out.println("userdata is "+ userData);
 
         formStructure1 = mongoOperations.getFields();
         Set set =  formStructure1.keySet();
         Collection values1 =formStructure1.values();
-       System.out.println("form structure is " + values1);
+     //  System.out.println("form structure is " + values1);
 
         Iterator iter = values1.iterator();
 
@@ -75,7 +75,7 @@ public class Validation {
                     objattr=parser.parse(temp);
                     jobjattr=(JSONObject) objattr;
 
-                    System.out.println("jobjattr is " + jobjattr);
+              //      System.out.println("jobjattr is " + jobjattr);
                     if(jobjattr.containsKey("maxlength")) {
 
                         maxi = jobjattr.get("maxlength").toString();
