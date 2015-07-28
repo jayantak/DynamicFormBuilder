@@ -5,10 +5,10 @@ IDE used -IntelliJ Community Edition
 
 INSTRUCTIONS
 <li>Choose data source in application.properties</li>
-<!--<ol>-->
-<!--<li>'mongo' for MongoDB</li>-->
-<!--<li>'mysql' for MySql</li>-->
-<!--</ol>-->
+<ol>
+<li>'mongo' for MongoDB</li>
+<li>'mysql' for MySql</li>
+</ol>
 <li>Install Tomcat server on a local machine</li>
 <li>Perform Maven 'clean' and Maven 'install'</li>
 <li>Run Server.java</li>
