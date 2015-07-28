@@ -4,7 +4,8 @@ IDE used -IntelliJ Community Edition
 
 INSTRUCTIONS
 + Choose data source
-+ 
++ + 'mongo' for MongoDB
++ + 'mysql' for MySQL
 
 
 
