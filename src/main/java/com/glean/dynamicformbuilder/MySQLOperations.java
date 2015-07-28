@@ -1,27 +1,26 @@
-package com.dfb;
+package com.glean.dynamicformbuilder;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class H2Operations {
+public class MySQLOperations {
 
     String URI;
-    String userName;
-    String password;
-    String tableName;
+    String databaseName;
+    String userName ;
+    String password ;
+    String tableName ;
 
-    public H2Operations(String URI, String userName, String password, String tableName) {
+    public MySQLOperations(String URI, String databaseName, String userName, String password, String tableName) {
         this.URI = URI;
+        this.databaseName = databaseName;
         this.userName = userName;
         this.password = password;
         this.tableName = tableName;
@@ -33,11 +32,11 @@ public class H2Operations {
         Statement statement = null;
 
         try {
-            Class.forName("org.h2.Driver");
-            connection = DriverManager.getConnection(URI, userName, password);
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(URI + databaseName, userName, password);
             statement = connection.createStatement();
 
-            statement.executeUpdate("CREATE TABLE "+tableName+";");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
 
             return statement;
         } catch (Exception e) {
@@ -74,10 +73,10 @@ public class H2Operations {
                             "SUBSTRING_INDEX(SUBSTRING(COLUMN_TYPE, 7, LENGTH(COLUMN_TYPE) - 8), \"','\", " +
                             "1 + units.i + tens.i * 10) , \"','\", -1) AS abc\n" +
                             "FROM INFORMATION_SCHEMA.COLUMNS\n" +
-                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT" +
-                            " 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) units\n" +
-                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT" +
-                            " 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) tens\n" +
+                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT " +
+                            "4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) units\n" +
+                            "CROSS JOIN (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT " +
+                            "4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) tens\n" +
                             "WHERE TABLE_NAME = '"+tableName+"' AND COLUMN_NAME = '"+ name + "';");
                     while(resultSet1.next()){
                         String value = resultSet1.getString(1);
@@ -99,7 +98,6 @@ public class H2Operations {
     }
 
     public void writeValues(Map input) throws IOException{
-
         try{
             getStatement().executeUpdate(generateWriteQuery(input));
         }
@@ -122,14 +120,14 @@ public class H2Operations {
         return query;
     }
 
-    public JSONObject readValues() throws IOException{
+    public JSONObject readValues() throws IOException {
 
         JSONObject pageFields = new JSONObject();
 
         try{
             ResultSet valueResultSet = getStatement().executeQuery("SELECT * FROM " + tableName);
-            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE" +
-                    " table_name='" + tableName + "'");
+            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE " +
+                    "table_name='" + tableName + "'");
 
             valueResultSet.last();
             while(fieldResultSet.next()) {
@@ -163,7 +161,9 @@ public class H2Operations {
         while(iterator.hasNext()) {
 
             key = iterator.next().toString();
+
             attributes = (JSONObject) Form.get(key);
+
             comment = attributes.get("type").toString();
 
             fields = fields.concat(key + " varchar(30) COMMENT '" + comment + "'");
@@ -182,12 +182,10 @@ public class H2Operations {
     }
 
     public void setTableName(String form){
-
         this.tableName = form;
     }
 
-    public JSONArray readForms() throws IOException{
-
+    public JSONArray readForms() throws IOException {
         JSONArray pageFields = new JSONArray();
 
         try{
@@ -196,6 +194,7 @@ public class H2Operations {
             while(formResultSet.next()) {
 
                 String field = formResultSet.getString(1);
+
                 pageFields.add(field);
             }
             return pageFields;
@@ -206,7 +205,7 @@ public class H2Operations {
         return pageFields;
     }
 
-    public JSONArray getResponses() throws IOException{
+    public JSONArray getResponses() throws IOException {
 
         JSONArray data = new JSONArray();
 
@@ -230,17 +229,16 @@ public class H2Operations {
         catch (Exception e){
             e.printStackTrace();
         }
-
         return data;
     }
 
-    public JSONArray getFieldNames() throws IOException{
+    public JSONArray getFieldNames() throws IOException {
 
         JSONArray data = new JSONArray();
 
         try{
-            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE" +
-                    " table_name='" + tableName + "';");
+            ResultSet fieldResultSet = getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE " +
+                    "table_name='" + tableName + "';");
 
             while(fieldResultSet.next()){
                 data.add(fieldResultSet.getString("COLUMN_NAME"));

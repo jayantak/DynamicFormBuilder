@@ -1,4 +1,4 @@
-package com.dfb;
+package com.glean.dynamicformbuilder;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;

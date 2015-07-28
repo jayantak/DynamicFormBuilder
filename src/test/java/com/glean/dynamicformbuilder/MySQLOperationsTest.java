@@ -1,4 +1,4 @@
-package com.dfb;
+package com.glean.dynamicformbuilder;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,12 +12,12 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class H2OperationsTest {
+public class MySQLOperationsTest {
 
-    private H2Operations db;
+    private MySQLOperations db;
     @Before
     public void setUp() throws  Exception{
-        db = new H2Operations("jdbc:h2:mem:cust;MODE=MYSQL", "root","","TESTTABLE");
+        db = new MySQLOperations("jdbc:mysql://localhost:3306/", "TESTDB", "root","","TESTTABLE");
         db.getStatement().executeUpdate("DROP TABLE IF EXISTS TESTTABLE;");
         db.getStatement().executeUpdate("CREATE TABLE IF NOT EXISTS TESTTABLE(Test1 varchar(20) COMMENT 'text', Test2 varchar(30) COMMENT 'text');");
     }
@@ -55,7 +55,7 @@ public class H2OperationsTest {
 
         String generatedQuery = db.generateWriteQuery(map);
 
-        assertEquals("INSERT into TESTTABLE (test1,test2) VALUES ('y','b');", generatedQuery);
+        assertEquals("INSERT into TESTTABLE (Test1,Test2) VALUES ('y','b');", generatedQuery);
     }
 
     @Test
@@ -116,7 +116,7 @@ public class H2OperationsTest {
 
         ResultSet resultSet = db.getStatement().executeQuery("SHOW TABLES;");
         resultSet.next();
-        assertEquals("form1", resultSet.getString(1));
+        assertEquals("Form1", resultSet.getString(1));
         resultSet = db.getStatement().executeQuery("select * from INFORMATION_SCHEMA.COLUMNS WHERE table_name='Form1';");
         resultSet.last();
         assertEquals("Field1", resultSet.getString("COLUMN_NAME"));
@@ -128,6 +128,6 @@ public class H2OperationsTest {
 
         JSONArray jsonArray = db.readForms();
 
-        assertEquals("aaaa", jsonArray.get(0));
+        assertEquals("AAAA", jsonArray.get(0));
     }
 }

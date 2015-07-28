@@ -1,4 +1,4 @@
-package com.dfb;
+package com.glean.dynamicformbuilder;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
